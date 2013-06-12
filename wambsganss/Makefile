@@ -3,7 +3,7 @@
 #              Joachim Wambsganss, January 2008
 #
 #FC = gfortran -O3 -fdefault-integer-8  -c
-FC = gfortran -O3 -c -ffixed-line-length-0
+FC = gfortran -O3 -c -L./cfitsio -lcfitsio -ffixed-line-length-0
 microlens: main.o detko.o input.o massf.o niveau.o \
 	numstar.o output.o pos.o poslc.o rands.o raycount.o  \
 	setcell.o setmult.o setstar.o  shootcl.o shootfix.o shotayco.o \
@@ -12,7 +12,7 @@ microlens: main.o detko.o input.o massf.o niveau.o \
 	rands.o  setcell.o setmult.o setstar.o shootcl.o shootfix.o \
 	shotayco.o raycount.o input.o output.o numstar.o sort.o \
 	massf.o   cputime.o \
-	-ffixed-line-length-132  -std=gnu
+	-ffixed-line-length-132 -L./cfitsio -lcfitsio -std=gnu
 #	massf.o   cputime.o  -L.  -lm
 #	massf.o -lveclib
 #	    

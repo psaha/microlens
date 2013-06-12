@@ -10,7 +10,6 @@
      &,pixb,month1,day1,year1,string1,stringno)
 *
 * does all the writing in a normal run
-* 
 *
 * input :
 *	(all data to be printed)
@@ -30,13 +29,14 @@
 *
       implicit none
       real times(20)
-      integer nlens,ncell        ,cellmax,indcell(cellmax),pixhigh
+      integer nlens,ncell,raysarr,cellmax,indcell(cellmax),pixhigh
+        integer   status, unit, blocksize, bitpix, naxis, naxes(2)
+        integer   group, fpixel, nelements
      &,pixlow,ipix,debug
-     &,                 rayth,levelmax,levelcel(levelmax),ipix1,i1,i2
+     &,rayslost,rayshot,rayth,levelmax,levelcel(levelmax),ipix1,i1,i2
      &,levellen(levelmax),highle,jxmin,jxmax,jymin,jymax,jobnu,nrayx,iii
      &,nray,nrayy,j1,j2,lensmax,indlens(lensmax),factor1,factor2
      &,maxpix1,ipix125,ipix175 
-      integer*8 rayshot,raysarr ,rayslost
 *
       integer*4 pix(ipix,ipix),pix1(ipix1,ipix1),month1,day1,year1
      &,month2,day2,year2
@@ -48,30 +48,60 @@
      &,arand,sigmas,sigmac,gamma,eps,minmass
      &,maxmass,power,massav,masstot,pixmax0,pixminx,pixminy
      &,pixdif,fracpixd,cell(14,cellmax),lensdata(3,lensmax),raylev1
+       
+     
 *
       character*8 string1,string2
       character*3 stringno
       character*2 string_vec(3) 
+      external idate
+      external itime 
       integer*4 ivec1(3),ivec2(3)
       integer values(8)
+      
+               character filename*80      
+               logical simple, extend
+        
+      
+      
+      
+      
+      
 *
       common/jkwtime/times
       integer ibin, ibin_max,idum
       parameter(ibin_max=400)
       integer mag_bin(0:ibin_max)
 *
-      integer iray_bin_max
-      parameter(iray_bin_max = 100000)
-      integer ray_bin(0:iray_bin_max)
+* determine day, month, year and system time (at end of job) : 
+*
+c     call idate(month2,day2,year2)
+c     call time(string2)
+*
+*
+*******************************************************
+* 000606: new date/time (end)
+*******************************************************
+*
+c	call idate(ivec1)
+*
 *
 * 
-        integer   status, unit, blocksize, bitpix, naxis, naxes(2)
-        integer   group, fpixel, nelements
-               character filename*80      
-               logical simple, extend
 *
-
-
+	day2   = ivec1(1)
+	month2 = ivec1(2)
+	year2  = ivec1(3)
+*
+c	call itime(ivec2)
+	write(string_vec(1),'(i2.2)')ivec2(1)
+	write(string_vec(2),'(i2.2)')ivec2(2)
+	write(string_vec(3),'(i2.2)')ivec2(3)
+	string2 = string_vec(1)//':'//string_vec(2)//':'//string_vec(3)
+*
+*******************************************************
+* 000606: new date/time (end)
+*******************************************************
+*******************************************************
 *
 * determine day, month, year and system time (at end of job) : 
 *
@@ -85,19 +115,17 @@
          write(string_vec(3),'(i2.2)')values(7)
          string2 = string_vec(1)//':'//string_vec(2)//':'//string_vec(3)
 *
+*******************************************************
+*******************************************************
+*
+*
+*
 *
 * determine pixels with  highest and lowest number of rays:
-*
-*
-*
-      do j1 = 0,iray_bin_max
-	 ray_bin(j1) = 0
-      enddo
 *
       pixhigh  = 0
       pixlow   = 999999999
       raysarr  = 0
-*
       do j2 = 1,ipix
 	 do j1 = 1,ipix
 	    iii  = pix(j1,j2)
@@ -107,14 +135,8 @@
  	    elseif(pixlow.gt.iii)then
                pixlow = iii          
  	    endif
-*
-	    iii  = min(iii,iray_bin_max)
-	    ray_bin(iii) = ray_bin(iii)  + 1
-cw	    write(*,*)' j1,j2,iii,ray_bin(iii): ',j1,j2,iii,ray_bin(iii)
-*
        	 enddo
       enddo
-*
 *
 * determine number of lost rays, average number of ray per pixel, ...
 *
@@ -155,8 +177,10 @@ cw	    write(*,*)' j1,j2,iii,ray_bin(iii): ',j1,j2,iii,ray_bin(iii)
      &     ,(times(j1),100.0*times(j1)/times(7),j1=4,6)
      &     ,times(8)
 *
+
+
       write(2,1060)nlens,' lenses '
-      if(nlens.ge.10)then
+      if(nlens.ge.300)then
            do j1 = 1,5
               write(2,1070)j1,indlens(j1),(lensdata(j2,j1),j2=1,3)
            enddo
@@ -169,6 +193,11 @@ cw	    write(*,*)' j1,j2,iii,ray_bin(iii): ',j1,j2,iii,ray_bin(iii)
               write(2,1070)j1,indlens(j1),(lensdata(j2,j1),j2=1,3)
            enddo
       endif
+
+
+
+
+
 *
       write(2,1060)ncell,' cells '
       if(ncell.ge.10)then
@@ -234,20 +263,133 @@ c     close(3)
 *
 *
 *
+
+
+      status = 0
+
+*     Name of FITS file to be created      
+      filename = 'IRIS'//stringno//'.fits'
+
+
+*     Get an unused Logical Unit Number to use to create the FITS file
+      call ftgiou(unit, status)
+
+*     Create the new empty fits file
+      blocksize=1
+      call ftinit(unit, filename, blocksize, status)
+
+*     Initialize parameters about the FITS image
+      simple=.true.
+      bitpix=16
+      naxis=2 
+      naxes(1)=ipix
+      naxes(2)=ipix
+      extend=.true.  
+  
+  
+*     Write the required header keywords   
+      call ftphpr(unit,simple,bitpix,naxis,naxes,0,1,extend,status)  
+*        there seems to be a bug in this function, the NAXIS2 value is not
+*        correctly written, so we set this value manually:
 *
-      open(12,file='IRIS'//stringno,status='unknown',form='unformatted')
-      write(12)pixa,pixb
-      close(12)
+      call ftukyj(unit,'NAXIS2',naxes(2),'length of data axis 2',status)
+      
+      
+
+            
+      
+*     Write the array to the FITS file
+      group=1
+      fpixel=1
+      nelements=naxes(1)*naxes(2)
+      call ftppri(unit,group,fpixel,nelements,pixa,status)
+
+      call ftpkys(unit,'CREATOR','MICROLENS','Created by MICROLENS', status) 
+      call ftpcom(unit, '------- IMPORTANT PARAMETERS: --------', status)      
+      call ftpkyj(unit,'NLENS',nlens,'total number of lenses within rstars',status)
+      call ftpkyj(unit,'NCELL',ncell,'total number of cells',status)  
+      call ftpkyd(unit,'AVLENS',avlens,4,'average number of lenses used per ray' ,status)       
+      call ftpkyd(unit,'AVCELL',avcell,4,'average number of cells used per ray' ,status)  
+      call ftpkyd(unit,'RAYPIX',rayperpi,4,'average number of rays per pixel' ,status)        
+      call ftpkyj(unit,'PIXHIGH',pixhigh,'highest number of rays per pixel' ,status)           
+      call ftpkyj(unit,'PIXLOW',pixlow,'lowest number of rays per pixel' ,status) 
+      call ftpkyd(unit,'RAYAMP1',rayamp1,4,'number of rays for amplification 1' ,status)               
+      call ftpkyd(unit,'AMPAV',rayperpi/rayamp1, 4,'(numerical)   average amplification' ,status)         
+      call ftpkyd(unit,'AMPTH',ampth,4,'(theoretical) average amplification' ,status)    
+      call ftpkyj(unit,'RAYSHOT',rayshot,'total number of rays shot in level 3' ,status)  
+      call ftpkyj(unit,'RAYSARR',raysarr,'number of rays arrived in square' ,status) 
+      call ftpkyj(unit,'RAYSLOST',rayslost,'number of lost rays' ,status) 
+
+      call ftpcom(unit, '--------- INPUT PARAMETERS: ----------', status)
+      call ftpkyd(unit,'ARAND'   , arand,4,'input for random number generator' ,status) 
+      call ftpkyd(unit,'SIGMAS'  ,sigmas,4,'surface mass density in compact objects' ,status) 
+      call ftpkyd(unit,'SIGMAC'  ,sigmac,4,'surface mass density in compact objects' ,status) 
+      call ftpkyd(unit,'GAMMA'   ,gamma,4,'global shear' ,status)       
+      call ftpkyd(unit,'EPS'     ,eps,4,'accuracy parameter, (0 <= eps <= 1)' ,status) 
+      call ftpkyj(unit,'NRAY'    ,nray,'number of rays per row in level 1' ,status) 
+      call ftpkyd(unit,'MINMASS' ,minmass,4,'lower cutoff of mass spectrum' ,status) 
+      call ftpkyd(unit,'MAXMASS' ,maxmass,4,'upper cutoff of mass spectrum' ,status)       
+      call ftpkyd(unit,'POWER'   ,power,4,'exponent of mass spectrum (Salpeter: 2.35)' ,status)         
+      call ftpkyd(unit,'PIXMAX0' ,pixmax0, 4,'size of field for distribution of stars' ,status)    
+      call ftpkyd(unit,'X-POS' ,pixminx, 4,'left border of receiving field (PIXMINX)' ,status)   
+      call ftpkyd(unit,'Y-POS' ,pixminy, 4,'lower border of receiving field (PIXMINY)' ,status) 
+      call ftpkyd(unit,'LENGTH'  ,pixdif, 4,'size of receiving field (PIXDIF)' ,status)  
+      call ftpkyd(unit,'FRACPIXD',fracpixd, 4,'fraction added' ,status)             
+        
+
+      call ftpcom(unit, '--------- OUTPUT PARAMETERS: ---------', status) 
+      call ftpkyd(unit,'BOA',boa, 4,'b / a  :     (1-gamma) / (1+gamma)' ,status) 
+      call ftpkyd(unit,'BMSOAMS',bmsoams, 4,'b-s/a-s: (1-gamma-sigma) / (1+gamma-sigma)' ,status) 
+      call ftpkyd(unit,'MASSAV',massav, 4,'average mass of lenses (in solar masses)' ,status)
+      call ftpkyd(unit,'MASSTOT',masstot, 4,'average mass in all lenses (in solar masses)' ,status)
+
+
+
+
+*     Now we write the second image into  the FITS file
+
+
+      naxes(1)=ipix1
+      naxes(2)=ipix1
+
+      call ftiimg(unit, bitpix, naxis, naxes, status)      
+      nelements=naxes(1)*naxes(2)
+*        Bug in this function? The NAXIS2 value is not
+*        correctly written, so we set this value manually:
+*
+      call ftukyj(unit,'NAXIS2',naxes(2),'length of data axis 2',status)
+            
+
+      
+   
+      call ftppri(unit,group,fpixel,nelements,pixb,status)      
+      
+
+
+         
+*     Close the file and free the unit number      
+      call ftclos(unit,status)
+      call ftfiou(unit,status)
+
+
+
+
+*
+* write output (Magnification Pattern) as unformatted FORTRAN file IRISxxx:
+*
+*
+       open(12,file='IRIS'//stringno,status='unknown',form='unformatted')
+       write(12)pixa,pixb
+       close(12)
 *
 *
 *
-*120918: in Cargese: error corrected, changed!
+*120918: in Cargese: error corrected, changed!  
 *
       do i1=1,ibin_max
-cerror      mag_bin(ibin)  = 0
-            mag_bin(i1)  = 0
+cerror 	    mag_bin(ibin)  = 0
+ 	    mag_bin(i1)  = 0
       enddo
-
 *
 *
 *
@@ -261,26 +403,24 @@ c	    ibin  = 100+100*log10(float(pixa(i1,i2))/rayamp1)
       enddo
 *
       idum = 0
+      do i1 = 1,ibin_max
+         idum  = idum + mag_bin(i1)
+         write(222,'(i5,f10.5,2i10,f10.3)')
+     &	 i1,10**(float(i1-100)/100.0),mag_bin(i1),idum
+     &	 ,rayamp1*10**(float(i1-100)/100.0)
+      enddo
 *
 *
 *
-* print output in FORMATTED file, for transfer to SUNs:
 *
-c     open(12,file='ISIS'//stringno,status='unknown')
-c         write(12,'((20i4))')pixa,pixb
-c	  close(12)
+*
+*000815 jkw; print output in FORMATTED file, for transfer to SUNs:
+*
+*      open(12,file='ISIS'//stringno,status='unknown')
+*	    write(12,'((20i4))')pixa,pixb
+*		  close(12)
 
 *
-*
-*
-*
-c     open(56,file='ray_stat_'//stringno,status='unknown')
-c     do j1 = 0,iray_bin_max
-cc	 write(*,*)' j1,ray_bin(j1): ', j1,ray_bin(j1)
-c	 if(ray_bin(j1).ne.0)then
-c	    write(56,*)j1,ray_bin(j1)
-c	 endif
-c     enddo
 *
 *
 *
@@ -311,8 +451,8 @@ c     enddo
  1030 format(/' INPUT parameters:'
      &/,f20.3 ,' arand:   input for random number generator'
      &/,i20   ,' debug:   parameter for debugging the program       '
-     &/,f20.3 ,' kappa:   surface mass density in compact objects   '
-     &/,f20.3 ,' kappa_s: surface mass density in smooth matter     '
+     &/,f20.3 ,' sigmas:  surface mass density in compact objects   '
+     &/,f20.3 ,' sigmac:  surface mass density in compact objects   '
      &/,f20.3 ,' gamma:   global shear'
      &/,f20.3 ,' eps:     accuracy parameter, (0 <= eps <= 1)'
      &/,i20   ,' nray:    number of rays per row in level 1'
@@ -377,7 +517,17 @@ c     enddo
      &      ,/,13x,'level',14x,'cells',15x,'lenses',/(15x,i3,2i20))
  1090 format('  i3   raysarr  rayslost  pixhigh   pixlow  rayperpi',
      &  '     ampth ampactual')
- 1100 format(i3,2i15,i8,i4,3f9.3)
+ 1100 format(i3,2i15,i8,i4,3f9.3) 
+ 
+ 
+ 
+ 
+ 2000 format('# Region file format: DS9 version 3.0')
+ 
+ 2010 format('global color=green font="helvetica 10 normal" select=1 edit=1 move=1 delete=1 include=1 fixed=0')
+ 
+ 2020 format('physical;circle(',f14.6,',', f14.6, ',', f14.6,') # color=green ')
+ 
       end                                                               
 *
 **********************************************************************  
@@ -417,14 +567,9 @@ c     enddo
 	    endif
             log10pix = log10(float(pix(i,j)))
             pix(i,j) =irismed+2.5*(log10pix-zero)*factor
-*
-*020102:  produce STEPS in color distribution:
-*
-c           pix(i,j) =irismed+nint(2.5*(log10pix-zero))*factor
-*020403:
-c           if(pix(i,j).lt.256)then
-c              pix(i,j) =256
-c	    endif
+            if(pix(i,j).lt.256)then
+	       pix(i,j) =256
+	    endif
          enddo
       enddo 
 *
