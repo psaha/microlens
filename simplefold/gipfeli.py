@@ -14,9 +14,9 @@ def func_yp(y_p, R_p, y):
         return (R_p**2 - (y_p -y)**2)**0.5/y**0.5 + 1.0
 
 #limits of the path on the y axis
-y_min = -2
-y_max = 6
-y_p = numpy.linspace(y_min,y_max,100)
+y_min = -1
+y_max = 4
+y_p = numpy.linspace(y_min,y_max,50)
 
 def lcurve(R_p,R_n,b):
     #light curve data
@@ -52,13 +52,14 @@ def resid(params):
     Rp,Rn,b = params
     return data - lcurve(Rp,Rn,b)
 
-data = lcurve(1.0,0.3,0.1)
+Rn = 0.85
+
+for b in numpy.linspace(Rn-1,1-Rn,10):
+    data = lcurve(1.,Rn,b)
+    plot(y_p,data)
+
 trial = (0.5,0,0)
 fit = leastsq(resid,trial)
+plot(y_p,resid(fit[0]))
 
-
-plot(y_p,data)
 show()
-
-
-
