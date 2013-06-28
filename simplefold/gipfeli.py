@@ -52,14 +52,20 @@ def resid(params):
     Rp,Rn,b = params
     return data - lcurve(Rp,Rn,b)
 
-Rn = 0.85
+Rn = 0.15
 
-for b in numpy.linspace(Rn-1,1-Rn,10):
+#for b in numpy.linspace(Rn-1,1-Rn,10):
+#    data = lcurve(1.,Rn,b)
+#    plot(y_p,data)
+
+for Rn in numpy.linspace(0,.75,10):
+    b = (1-Rn)/2
+    b = .25
     data = lcurve(1.,Rn,b)
     plot(y_p,data)
 
-trial = (0.5,0,0)
-fit = leastsq(resid,trial)
-plot(y_p,resid(fit[0]))
+#trial = (0.5,0,0)
+#fit = leastsq(resid,trial)
+#plot(y_p,resid(fit[0]))
 
 show()
