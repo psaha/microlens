@@ -14,12 +14,13 @@
       implicit none
 *
       integer ipix,ipix1,pixlow,i1,i2,iii,ix1,ix2,iy1,iy2,i0
-     &	,ixxx,iyyy,pixmax,ilines,iamp,sigma
+     &	,ixxx,iyyy,pixmax,ilines,iamp,sigma,Rn
      &	,ipoints,ix,iy
       parameter(ipix=1000,ipix1=500)
       integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
       double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha
      &	,x0,y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
+     &  ,a,b
       real  pix_real(ipix,ipix)
       character*3 string3
       character*1 string1
@@ -39,14 +40,17 @@
 * position of start point and end point of lightcurve:
 *
 *
-	ix1 = 223
-	iy1 =  57
-	ix2 = 553
-	iy2 = 987
+	ix1 = 309
+	iy1 = 542	
+	ix2 = 448
+	iy2 = 541
 *
 * source size in pixels (Gaussian width)
 *
-       sigma = 3
+       sigma = 25
+       Rn=20       	
+       a=-5
+       b=0	
 *
          x1 = dble(ix1)
          x2 = dble(ix2)
@@ -149,7 +153,7 @@ c        do i0 = 0,2*ipix
      &	          iyyy.ge.1+3*sigma.and.iyyy.le.ipix-3*sigma)then
 *
 *
-                 call gauss(sigma,xxx,yyy,value,pix_real,ipix)
+                 call gauss(sigma,Rn,a,b,xxx,yyy,value,pix_real,ipix)
 *
 *
 *
@@ -234,18 +238,18 @@ c	   write(*,*)' i1,x(i1),ix,y(i1),iy: ', i1,x(i1),ix,y(i1),iy
 ******
 ***********************************************************************
 ******
-      subroutine gauss(isig,xxx,yyy,value,pix,ipix)
+      subroutine gauss(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
 *
 * modified: disk of constant brightness 
 *
 *
 *
-      integer isig,i1,i2,isig3sq,ix,iy,ipix
+      integer isig,i1,i2,isig3sq,ix,iy,ipix,iRn,test,pixarea	
       real      pix(ipix,ipix)
       double precision normfac,factorex,sigsq2,value,dum,xxx,yyy
-     &	      ,delx,dely,dist2
+     &	      ,delx,dely,dist2,dist3,ia,ib
 *
-
+	
 	ix    =  nint(xxx)
 	iy    =  nint(yyy)
 	delx  =  xxx - dble(ix)
@@ -255,12 +259,14 @@ c	   write(*,*)' i1,x(i1),ix,y(i1),iy: ', i1,x(i1),ix,y(i1),iy
 * 030711: isig3 = RADIUS  for source!!!
 *
 *
- 	isig3 = 3*isig 
-c 	isig3 =   isig 
+	isig3 = 3*isig 
+c	isig3 =   isig 
 	isig3sq = isig3**2
  	sigsq2  = 2.0*dble(isig)**2
-        value = 0.0
-
+	value = 0.0
+	
+	test=300
+	pixarea=0	
 c	 write(*,*)' in GAUSS'
 cwrite(*,*)' isig,ix,iy,value = ',isig,ix,iy,value 
 c	pause
@@ -269,18 +275,34 @@ c	pause
 *
 	      normfac = 0.0
 	      do i1 = -isig3,isig3
+		if(ix.eq.test)then
+		write(*,*)
+		endif 
 	         do i2 = -isig3,isig3
 *
 c	            dist2 = i2*i2 + i1*i1
+c		    dist3 = (i2-ib)*(i2-ib) + (i1-ia)*(i1-ia)		
 *
 	            dist2 = (i1-delx)**2  + (i2-dely)**2
+		    dist3 = (i1-delx-ia)**2  + (i2-dely-ib)**2	
 *
 *
 *
 	            if(isig.ne.0)then
- 	               if(dist2.le.isig3sq)then
- 	                   factorex = exp(-dist2/sigsq2)
-c	                   factorex = 1.0
+  	               if(dist2.le.dble(isig**2))then	
+c 	                   factorex = exp(-dist2/sigsq2)
+	                   factorex = 1.0
+			  if(dist3.le.dble(iRn**2))then
+			   factorex = 0.0
+			  endif
+			  if(factorex.eq.1.0)then
+			   pixarea=pixarea+1
+			  endif	 		
+			   dum = pix(ix+i1,iy+i2)
+	                   value = value + dum*factorex
+	                   normfac = normfac + factorex	
+			elseif(dist2.ge.dble(isig**2))then 	
+			   factorex = 0.0		
                            dum = pix(ix+i1,iy+i2)
 	                   value = value + dum*factorex
 	                   normfac = normfac + factorex
@@ -291,10 +313,19 @@ c	                   factorex = 1.0
 	              value = value + dum*factorex
 	              normfac = normfac + factorex
 		    endif
+		if(ix.eq.test)then
+		write(*,"(i1)",advance="no")  int(factorex)
+		endif
 	         enddo
 	      enddo
+	if(ix.eq.test)then
+		write(*,*)
+		write(*,*)
+		write(*,*) 'Area in pixels =', pixarea
+		endif 
+	
 *
  	      value = value/normfac 
-
+		
 	return
 	end
