@@ -57,12 +57,16 @@ def resid(params):
     print params
     ymin,ymax,Rn,b,floor,slope = params
     Rp = 1.
+    f = Rn + abs(b)
+    if f > 1:
+        Rn /= f
+        b /= f
     y_p = numpy.linspace(ymin,ymax,len(data))
-    return 5*lcurve(Rp,Rn,b) + floor + slope*y_p - data
+    return lcurve(Rp,Rn,b) + floor + slope*y_p - data
 
 
 time,data = read()
-trial = (-5.,5.,2.,-.5,1,0)
+trial = (-5.,5.,0.8,-.2,1,0)
 fit = trial
 fit = leastsq(resid,trial)[0]
 model = resid(fit) + data
