@@ -13,11 +13,6 @@ def func_yp(y_p, R_p, y):
     else:
         return (R_p**2 - (y_p -y)**2)**0.5/y**0.5 + 1.0
 
-#limits of the path on the y axis
-y_min = -1
-y_max = 4
-y_p = numpy.linspace(y_min,y_max,50)
-
 def lcurve(R_p,R_n,b):
     #light curve data
     l_m = []
@@ -46,26 +41,33 @@ def lcurve(R_p,R_n,b):
     l_m = numpy.array(l_m)/Area
     return l_m
 
+def read():
+    fil = open('../wambsganss/out_line')
+    all = fil.readlines()[175:275]
+    x = []
+    y = []
+    for l in all:
+        s = l.split()
+        x.append(int(s[0]))
+        y.append(float(s[4]))
+    return x,y
+
 def resid(params):
-    global data
+    global N,y_p,data
     print params
-    Rp,Rn,b = params
-    return data - lcurve(Rp,Rn,b)
+    ymin,ymax,Rn,b,floor,slope = params
+    Rp = 1.
+    y_p = numpy.linspace(ymin,ymax,len(data))
+    return 5*lcurve(Rp,Rn,b) + floor + slope*y_p - data
 
-Rn = 0.15
 
-#for b in numpy.linspace(Rn-1,1-Rn,10):
-#    data = lcurve(1.,Rn,b)
-#    plot(y_p,data)
+time,data = read()
+trial = (-5.,5.,2.,-.5,1,0)
+fit = trial
+fit = leastsq(resid,trial)[0]
+model = resid(fit) + data
 
-for Rn in numpy.linspace(0,.75,10):
-    b = (1-Rn)/2
-    b = .25
-    data = lcurve(1.,Rn,b)
-    plot(y_p,data)
-
-#trial = (0.5,0,0)
-#fit = leastsq(resid,trial)
-#plot(y_p,resid(fit[0]))
+plot(time,data)
+plot(time,model)
 
 show()

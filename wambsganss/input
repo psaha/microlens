@@ -4,7 +4,7 @@
      0.000          kappac  (continously distributed matter)
      0.000          gamma   (external shear)
      0.600          eps     (accuracy parameter)
-       100          nray    (# of rays per row in level 1)
+       300          nray    (# of rays per row in level 1)
  10.000000          minmass (lower cut off in mass spectrum)
  10.000000          maxmass (upper cut off in mass spectrum)
     -2.350          power   (index in mass spectrum)
