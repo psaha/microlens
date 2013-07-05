@@ -55,18 +55,15 @@ def read():
 def resid(params):
     global N,y_p,data
     print params
-    ymin,ymax,Rn,b,floor,slope = params
+    ymin,ymax,amp,Rn,b,floor,slope = params
     Rp = 1.
-    f = Rn + abs(b)
-    if f > 1:
-        Rn /= f
-        b /= f
     y_p = numpy.linspace(ymin,ymax,len(data))
-    return lcurve(Rp,Rn,b) + floor + slope*y_p - data
+    return amp*lcurve(Rp,Rn,b) + floor + slope*y_p - data
 
 
 time,data = read()
-trial = (-5.,5.,0.8,-.2,1,0)
+#trial = (-2.2,1.8,3.5,0.8,-.2,1,0)
+trial = (-1,1,1,0.8,0.,1,0)
 fit = trial
 fit = leastsq(resid,trial)[0]
 model = resid(fit) + data
