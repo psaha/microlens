@@ -3,7 +3,7 @@ import scipy
 from scipy import integrate
 from scipy.optimize import leastsq
 from pylab import plot, show
-
+from sys import argv
 
 def func_yp(y_p, R_p, y):
     if y < 0:
@@ -41,9 +41,9 @@ def lcurve(R_p,R_n,b):
     l_m = numpy.array(l_m)/Area
     return l_m
 
-def read():
+def read(a,b):
     fil = open('../wambsganss/out_line')
-    all = fil.readlines()[175:275]
+    all = fil.readlines()[a:b]
     x = []
     y = []
     for l in all:
@@ -60,15 +60,19 @@ def resid(params):
     y_p = numpy.linspace(ymin,ymax,len(data))
     return amp*lcurve(Rp,Rn,b) + floor + slope*y_p - data
 
+#  trial = (-2.2,1.8,3.5,0.8,-.2,1,0)
 
-time,data = read()
-#trial = (-2.2,1.8,3.5,0.8,-.2,1,0)
-trial = (-1,1,1,0.8,0.,1,0)
+if argv[1]=='left':
+    time,data = read(175,275)
+    trial = (-2,2,1,0.8,0,0,0)
+if argv[1]=='right':
+    time,data = read(275,375)
+    trial = (2.5,-0.5,4,0.8,0.1,0,0)
+
 fit = trial
 fit = leastsq(resid,trial)[0]
 model = resid(fit) + data
 
 plot(time,data)
 plot(time,model)
-
 show()
