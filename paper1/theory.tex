@@ -1,0 +1,72 @@
+
+\section{Theory}
+
+\subsection{Basic microlensing theory}
+
+We start by introducing in a succint manner the gravitational lensing theory that is relevant for microlensing in general and for the scope of the
+present paper in particular. For a detailed presentation of the theory the reader is referrend to the books and articles that represent the references
+of the current section (book by Schneider and others).\\
+
+The general microlensing equation can be written as:
+\begin{equation}
+\vec{y} =   
+ \begin{pmatrix}
+  1-\gamma - k & 0 \\
+  0 & 1 + \gamma -k \\
+ \end{pmatrix} 
+\vec{x} - \sum_{i=1}^{n} m_i \frac{\vec{x} - \vec{x_i}}{\left( \vec{x} - \vec{x_i} \right)^2}.
+\end{equation} 
+
+The equation is valid for a set of $\it{n}$ point (Schwarzschild) lenses placed at coordinates $\vec{x_i}$. $\vec{y}$ represents the coordinates in the source plane for the respective ray, while 
+$\vec{x}$ represents the coordinates in the lens plane. Furthermore, $\gamma$ and $k$ are the shear and surface mass density.\\
+
+For the lens mapping a Jacobian can be defined:
+\begin{equation} 
+A(\vec{x}) = 
+ \begin{pmatrix}
+  \frac{\partial{y_1}}{\partial{x_1}} & \frac{\partial{y_1}}{\partial{x_2}} \\
+  \frac{\partial{y_2}}{\partial{x_1}} & \frac{\partial{y_2}}{\partial{x_2}} \\
+ \end{pmatrix}. 
+\end{equation}
+The determinant of $A(\vec{x})$ is related to the local magnification factor through the equation:
+
+\begin{equation}
+\mu(\vec{x}) = \left| \frac{1}{det(A(\vec{x}))} \right|
+\end{equation}
+
+According to this equation, from an infinitesimally small source positioned at $\vec{x}$ in the lens plane an observed will receive a flux $\mu(\vec{x}) dF$ instead of the flux $dF$ that would be
+observed in the absence of the gravitational lens. Therefore the source will dim or brighten depending on whether $\mu(\vec{x})$ is subunitary or supraunitary.\\
+
+In general, for a single infinitesimally small source more than one image can be observed, each with magnification $\mu_j$. For microlensing events the angular sizes of the
+images cannot be resolved. The only observable is the flux to which all nearby images contribute. A total magnification
+\begin{equation}
+ \mu_p = \sum_{j} \mu_j
+\end{equation}
+ can be defined and account for an increase/decrease of brightness from all images.
+
+
+\subsection{Magnification of a point source near a fold}
+
+The determinant of the Jacobian $A$ can have both positive and negative values depending in which region it is computed.Such regions are well defined and separated
+by critical curves where the determinant vanishes. The lens equation maps the critical curves of the lens plane into caustics in the source plane. An example of the caustic 
+shape can be seen in the magnification map of |||Figure 1|||.
+
+||||||||||||||||||||
+||||||Figure 1||||||
+||||||||||||||||||||
+
+Along these critical curves in the lens plane or caustics in the source plane,  the magnification $\mu$ is infinite, a result that simply follows from equation ( 
+(3). This statement holds only fo infinitesimally small sources. For extended sources the maximum amplification is finite since only an infinitesimally small area of the source
+overlaps with the caustics (Schneider Weiss 1986 paper others). 
+
+The matrix $A$ at the coordinates of the caustic can have rank 1 or rank 0. If the rank is 1 then the coordinates belong to $fold$ or $cusp$ singularities. For the purpose 
+of this paper we are interested only in the behaviour around $fold$ singularities. A condition necessary to distinguish between a fold and cusp singularities is that the
+eigenvector of $A$ corresponding to the null eigenvalue is not a tangent vector of the critical curve (Dominik 2008, Schneider Weiss 1992).
+
+||||||||||||||||||||
+||||||Figure 2||||||
+||||||||||||||||||||
+
+The behaviour of the images of a point source and their corresponding magnifications near such a caustic has been thoroughly studied in the past.  
+
+

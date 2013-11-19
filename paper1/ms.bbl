@@ -1,0 +1,8 @@
+\begin{thebibliography}{1}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+
+\bibitem[{{Liesenborgs} {et~al}\mbox{.}(2006){Liesenborgs}, {De Rijcke}, \&
+  {Dejonghe}}]{2006MNRAS.367.1209L}
+{Liesenborgs} J., {De Rijcke} S., {Dejonghe} H., 2006, \mnras, 367, 1209
+
+\end{thebibliography}
