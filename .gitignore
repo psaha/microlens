@@ -46,7 +46,23 @@ Thumbs.db
 
 # for individual stuff create your own .gitignore file in your folder..
 
+*~
+
 IRIS*
 dat.*
 microlens
 lightcurve
+
+wambsganss/cfitsio/Makefile
+wambsganss/cfitsio/cfitsio.pc
+wambsganss/cfitsio/config.status
+wambsganss/cfitsio/libcfitsio.a
+wambsganss/fort.222
+wambsganss/out_line
+
+ms.pdf
+*.aux
+*.log
+*.blg
+*.bbl
+
