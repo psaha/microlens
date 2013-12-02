@@ -4,7 +4,7 @@
 \subsection{Basic microlensing theory}
 
 We start by introducing in a succint manner the gravitational lensing theory that is relevant for microlensing in general and for the scope of the
-present paper in particular. For a detailed presentation of the theory the reader is referrend to the books and articles that represent the references
+present paper in particular. For a detailed presentation of the theory the reader is referred to the books and articles that represent the references
 of the current section (book by Schneider and others).\\
 
 The general microlensing equation can be written as:
@@ -35,21 +35,21 @@ The determinant of $A(\vec{x})$ is related to the local magnification factor thr
 \end{equation}
 
 According to this equation, from an infinitesimally small source positioned at $\vec{x}$ in the lens plane an observed will receive a flux $\mu(\vec{x}) dF$ instead of the flux $dF$ that would be
-observed in the absence of the gravitational lens. Therefore the source will dim or brighten depending on whether $\mu(\vec{x})$ is subunitary or supraunitary.\\
+observed in the absence of the gravitational lens. In other words the source will dim or brighten depending on whether $\mu(\vec{x})$ is subunitary or supraunitary.\\
 
 In general, for a single infinitesimally small source more than one image can be observed, each with magnification $\mu_j$. For microlensing events the angular sizes of the
 images cannot be resolved. The only observable is the flux to which all nearby images contribute. A total magnification
 \begin{equation}
- \mu_p = \sum_{j} \mu_j
+ \mu_t = \sum_{j} \mu_j
 \end{equation}
  can be defined and account for an increase/decrease of brightness from all images.
 
 
 \subsection{Magnification of a point source near a fold}
 
-The determinant of the Jacobian $A$ can have both positive and negative values depending in which region it is computed.Such regions are well defined and separated
+The determinant of the Jacobian $A$ can have both positive and negative values depending in which region it is computed. Such regions are well defined and separated
 by critical curves where the determinant vanishes. The lens equation maps the critical curves of the lens plane into caustics in the source plane. An example of the caustic 
-shape can be seen in the magnification map of |||Figure 1|||.
+shape can be seen in the magnification map of |||Figure 1|||.\\
 
 ||||||||||||||||||||
 ||||||Figure 1||||||
@@ -60,13 +60,212 @@ Along these critical curves in the lens plane or caustics in the source plane,  
 overlaps with the caustics (Schneider Weiss 1986 paper others). 
 
 The matrix $A$ at the coordinates of the caustic can have rank 1 or rank 0. If the rank is 1 then the coordinates belong to $fold$ or $cusp$ singularities. For the purpose 
-of this paper we are interested only in the behaviour around $fold$ singularities. A condition necessary to distinguish between a fold and cusp singularities is that the
+of this paper we are interested only in the behaviour around $fold$ singularities. A condition necessary to distinguish between a fold and cusp singularity is that the
 eigenvector of $A$ corresponding to the null eigenvalue is not a tangent vector of the critical curve (Dominik 2008, Schneider Weiss 1992).
 
 ||||||||||||||||||||
 ||||||Figure 2||||||
 ||||||||||||||||||||
 
-The behaviour of the images of a point source and their corresponding magnifications near such a caustic has been thoroughly studied in the past.  
+
+The behaviour of the images of a point source and their corresponding magnifications near such a caustic has been thoroughly studied in the past. The reader who is interested in 
+understanding the details related to this subject is referred to papers such as Blandford and Narayan 1986, Schneider and Weiss 1986, Gaudi and Petters 2002. For the present paper we only 
+summarize the common result:
+\begin {equation}
+ \mu_{t}(p) = \mu_0 + C_0 \frac{1}{\sqrt{p}} \Theta(p).
+\end {equation}
+As the previous equation describes the magnification of a point source near a caustic is equal to the sum of the magnification due to other reasons $\mu_0$, assumed to be locally constant,  and a decrease with
+the square root of the distance from the fold. The later term becomes activated only after the source enters the region interior to the caustic curves when the stepfunction $\Theta(p)$ become unity. The proportionality
+constant $C_0$  is sensible only to the local behaviour of Fermat's potential and units used for the lens plane coordinates $\vec{y}(p,q)$. 
+
+\subsection{Magnification of an extended source near a fold}
+
+A source of arbitrary shape can be described by a two dimensional brightness function $S_{2D}(p - p_s, q - q_s)$ defined for a coordinate system $p,q$ where $p_s, q_s$ denote the coordinates of the center of source.
+
+For a microlensing event the lightcurve can be written for an undefined source shape as:
+
+\begin{equation}
+ F(t) = \int_{-\infty}^\infty \int_{-\infty}^\infty S_{2D}(p-p_s(t), q-q_s(t)) \mu_t(p) \mathrm{d}q \mathrm{d}p
+\end{equation}
+
+In order to build the previous equation we have considered that the time dependency of the flux $F$ is given only by the motion of the source with respect to a fixed caustic. Therefore the only time dependent quatities in the right hand side of the equation
+are the coordinates of the center of the source $p_s,q_s$ and by construct $S_{2D}$. 
+
+Due to the choice of the coordinate system the amplification factor has no dependence on the $q$ coordinate. The previous equation can be rewritten as:
+
+\begin{equation}
+ F(t) 
+= \int_{-\infty}^\infty  \mu_t(p) S_{1D}\left(p-p_s(t)\right) \mathrm{d}p,
+\end{equation}
+
+where we have defined the one dimensional flux function as:
+\begin{equation}
+ S_{1D}(p-p_s(t)) = \int_{-\infty}^\infty S_{2D}(p-p_s(t), q-q_s(t)) \mathrm{d}q
+\end{equation}
+
+This representation is a valid approximation only when the apparent size of the source is much smaller than the corresponding Einstein angle of the lens. In this context 
+all the information about the source shape and brightness will that can be contained in the lightcurve is exhaustively given by the 1D flux function.
+In other words, if two sources with $S_{2D}$ have the same $S_{1D}$ they cannot be distinguished by studying their lightcurves.
+ 
+ 
+\section{Models for extended sources}
+
+In the present study we are analysing three types of sources with different surface brighness: 
+\begin{enumerate}
+ \renewcommand{\theenumi}{(\arabic{enumi})}
+  \item a rotationally symmetric source with a bivariate gaussian surface brightness distribution,
+  \item a disk source with constant surface brightness distribution,
+  \item a crescent shaped source with constant surface brightness distribution.
+\end{enumerate}
+The first two sources are the typical choices used in the literature to describe the luminous parts of a quasar (Prasenjit should give some citations here). The third one is a newly proposed
+variant (Kammrudin 2013 Geometric crescent).
+
+
+
+
+\subsection{Rotationally symmetric source with a bivariate gaussian surface brightness distribution}
+
+A symmetric 2D gaussian can be described mathematically as:
+
+\begin{equation}
+ S_{2D}^G(p-p_s, q-q_s) = \frac{S_0^G}{2 \pi \sigma^2} e^{-\frac{(p-p_s)^2}{2 \sigma^2}} e^{-\frac{(q-q_s)^2}{2 \sigma^2}}.
+\end{equation}
+
+The corresponding 1D brightness is:
+
+\begin{equation}
+ S_{1D}^G(p-p_s) = \frac{S_0^G}{\sqrt{2 \pi} \sigma} e^{-\frac{(p-p_s)^2}{2 \sigma^2}}.
+\end{equation}
+
+Other parameters of the model are the total flux $S_0^G$ and $\sigma$. 
+
+Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disk centered at $p_s, q_s$ 
+would be insignificant.
+
+
+\subsection{Disk source with constant surface brightness distribution}
+
+One can construct mathematically a disk source with constant surface brightness and radius $R$ using a stepfunction:
+\begin{equation}
+ S_{2D}^D(p-p_s, q-q_s) = \frac{S_0^D}{\pi R^2} \Theta \left( R^2 - \left( p-p_s \right)^2 - \left( q-q_s \right)^2 \right).
+\end{equation}
+By integrating over $q$ coordinate the linear brightness function is obtained:
+
+
+\begin{equation}
+ S_{1D}^D(p-p_s) = \frac{2 S_0^D}{\pi R}  \sqrt{1 - \frac{(p-p_s)^2}{R^2} }    \Theta \left( R^2 - \left( p-p_s \right)^2 \right).
+\end{equation}
+
+\subsection{Crescent source with constant surface brightness distribution}
+
+The surface brightness distribution of a geometric crescent can be built by considering two disk sources of constant brightness. One larger disk will contribute positively to the total flux, while one smaller disk 
+that is interior to the large one will contribute negatively. This superposition can be written for 2D as:\\
+
+\begin{equation}
+ S_{2D}^C =  S_{2D}^{Dp} -  S_{2D}^{Dn}   (n+1)
+\end{equation}
+with\\
+
+\begin{equation}
+ S_{2D}^{Dp}(p-p_{sn}, q-q_{sn}) = \frac{S_0^{Dp}}{\pi R_p^2} \Theta \left( R_p^2 - \left( p-p_{sp} \right)^2 - \left( q-q_{sp} \right)^2 \right)
+\end{equation}
+
+and\\
+\begin{equation}
+ S_{2D}^{Dn}(p-p_{sn}, q-q_{sn}) = \frac{S_0^{Dn}}{\pi R_n^2} \Theta \left( R_n^2 - \left( p-p_{sn} \right)^2 - \left( q-q_{sn} \right)^2 \right).
+\end{equation}
+
+The following notations were used: $R_p, (p_{sp}, q_{sp}), R_n, (p_{sn},q_{sn})$ are the radii and coordinate of the center for the larger positive disk and smaller negative disk.  
+$S_0^{Dp},S_0^{Dn}$ represent the total flux of radiation received from the large and small disk. From this point forward we will not use the total flux from each source. Instead we will 
+use the difference which in this case is th total flux from the crescent-shaped source $S_0^C$. \\
+Equation(n+1) can be written as:\\
+
+\begin{align}
+ S_{2D}^C &= \frac{S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \left\{ \Theta \left[ R_p^2 - \left( p-p_{sp} \right)^2 - \left( q-q_{sp} \right)^2 \right] \right.\nonumber\\
+ &\qquad \left. {} -  \Theta \left[ R_n^2 - \left( p-p_{sn} \right)^2 - \left( q-q_{sn} \right)^2 \right] \right\}.
+\end{align}
+
+Analogous for the linear brightness function:
+
+\begin{align}
+ S_{1D}^C &= \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \left\{ \sqrt{R_p^2 - (p-p_{sp})^2}  \Theta \left[ R_p^2 - \left( p-p_{sp} \right)^2 \right] \right.\nonumber\\
+ &\qquad \left. {} - \sqrt{R_n^2 - (p-p_{sn})^2 } \Theta \left[ R_n^2 - \left( p-p_{sn} \right)^2 \right] \right\}.
+\end{align}
+
+
+--------------------------------------------------------------------------
+Figure with 2d 1d brightness for gaussian, disk, some crescent
+----------------------------------------------------------------------------
+
+There are some constraints on the parameters used to define a crescent in the previously presented manner that need to be stated. First, we must impose the obvious $R_p > R_n$ relation. Secondly, 
+the small disk must always be interior to the large disk:
+\begin{equation}
+ R_p \ge R_n + \sqrt{\left(p_{sp} - p_{sn} \right)^2 + \left(q_{sp} - q_{sn} \right)^2}
+\end{equation}
+
+For the distances between the centers of the two disks we will use the same notations as the one found in the paper [Geometric crescent], $a \equiv p_{sn} - p_{sp}$ and $b \equiv q_{sn} - q_{sp}$.
+
+\section{Lightcurves of the extended sources during fold crossing}
+
+Using equation (7) and the one-dimensional flux function presented in the previous section one can compute numerically the lightcurves of the three extented sources fot the simplified 
+infinite-wall-caustics model.
+
+\subsection{Lightcurve of the gaussian source}
+
+The amount of light received by an observer from a source with a gaussian distributed brightness with $\sigma$ and total flux $S_0^G$ in the absence of any gravitational lensing is:
+\begin{equation}
+ F^G(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{S_0^G}{\sqrt{2 \pi} \sigma} e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}} \right) \mathrm{d}p.
+\end{equation}
+which can be simplified to:
+\begin{equation}
+ F^G(t) = \mu_0 S_0^G + \frac{C_0 S_0^G}{\sqrt{2\pi} \sigma} \int_{0}^\infty \frac{e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}}}{\sqrt{p}} \mathrm{d}p.
+\end{equation}
+The result is equivalent to the one obtained in papers such as (citations).\\
+
+\begin{figure}
+\includegraphics[bb = 0 0 600 400]{lightcurve_crescent_1.pdf}
+\caption{Lightcurve 1.}
+\end{figure}
+
+
+\subsection{Lightcurve of the disk shaped source}
+
+Analogous to the gaussian shaped source, the disk source with uniform brightness, radius $R$ and unmagnified flux $S_0^D$ has a lightcurve described by the equation:
+
+\begin{equation}
+ F^D(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{2 S_0^D}{ \pi R} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}} \Theta \left(R^2 - \left(p-p_s(t) \right)^2 \right) \right) \mathrm{d}p.
+\end{equation}
+
+which is equivalent to:
+\begin{equation}
+ F^D(t) = \mu_0 S_0^D + \frac{2 C_0 S_0^D}{\pi R} \int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \frac{1}{\sqrt{p}} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}} \mathrm{d}p.
+\end{equation}
+As obtained in preciding papers by (citations).\\
+
+\begin{figure}
+\includegraphics[bb = 0 0 600 400]{lightcurve_gaussian_1.pdf}
+\caption{Lightcurve 2.}
+\end{figure}
+
+
+\subsection{Lightcurve of the crescent shaped source}
+
+The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii $R_p$, $R_n$ and center displacement $a(t)$ is:
+\begin{equation}
+ F^c(t) = \mu_0 S_0^C + C_0 \frac{2 S_0^C}{\pi \left( R_p^2 -R_n^2 \right) } 
+\left(\int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) \right)^2 }{p}} \mathrm{d}p 
+  -  \int_{max(0, p_s(t) - a(t) - R)}^{max(0, p_s(t) -a(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) +a(t) \right)^2 }{p}}  \mathrm{d}p \right)
+\end{equation}
+
+In the previous equation we have renamed the coordinate of the center of the large disk $p_{sp}$ to $p_{s}$.  \\
+
+\begin{figure}
+\includegraphics[bb = 0 0 600 400]{lightcurve_disc_1.pdf}
+\caption{Lightcurve 3.}
+\end{figure}
+
+The function $p_s(t)$ can be chosen to be equal to $v_p(t-t_0) + p_{s0}$. Where $p_{s0}$ is the coordinate $p$ of the source at the initial time, and $v_p$ is the component of the velocity
+along the $p$ axis. Such a modeling of the motion of the object in the source plane describes a linear motion with constant velocity. Furthermore, we reduce the complexity of the model by 
+chosing the function $a(t)$ to be constant in time.  
 
 
