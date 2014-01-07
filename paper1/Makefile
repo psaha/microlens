@@ -1,10 +1,10 @@
 all:
 
-	latex ms
+	pdflatex ms
 	bibtex ms
-	latex ms
-	latex ms
-	dvipdf ms
+	pdflatex ms
+	pdflatex ms
+
 clean:
 	rm -f *.log *.aux *.dvi *.blg *~
 
