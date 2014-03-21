@@ -142,6 +142,10 @@ Other parameters of the model are the total flux $S_0^G$ and $\sigma$.
 Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disk centered at $p_s, q_s$ 
 would be insignificant.
 
+For a gaussian distributed surface brightness source the half-light radius is directly proportional to the parameter $\sigma$ according to the equation:
+\begin{equation}
+r_{1/2} = \sqrt{ln(4)} \sigma.
+\end{equation}
 
 \subsection{Disk source with constant surface brightness distribution}
 
@@ -155,6 +159,8 @@ By integrating over $q$ coordinate the linear brightness function is obtained:
 \begin{equation}
  S_{1D}^D(p-p_s) = \frac{2 S_0^D}{\pi R}  \sqrt{1 - \frac{(p-p_s)^2}{R^2} }    \Theta \left( R^2 - \left( p-p_s \right)^2 \right).
 \end{equation}
+
+The half-light radius of a uniform disk source is $R/\sqrt{2}$.
 
 \subsection{Crescent source with constant surface brightness distribution}
 
