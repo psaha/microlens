@@ -72,7 +72,7 @@ def cfile(fname):
     fname = fname[0]+'2.'+fname[1]
     print fname
     ouf = open(fname,'w')
-    for l in range(10):
+    while True:
         lyne = inf.readline()
         if not lyne:
             break
@@ -82,9 +82,21 @@ def cfile(fname):
                         float(lyne[4]),float(lyne[5])
             Rh = Rhalf(Rp,Rn,a,b)
         if flag == 'G':
+            Rh = 0.39*float(lyne[2])
+        if flag == 'D':
+            Rh = 2**-.5 * float(lyne[2])
         lyne[2] = '   %7.4f' % Rh
         lyne = '  '.join(lyne)
         ouf.write(lyne+'\n')
     ouf.close()
 
 cfile('CC.chain')
+cfile('CD.chain')
+cfile('DC.chain')
+cfile('DG.chain')
+cfile('GD.chain')
+cfile('CG.chain')
+cfile('DD.chain')
+cfile('GC.chain')
+cfile('GG.chain')
+
