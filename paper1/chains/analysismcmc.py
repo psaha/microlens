@@ -10,27 +10,27 @@ def plottinghist(chain,specs):
 	print
 	print mean(data),std(data),chi2,'for',chain
 	density = gaussian_kde(data)
-	xs = linspace(25,75,1000)
+	xs = linspace(10,65,1000)
 	density.covariance_factor = lambda : .25
 	density._compute_covariance()
 	plot(xs,density(xs),specs,label=chain+'   %1.2f'%chi2,linewidth=2.0)
 
 
 print '# mean, st. dev., best $\chi^2$'
-plottinghist('cc.chain','r')
-plottinghist('dc.chain','--r')
-plottinghist('gc.chain','.-.r')
-plottinghist('cd.chain','b')
-plottinghist('dd.chain','--b')
-plottinghist('gd.chain','.-.b')
-plottinghist('cg.chain','g')
-plottinghist('dg.chain','--g')
-plottinghist('gg.chain','.-.g')
+plottinghist('cc2.chain','r')
+plottinghist('dc2.chain','--r')
+plottinghist('gc2.chain','.-.r')
+plottinghist('cd2.chain','b')
+plottinghist('dd2.chain','--b')
+plottinghist('gd2.chain','.-.b')
+plottinghist('cg2.chain','g')
+plottinghist('dg2.chain','--g')
+plottinghist('gg2.chain','.-.g')
 
 pylab.legend(loc='upper center')
-pylab.xlim(25,75)
-pylab.xlabel('$\mathtt{R_p}$',fontsize=24)
+pylab.xlim(10,65)
+pylab.xlabel('$\mathtt{R_{1/2}}$',fontsize=24)
 
 
-pylab.savefig('Rp4all.eps')
-#pylab.show()
+pylab.savefig('Rhalf4all.eps')
+pylab.show()
