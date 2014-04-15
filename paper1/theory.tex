@@ -61,10 +61,6 @@ The matrix $A$ at the coordinates of the caustic can have rank 1 or 0. If the ra
 of this paper we are interested only in the behaviour around $fold$ singularities. A condition necessary to distinguish between a fold and cusp singularity is that the
 eigenvector of $A$ corresponding to the null eigenvalue is not a tangent vector of the critical curve \citep{1992A&A...260....1S}(Dominik 2008).
 
-||||||||||||||||||||
-||||||Figure 2||||||
-||||||||||||||||||||
-
 
 The behaviour of the images of a point source and their corresponding magnifications near such a caustic has been thoroughly studied in the past. The reader who is interested in 
 understanding the details related to this subject is referred to papers such as \cite{1986ApJ...310..568B}, \cite{1992A&A...260....1S}, \cite{2002ApJ...574..970G}, \cite{2002ApJ...580..468G}. For the present paper we only 
@@ -73,7 +69,7 @@ summarize the common result:
  \mu_{t}(p) = \mu_0 + C_0 \frac{1}{\sqrt{p}} \Theta(p).
 \end {equation}
 As the previous equation describes the magnification of a point source near a caustic is equal to the sum of the magnification due to other reasons $\mu_0$, assumed to be locally constant,  and a decrease with
-the square root of the distance from the fold. The later term becomes activated only after the source enters the region interior to the caustic curves when the stepfunction $\Theta(p)$ become unity. The proportionality
+the square root of the distance from the fold. The later term becomes activated only after the source enters the region interior to the caustic curves when the values of the stepfunction $\Theta(p)$ become unity. The proportionality
 constant $C_0$  is sensible only to the local behaviour of Fermat's potential and units used for the lens plane coordinates $\vec{y}(p,q)$. 
 
 \subsection{Magnification of an extended source near a fold}
@@ -87,7 +83,7 @@ For a microlensing event the lightcurve can be written for an undefined source s
  \label{eqn:ft2d}
 \end{equation}
 
-In order to build the previous equation we have considered that the time dependency of the flux $F$ is given only by the motion of the source with respect to a fixed caustic. Therefore the only time dependent quatities in the right hand side of the equation
+In order to build the previous equation we have considered that the time dependency of the flux $F$ is given only by the motion of the source with respect to a fixed caustic. Therefore the only time dependent quantities in the right hand side of the equation
 are the coordinates of the center of the source $p_s,q_s$ and by construct $S_{2D}$. 
 
 Due to the choice of the coordinate system the amplification factor has no dependence on the $q$ coordinate. The previous equation can be rewritten as:
@@ -104,8 +100,8 @@ where we have defined the one dimensional flux function as:
 \end{equation}
 
 This representation is a valid approximation only when the apparent size of the source is much smaller than the corresponding Einstein angle of the lens. In this context 
-all the information about the source shape and brightness will that can be contained in the lightcurve is exhaustively given by the 1D flux function.
-In other words, if two sources with $S_{2D}$ have the same $S_{1D}$ they cannot be distinguished by studying their lightcurves.
+all the information about the source shape and brightness that can be contained in the lightcurve is exhaustively given by the 1D flux function.
+In other words, if two sources with different $S_{2D}$ have the same $S_{1D}$ they cannot be distinguished by studying their lightcurves.
  
  
 \section{Models for extended sources}
@@ -117,7 +113,7 @@ In the present study we are analysing three types of sources with different surf
   \item a disk source with constant surface brightness distribution,
   \item a crescent shaped source with constant surface brightness distribution.
 \end{enumerate}
-The first two sources are the typical choices used in the literature to describe the luminous parts of a quasar (Prasenjit should give some citations here). The third one is a newly proposed
+The first two sources are the typical choices used in the literature to describe the luminous parts of a quasar (Prasenjit should give some citations here). The third one is a recently proposed
 variant \citep{2013MNRAS.434..765K}.
 
 
@@ -226,7 +222,7 @@ which can be simplified to:
 \begin{equation}
  F^G(t) = \mu_0 S_0^G + \frac{C_0 S_0^G}{\sqrt{2\pi} \sigma} \int_{0}^\infty \frac{e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}}}{\sqrt{p}} \mathrm{d}p.
 \end{equation}
-Figure \ref{fig:lightcurve_gauss} shows the corresponding lightcurve. The result is equivalent to the one obtained in papers such as (citations).\\
+
 
 \begin{figure}
 \includegraphics[width = .8\textwidth]{plots/lightcurve_gaussian_1.eps}
@@ -246,7 +242,6 @@ which is equivalent to:
 \begin{equation}
  F^D(t) = \mu_0 S_0^D + \frac{2 C_0 S_0^D}{\pi R} \int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \frac{1}{\sqrt{p}} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}} \mathrm{d}p.
 \end{equation}
-Figure \ref{fig:lightcurve_disk} shows the corresponding lightcurve. As obtained in preciding papers by (citations).\\
 
 \begin{figure}
 \includegraphics[width = .8\textwidth]{plots/lightcurve_disc_1.eps}
@@ -262,8 +257,7 @@ The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii 
 \left(\int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) \right)^2 }{p}} \mathrm{d}p 
   -  \int_{max(0, p_s(t) - a(t) - R)}^{max(0, p_s(t) -a(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) +a(t) \right)^2 }{p}}  \mathrm{d}p \right)
 \end{equation}
-Figure \ref{fig:lightcurve_crescent} shows the corresponding lightcurve.
-In the previous equation we have renamed the coordinate of the center of the large disk $p_{sp}$ to $p_{s}$.  \\
+
 
 \begin{figure}
 \includegraphics[width = .8\textwidth]{plots/lightcurve_crescent_1.eps}
