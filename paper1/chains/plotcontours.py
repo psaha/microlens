@@ -88,8 +88,8 @@ def plotcontours(array1,array2,CL,spec,opaque,description):
 	    plt.xlim(x-(CL+0.2)*xx,x+(CL+0.2)*xx)
 	    plt.ylim(y-(CL+0.2)*yy,y+(CL+0.2)*yy)
 
-burn=1000
-files = ['GC','DC','CC']
+burn=100
+files = ['CG','CD','CC']
 spec = ['g','b','r']
 labels = ['Gaussian Disk','Uniform Disk','Crescent']
 for i in range(len(files)):
@@ -104,12 +104,33 @@ for i in range(len(files)):
 
 	points = [Rhalf,Rn/Rp]
 	points = numpy.transpose(points)
-	plotcontours(Rhalf,Rn/Rp,2,spec[i],0.8,labels[i])
-pylab.legend(loc=4)
-pylab.ylim(0,1.3)
-pylab.xlim(20,65)
+	plotcontours(Rhalf,Rn/Rp,2,spec[i],0.6,labels[i])
+pylab.legend(loc=1)
+pylab.ylim(0.4,1.0)
+pylab.xlim(15,40)
 pylab.xlabel('$\mathtt{R_{1/2}}$',fontsize=18)
 pylab.ylabel('$\mathtt{R_n/R_p}$',fontsize=18)
 pylab.savefig('Rhalf_RnRp.eps')
 pylab.show()
 
+
+for i in range(len(files)):
+	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn)
+	f2 = numpy.genfromtxt(files[i]+'2.chain',skip_header=burn)
+
+	Rp = f1[:,2]
+	Rn = f1[:,3]
+	a = f1[:,4]
+	b = f1[:,5]
+	Rhalf = f2[:,2]
+
+	points = [Rhalf,Rn/Rp]
+	points = numpy.transpose(points)
+	plotcontours(a/Rp,b/Rp,2,spec[i],0.6,labels[i])
+pylab.legend(loc=1)
+pylab.ylim(-0.6,0.0)
+pylab.xlim(0.0,0.6)
+pylab.xlabel('$\mathtt{a/R_{p}}$',fontsize=18)
+pylab.ylabel('$\mathtt{b/R_p}$',fontsize=18)
+pylab.savefig('aRp_bRp.eps')
+pylab.show()

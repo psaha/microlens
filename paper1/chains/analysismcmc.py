@@ -4,9 +4,9 @@ def plottinghist(chain,specs):
 	from numpy import genfromtxt,mean,std,log,max,linspace
 	from scipy.stats import gaussian_kde
 	from pylab import plot,legend
-	datafull = genfromtxt(chain,skip_header = 1000)
+	datafull = genfromtxt(chain,skip_header = 100)
 	data = datafull[:,2]
-	chi2 = -2.0*log(max(datafull[:,0]))
+	chi2 = -2.0*(max(datafull[:,0]))
 	print
 	print mean(data),std(data),chi2,'for',chain
 	density = gaussian_kde(data)
@@ -17,20 +17,20 @@ def plottinghist(chain,specs):
 
 
 print '# mean, st. dev., best $\chi^2$'
-plottinghist('cc.chain','r')
-plottinghist('dc.chain','b')
-plottinghist('gc.chain','g')
-plottinghist('cd.chain','--r')
-plottinghist('dd.chain','--b')
-plottinghist('gd.chain','--g')
-plottinghist('cg.chain','.-.r')
-plottinghist('dg.chain','.-.b')
-plottinghist('gg.chain','.-.g')
+plottinghist('CC.chain','r')
+plottinghist('DC.chain','b')
+plottinghist('GC.chain','g')
+plottinghist('CD.chain','--r')
+plottinghist('DD.chain','--b')
+plottinghist('GD.chain','--g')
+plottinghist('CG.chain','.-.r')
+plottinghist('DG.chain','.-.b')
+plottinghist('GG.chain','.-.g')
 
-pylab.legend(loc='upper center')
+pylab.legend(loc=1,fontsize=12)
 pylab.xlim(25,75)
 pylab.xlabel('$\mathtt{R_{p}}$',fontsize=24)
 
 
-pylab.savefig('Rp4all.eps')
+pylab.savefig('Rp4all_new.eps')
 pylab.show()
