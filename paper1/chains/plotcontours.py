@@ -88,13 +88,17 @@ def plotcontours(array1,array2,CL,spec,opaque,description):
 	    plt.xlim(x-(CL+0.2)*xx,x+(CL+0.2)*xx)
 	    plt.ylim(y-(CL+0.2)*yy,y+(CL+0.2)*yy)
 
-burn=100
+burn=[8500,700,900]
+burn = burn[::-1]
 files = ['CG','CD','CC']
-spec = ['g','b','r']
+files = files[::-1]
+spec = ['#999933','#009999','#cc6633']
+spec = spec[::-1]
 labels = ['Gaussian Disk','Uniform Disk','Crescent']
+labels = labels[::-1]
 for i in range(len(files)):
-	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn)
-	f2 = numpy.genfromtxt(files[i]+'2.chain',skip_header=burn)
+	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn[i])
+	f2 = numpy.genfromtxt(files[i]+'2.chain',skip_header=burn[i])
 
 	Rp = f1[:,2]
 	Rn = f1[:,3]
@@ -104,10 +108,10 @@ for i in range(len(files)):
 
 	points = [Rhalf,Rn/Rp]
 	points = numpy.transpose(points)
-	plotcontours(Rhalf,Rn/Rp,2,spec[i],0.6,labels[i])
-pylab.legend(loc=1)
-pylab.ylim(0.4,1.0)
-pylab.xlim(15,40)
+	plotcontours(Rhalf,Rn/Rp,2,spec[i],1.0,labels[i])
+pylab.legend(loc=3)
+pylab.ylim(0.0,1.0)
+pylab.xlim(25,42)
 pylab.xlabel('$\mathtt{R_{1/2}}$',fontsize=18)
 pylab.ylabel('$\mathtt{R_n/R_p}$',fontsize=18)
 pylab.savefig('Rhalf_RnRp.eps')
@@ -115,8 +119,8 @@ pylab.show()
 
 
 for i in range(len(files)):
-	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn)
-	f2 = numpy.genfromtxt(files[i]+'2.chain',skip_header=burn)
+	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn[i])
+	f2 = numpy.genfromtxt(files[i]+'2.chain',skip_header=burn[i])
 
 	Rp = f1[:,2]
 	Rn = f1[:,3]
@@ -126,10 +130,10 @@ for i in range(len(files)):
 
 	points = [Rhalf,Rn/Rp]
 	points = numpy.transpose(points)
-	plotcontours(a/Rp,b/Rp,2,spec[i],0.6,labels[i])
+	plotcontours(a/Rp,b/Rp,2,spec[i],1.0,labels[i])
 pylab.legend(loc=1)
-pylab.ylim(-0.6,0.0)
-pylab.xlim(0.0,0.6)
+pylab.ylim(-0.4,1.0)
+pylab.xlim(0.0,0.8)
 pylab.xlabel('$\mathtt{a/R_{p}}$',fontsize=18)
 pylab.ylabel('$\mathtt{b/R_p}$',fontsize=18)
 pylab.savefig('aRp_bRp.eps')

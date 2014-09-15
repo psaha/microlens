@@ -1,30 +1,25 @@
 import numpy
 import pylab
-from matplotlib import pyplot as pl
 
-cr = numpy.genfromtxt('data_crescent_reverse_corr.txt')
-dr = numpy.genfromtxt('data_disk_reverse_corr.txt')
-gr = numpy.genfromtxt('data_gauss_reverse_corr.txt')
 
-err = 0.05
-low = 1-err
-high= 1+err
+def plot(filename,filename_bestfit1,filename_bestfit2,filename_bestfit3,name):
+	x = numpy.genfromtxt(filename)
+	y1 = numpy.genfromtxt(filename_bestfit1)
+	y2 = numpy.genfromtxt(filename_bestfit2)
+	y3 = numpy.genfromtxt(filename_bestfit3)
+	pylab.errorbar(x[:,0],x[:,1],x[:,1]*0.1,color='k',\
+		label='$\mathtt{%s}$'%name)
+	pylab.plot(y1[:,0]-y1[1,0]+y1[1,2],y1[:,1],'r',lw=2,label='$\mathtt{Crescent\ fit}$')
+	pylab.plot(y2[:,0]-y2[1,0]+y2[1,2],y2[:,1],'b',lw=2,label='$\mathtt{Uniform\ disk\ fit}$')
+	pylab.plot(y3[:,0]-y3[1,0]+y3[1,2],y3[:,1],'g',lw=2,label='$\mathtt{Gaussian\ disk\ fit}$')
 
-pylab.plot(cr[:,0]+800,cr[:,1],'r',label='Crescent')
-pylab.fill_between(cr[:,0]+800,cr[:,1]*low,cr[:,1]*high,\
-		alpha=0.5,facecolor='r',edgecolor=None,interpolate=True)
 
-pylab.plot(dr[:,0]+800,dr[:,1],'b',label='Uniform Disk')
-pylab.fill_between(dr[:,0]+800,dr[:,1]*low,dr[:,1]*high,\
-		alpha=0.5,facecolor='b',edgecolor=None,interpolate=True)
-
-pylab.plot(gr[:,0]+800,gr[:,1],'g',label='Gaussian Disk')
-pylab.fill_between(gr[:,0]+800,gr[:,1]*low,gr[:,1]*high,\
-		alpha=0.5,facecolor='g',edgecolor=None,interpolate=True)
-
-pylab.legend(loc=2)
-pylab.xlim(0,200)
-pylab.xlabel('Time')
-pylab.ylabel('Brightness')
-pylab.savefig('data_with_error.eps')
+plot('data_gauss_reverse_noise.txt','cg.bestfit','dg.bestfit','gg.bestfit','Gaussian\ disk\ data')
+pylab.legend(loc=2,fontsize=16)
+pylab.xlim(-850,-600)
+pylab.ylim(ymin=2)
+pylab.xlabel('$\mathtt{Time}$',fontsize=22)
+pylab.ylabel('$\mathtt{Brightness}$',fontsize=22)
+pylab.savefig('data_gg.eps')
 pylab.show()
+
