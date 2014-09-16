@@ -13,37 +13,40 @@ def plottinghist(chain,specs,burn):
 #	print bestfit,chain
 
 	density = gaussian_kde(data)
-	xs = linspace(10,110,1000)
-#	xs = linspace(10,52,250)
+#	xs = linspace(10,110,1000)
+	xs = linspace(10,52,250)
 	density.covariance_factor = lambda : .25
 	density._compute_covariance()
 
-	bname = '../data/'+chain.lower().replace('chain','bestfit')
-	b = numpy.genfromtxt(bname)
-	nop = len(b)
-	print bname,nop
+#	bname = '../data/'+chain.lower().replace('chain','bestfit')
+#	b = numpy.genfromtxt(bname)
+#	nop = len(b)
+#	print bname,nop
 
-	plot(xs,density(xs),specs,\
-		label=chain+'   %1.2f'%(chi2/nop),linewidth=2.0)
+	plot(xs,density(xs),specs,linewidth=2.0)
+#	plot(xs,density(xs),specs,\
+#		label=chain+'   %1.2f'%(chi2/nop),linewidth=2.0)
+
 
 burn = 3500
 print '# mean, st. dev., best $\chi^2$'
-plottinghist('CC.chain','r',900)
-plottinghist('DC.chain','b',burn)
-plottinghist('GC.chain','g',burn)
-plottinghist('CD.chain','--r',700)
-plottinghist('DD.chain','--b',700)
-plottinghist('GD.chain','--g',900)
-plottinghist('CG.chain','.-.r',8500)
-plottinghist('DG.chain','.-.b',burn)
-plottinghist('GG.chain','.-.g',500)
+plottinghist('CC2.chain','r',900)
+plottinghist('DC2.chain','--r',burn)
+plottinghist('GC2.chain','.-.r',burn)
+plottinghist('CD2.chain','b',700)
+plottinghist('DD2.chain','--b',700)
+plottinghist('GD2.chain','.-.b',900)
+plottinghist('CG2.chain','g',8500)
+plottinghist('DG2.chain','--g',burn)
+plottinghist('GG2.chain','.-.g',500)
 
 pylab.legend(loc=9,fontsize=12)
-pylab.xlim(25,110)
-#pylab.xlim(10,52)
+#pylab.xlim(25,110)
+pylab.xlim(10,52)
 pylab.xlabel('$\mathtt{R_{p}}$',fontsize=20)
 pylab.ylabel('$\mathtt{Probability\ density\ function}$',fontsize=20)
 pylab.ylim(ymax=1.0)
-
-pylab.savefig('Rp4all.eps')
+#pylab.axvline(x=35.3553,color='b')
+#pylab.axvline(x=50,color='k')
+#pylab.savefig('Rhalf4all.eps')
 pylab.show()
