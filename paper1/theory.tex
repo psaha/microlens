@@ -190,6 +190,7 @@ Analogous for the linear brightness function:
 \begin{align}
  S_{1D}^C &= \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \left\{ \sqrt{R_p^2 - (p-p_{sp})^2}  \Theta \left[ R_p^2 - \left( p-p_{sp} \right)^2 \right] \right.\nonumber\\
  &\qquad \left. {} - \sqrt{R_n^2 - (p-p_{sn})^2 } \Theta \left[ R_n^2 - \left( p-p_{sn} \right)^2 \right] \right\}.
+\label{eqn:s1_d}
 \end{align}
 
 
@@ -201,12 +202,25 @@ the small disk must always be interior to the large disk:
 
 For the distances between the centers of the two disks we will use the same notations as the one found in the paper \citep{2013MNRAS.434..765K}, $a \equiv p_{sn} - p_{sp}$ and $b \equiv q_{sn} - q_{sp}$.
 
-The half-light radius of any source is invariant to any rotational transformation. In the present case of a crescent source the effective radius is dependent on the parameters $R_p$, $R_n$ and $\sqrt{a^2+b^2}$ exclusively. From symmetry considerations the centroid of the source is colinear with the centers of the two disks and it is situated at a distance $d_c$ from the center of the brigth disk. $d_c$ can be computed numerically by solving the equation:
+The half-light radius of any source is invariant to any rotational transformation. In the present case of a crescent source the effective radius is dependent on the parameters $R_p$, $R_n$ and $\sqrt{a^2+b^2}\equiv c $ exclusively. From symmetry considerations the centroid of the source is colinear with the centers of the two disks and it is situated at a distance $d_c$ from the center of the brigth disk. $d_c$ can be computed numerically with the use of a variation of equation \ref{eqn:s1_d}:
 
 \begin{equation}
-\frac{S_0^C}{2} =  
+\frac{S_0^C}{2} =  \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{d_c}^{R_p} \left[ \sqrt{R_p^2 - p^2} - \sqrt{R_p^2 - \left(p-c\right)^2} \Theta \left(R_p^2 - \left(p-c\right)^2 \right) \right] dp.
 \end{equation}   
 
+With the position of the centroid determined, the half-light radius can be also be computed numerically:
+ 
+\begin{equation}
+\frac{S_0^C}{2} =  \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{0}^{r_{1/2}} \left[ \Theta_2  - \Theta_1  \right] p dp;
+\end{equation}
+
+\begin{equation}
+\Theta_1 = \left[ \pi - \arccos \frac{R_p^2 + p^2 -d_c^2}{2 R_p p} - \arccos \frac{R_p^2 - p^2 + d_c^2}{2 R_p d_c} \right] \Theta \left( p - R_p + d_c \right); 
+\end{equation}
+
+\begin{equation}
+\Theta_2 =  \pi - \arccos \frac{ p^2  + (c+d_c)^2 - R_n^2}{2 p \left(c + d_c \right)} \Theta \left( p + R_n - d_c -c \right). 
+\end{equation}
 
 \begin{figure}
 \includegraphics[width = .8\textwidth]{plots/figure_rhalf.eps}
@@ -233,9 +247,10 @@ which can be simplified to:
  F^G(t) = \mu_0 S_0^G + \frac{C_0 S_0^G}{\sqrt{2\pi} \sigma} \int_{0}^\infty \frac{e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}}}{\sqrt{p}} \mathrm{d}p.
 \end{equation}
 
-
 \begin{figure}
-\includegraphics[width = .8\textwidth]{plots/4source_magnification.eps}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/4source_profile.eps}
+	\includegraphics[width = 0.48\textwidth]{plots/4source_magnification.eps}
 \caption{\label{fig:lightcurve_gauss} Lightcurves of crescents, gaussian and disk for sources with identical $S_0$ and $r_{1/2}$. Crescent source has $r_{1/2}$ = 0.72754 $R_p$, $R_n$ = 0.4 $R_p$, a = 0.3/-0.3 $R_p$ }
 \end{figure}
 
@@ -254,7 +269,9 @@ which is equivalent to:
 \end{equation}
 
 \begin{figure}
-\includegraphics[width = .8\textwidth]{plots/4avar_magnification.eps}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/4avar_profile.eps}
+	\includegraphics[width = 0.48\textwidth]{plots/4avar_magnification.eps}
 \caption{\label{fig:lightcurve_disk} Lightcurves of crescent sources with $R_n$ = 0.4 $R_p$.}
 \end{figure}
 
@@ -270,7 +287,9 @@ The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii 
 
 
 \begin{figure}
-\includegraphics[width = .8\textwidth]{plots/4rn_magnification.eps}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/4rn_profile.eps}
+	\includegraphics[width = 0.48\textwidth]{plots/4rn_magnification.eps}
 \caption{\label{fig:lightcurve_crescent_back} Lightcurves of backwards crescents with  a = 0.3 $R_p$.}
 \end{figure}
 
@@ -279,7 +298,117 @@ along the $p$ axis. Such a modeling of the motion of the object in the source pl
 chosing the function $a(t)$ to be constant in time.  
 
 \begin{figure}
-\includegraphics[width = .8\textwidth]{plots/4rn2_magnification.eps}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/4rn2_profile.eps}
+	\includegraphics[width = 0.48\textwidth]{plots/4rn2_magnification.eps}
 \caption{\label{fig:lightcurve_crescent} Lightcurve of forwards crescents with a = -0.3 $R_p$.}
 \end{figure}
+
+There are four characteristic points visible on the resulting one dimensional light profile of the crescent shaped source. Two of the points, p1 and p4, mark the outer boundaries of the luminous disc component. The other two, p2 and p3, mark the boundaries of the dark disc component. Since $S_1D$ is a projection of $S_2D$ on a line perpendicular to the caustic, the following relation holds:
+\begin{equation}
+	p_2-p_1 = R_p -R_n - a.
+\end{equation}
+In addition there are two other obvious relations the characteristic points which are independent of the projection:
+\begin{equation}
+	p_4 -p_1 = 2 R_p,
+\end{equation}
+
+\begin{equation}
+        p_3 -p_2 = 2 R_n.
+\end{equation}
+All four points mark the positions where derivative $\frac{dS_{1D}}{dp}$ is discontinuous. The points can be used to define three regions: $p_1 - p_2$ where $S_1D$ is convex, $p_2 - p_3$ where $S_1D$ is concave, and $p_3 - p_4$ where $S_1D$ is convex again. \\
+
+Due to the nature of the caustic and the monotonic behaviour of the magnification map on both sides of the caustic. , the previously mentioned characteristic points are inherited by the microlensing lightcurve. The points on the temporal dimension $t_1, t_2, t_3$ and $t_4$ corresnpond to instances in time when the fold is aligned with $p_1, p_2, p_3$ and $p_4$, respectively. For a constant relative velocity $v_p$ between the source and the caustic there is a simple relation between the points $p_i$ and instances $t_i$:
+
+\begin{equation}
+	t_j - t_i = \frac{p_j - p_i}{v_p}.
+\end{equation}
+
+With the use of the previous four equations the following identities can be written:
+
+\begin{equation}
+	R_p = \frac{v_p \left( t_4 -t_1 \right)}{2}, 
+\end{equation}
+
+\begin{equation}
+        R_n = \frac{v_p \left( t_3 -t_2 \right)}{2}, 
+\end{equation}
+
+\begin{equation}
+        a = \frac{v_p \left( t_4 +t_1 - t_3 - t_2 \right)}{2}. 
+\end{equation}
+
+
+
+
+\begin{figure}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/ch_points.eps}
+        \includegraphics[width = 0.48\textwidth]{plots/ch_instances.eps}
+\caption{\label{fig:char_points} The characteristic points and instances of a crescent source's one dimensional profile and microlensing lightcurve.}
+\end{figure}
+
+\begin{figure}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/infinite_fold_ellipsess.eps}
+\caption{\label{fig:ellipse_profile} Elliptical sources with constant and gaussian distributed brightness.}
+\end{figure}
+
+\subsection{Extension to ellipticaly shaped crescent sources}
+
+We further consider a source built from the superposition of two unalligned ellipses of constant surface brightness. Analogous to the previously presented crescent source the dark ellipse is interior to the bright ellipse and the distance between their centers projected on the lines perpendicular and parallel to the fold are $a$ and $b$. The semidimensions are ($a_p, b_p$) for thebright ellipse and ($a_n, b_n$) for the dark ellipse. The semimajor axis of the ellipses for the angles $\delta_p$ and $\delta_n$ with the caustic resulting in projected widths $2 h_p$ and $2h_n$ of the two ellipses on the axis perpendicular to the caustic. 
+
+The two dimensional description of the source is:
+
+\begin{equation}
+S_{2D}^{CEC} = S_{2D}^{CEP} - S_{2D}^{CEN}
+\end{equation}
+
+Where
+
+\begin {equation}
+S_{2D}^{CEP} = \frac{S_0^{CEC}}{2 \pi \left(a_p b_p - a_n b_n \right)} \Theta \left( 1 - \frac{\left( \left( p -p_{sp} \right) \sin{\delta_p} + \left( q - q_{sp} \right) \cos{\delta_p} \right)^2}{a_p^2}  - \frac{\left( \left( p -p_{sp} \right) \cos{\delta_p} + \left( q - q_{sp} \right) \sin{\delta_p} \right)^2}{ b_p^2} \right), 
+\end {equation}
+and
+\begin {equation}
+S_{2D}^{CEN} = \frac{S_0^{CEC}}{2 \pi \left(a_p b_p - a_n b_n \right)} \Theta \left( 1 - \frac{\left( \left( p -p_{sn} \right) \sin{\delta_n} + \left( q - q_{sn} \right) \cos{\delta_n} \right)^2}{a_n^2}  - \frac{\left( \left( p -p_{sn} \right) \cos{\delta_n} + \left( q - q_{sn} \right) \sin{\delta_n} \right)^2}{ b_n^2} \right), 
+\end {equation}.
+
+Analogous to the previous three equations the following relations can be obtained:
+
+\begin{equation}
+        h_p = \frac{v_p \left( t_4 -t_1 \right)}{2}, 
+\end{equation}
+
+\begin{equation}
+        h_n = \frac{v_p \left( t_3 -t_2 \right)}{2}, 
+\end{equation}
+
+\begin{equation}
+        a = \frac{v_p \left( t_4 +t_1 - t_3 - t_2 \right)}{2}. 
+\end{equation}
+
+The time instances used in the previous equations are analogous to the ones considered in the crescent source formed from the superposition of constant surface brightness disks.
+
+Moreover we consider a source described by an elliptical gaussian brightness function shadowed by a dark ellipse. In this case the two dimensional description of the source is given by:
+
+\begin {equation}
+S_{2D}^{GEC} = \frac{S_0^{GEC}}{2 \pi a_p b_p} \exp \left( - \frac{\left( \left( p -p_{sp} \right) \sin{\delta_p} + \left( q - q_{sp} \right) \cos{\delta_p} \right)^2}{2 a_p^2}  - \frac{\left( \left( p -p_{sp} \right) \cos{\delta_p} + \left( q - q_{sp} \right) \sin{\delta_p} \right)^2}{2 b_p^2} \right) \Pi \left(p,q\right)
+\end {equation}
+
+where the function
+\begin{equation}
+\Pi \left(p,q\right) = 1 - \Theta \left( 1 - \frac{\left( \left( p -p_{sn} \right) \sin{\delta_n} + \left( q - q_{sn} \right) \cos{\delta_n} \right)^2}{2 a_n^2}  - \frac{\left( \left( p -p_{sn} \right) \cos{\delta_n} + \left( q - q_{sn} \right) \sin{\delta_n} \right)^2}{2 b_n^2} \right). 
+\end{equation}
+
+\begin{figure}
+\centering
+	\includegraphics[width = 0.48\textwidth]{plots/ellipse_profile.eps}
+        \includegraphics[width = 0.48\textwidth]{plots/ellipse_lightcurve.eps}
+\caption{\label{fig:ellipse_profile} The one dimensional profile and resulting lightcurves of the elliptical sources.}
+\end{figure}
+
+
+
+
 
