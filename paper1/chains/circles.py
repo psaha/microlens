@@ -50,7 +50,7 @@ def Rhalf(Rp,Rn,a,b):
         if area[i-1] < 0.5*area[-1] and area[i] > 0.5*area[-1]:
             return Rp * r[i]
 
-
+'''
 panel = figure().add_subplot(1,1,1)
 panel.set_aspect('equal')
 
@@ -62,7 +62,7 @@ for r in linspace(.02,1+d,50):
     u = linspace(lo,hi,20)
     x,y = r*cos(u)-d,r*sin(u)
     panel.plot(x,y)
-
+'''
 # show()
 
 def cfile(fname):
@@ -97,6 +97,6 @@ def cfile(fname):
 #cfile('GD.chain')
 #cfile('CG.chain')
 #cfile('DD.chain')
-cfile('GC.chain')
-cfile('GG.chain')
+#cfile('GC.chain')
+#cfile('GG.chain')
 

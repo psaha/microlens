@@ -21,7 +21,7 @@ def Rhalf(Rp,Rn,a,b):
 		if area[i-1] < 0.5*area[-1] and area[i] > 0.5*area[-1]:
 			return r[i]
 
-
+'''
 burn_in = 2000
 data = numpy.genfromtxt('fort.1114',skip_header = burn_in)
 
@@ -37,8 +37,9 @@ for i in range(len(data)):
 
 	newdata.append([Rp,Rn,a,b,Rh,ratio])
 	print i
+'''
 
-newdata = numpy.array(newdata)
+#newdata = numpy.array(newdata)
 
 '''
 pylab.subplot(121,aspect='equal')
@@ -55,5 +56,5 @@ pylab.savefig('plot.eps')
 pylab.show()
 '''
 
-numpy.savetxt('CrescentFitGaussData_Rhalf.txt',newdata)
+#numpy.savetxt('CrescentFitGaussData_Rhalf.txt',newdata)
 

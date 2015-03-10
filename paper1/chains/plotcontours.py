@@ -84,7 +84,7 @@ def plotcontours(array1,array2,CL,spec,opaque,description):
 	    plt.plot(x, y, spec,label=description)
 	    xx,yy = points.std(axis=0)
 	    # Plot a transparent 3 standard deviation covariance ellipse
-	    plot_point_cov(points, nstd=CL, alpha=opaque, color=spec)
+	    plot_point_cov(points, nstd=CL, alpha=opaque, ec=spec,fc='w',lw=3)
 	    plt.xlim(x-(CL+0.2)*xx,x+(CL+0.2)*xx)
 	    plt.ylim(y-(CL+0.2)*yy,y+(CL+0.2)*yy)
 
@@ -93,8 +93,10 @@ burn = burn[::-1]
 files = ['CG','CD','CC']
 files = files[::-1]
 spec = ['#999933','#009999','#cc6633']
+spec = ['g','b','r']
 spec = spec[::-1]
-labels = ['Gaussian Disk','Uniform Disk','Crescent']
+labels = ['$\mathtt{GaussianDiskData}$',\
+'$\mathtt{UniformDiskData}$','$\mathtt{CrescentData}$']
 labels = labels[::-1]
 for i in range(len(files)):
 	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn[i])
@@ -106,14 +108,15 @@ for i in range(len(files)):
 	b = f1[:,5]
 	Rhalf = f2[:,2]
 
-	points = [Rhalf,Rn/Rp]
-	points = numpy.transpose(points)
-	plotcontours(Rhalf,Rn/Rp,2,spec[i],1.0,labels[i])
-pylab.legend(loc=3)
+#	points = [Rhalf,Rn/Rp]
+#	points = numpy.transpose(points)
+	plotcontours(Rp,Rn/Rp,2,spec[i],1.0,labels[i])
+pylab.axvline(x=50.0,color='k')
+pylab.legend(loc=1)
 pylab.ylim(0.0,1.0)
-pylab.xlim(25,42)
-pylab.xlabel('$\mathtt{R_{1/2}}$',fontsize=18)
-pylab.ylabel('$\mathtt{R_n/R_p}$',fontsize=18)
+pylab.xlim(25,102)
+pylab.xlabel('$\mathtt{R_{P}}$',fontsize=22)
+pylab.ylabel('$\mathtt{R_n/R_p}$',fontsize=22)
 pylab.savefig('Rhalf_RnRp.eps')
 pylab.show()
 
@@ -128,13 +131,14 @@ for i in range(len(files)):
 	b = f1[:,5]
 	Rhalf = f2[:,2]
 
-	points = [Rhalf,Rn/Rp]
-	points = numpy.transpose(points)
+#	points = [Rhalf,Rn/Rp]
+#	points = numpy.transpose(points)
 	plotcontours(a/Rp,b/Rp,2,spec[i],1.0,labels[i])
+
 pylab.legend(loc=1)
 pylab.ylim(-0.4,1.0)
 pylab.xlim(0.0,0.8)
-pylab.xlabel('$\mathtt{a/R_{p}}$',fontsize=18)
-pylab.ylabel('$\mathtt{b/R_p}$',fontsize=18)
+pylab.xlabel('$\mathtt{a/R_{p}}$',fontsize=22)
+pylab.ylabel('$\mathtt{b/R_p}$',fontsize=22)
 pylab.savefig('aRp_bRp.eps')
 pylab.show()
