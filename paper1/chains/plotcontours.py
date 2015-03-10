@@ -111,7 +111,8 @@ for i in range(len(files)):
 #	points = [Rhalf,Rn/Rp]
 #	points = numpy.transpose(points)
 	plotcontours(Rp,Rn/Rp,2,spec[i],1.0,labels[i])
-pylab.axvline(x=50.0,color='k')
+pylab.axvline(x=50.0,color='k',ls='-.',lw=2)
+pylab.plot(50.0,30.0/50.0,'xk',ms=14)
 pylab.legend(loc=1)
 pylab.ylim(0.0,1.0)
 pylab.xlim(25,102)
@@ -135,6 +136,7 @@ for i in range(len(files)):
 #	points = numpy.transpose(points)
 	plotcontours(a/Rp,b/Rp,2,spec[i],1.0,labels[i])
 
+pylab.plot(15./50.,-10./50.,'xk',ms=14)
 pylab.legend(loc=1)
 pylab.ylim(-0.4,1.0)
 pylab.xlim(0.0,0.8)
