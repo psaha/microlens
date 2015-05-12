@@ -219,19 +219,19 @@ The half-light radius of any source is invariant to any rotational transformatio
 With the position of the centroid determined, the half-light radius can be also be computed numerically:
  
 \begin{equation}
-\frac{S_0^C}{2} =  \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{0}^{r_{1/2}} \left[ \Theta_2  - \Theta_1  \right] p dp;
-\end{equation}
-
-\begin{equation}
-\Theta_1 = \left[ \pi - \arccos \frac{R_p^2 + p^2 -d_c^2}{2 R_p p} - \arccos \frac{R_p^2 - p^2 + d_c^2}{2 R_p d_c} \right] \Theta \left( p - R_p + d_c \right); 
-\end{equation}
-
-\begin{equation}
-\Theta_2 =  \pi - \arccos \frac{ p^2  + (c+d_c)^2 - R_n^2}{2 p \left(c + d_c \right)} \Theta \left( p + R_n - d_c -c \right). 
+\begin{aligned}
+S_0^C &=  \frac{4S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{0}^{r_{1/2}} \left[ \Theta_2  - \Theta_1  \right] p dp; \\
+\Theta_1 &= \bigg[ \pi - \arccos \frac{R_p^2 + p^2 -d_c^2}{2 R_p p} \\
+         & \phantom{= \bigg[ \pi} - \arccos \frac{R_p^2 - p^2 + d_c^2}{2 R_p d_c}
+            \bigg] \Theta \left( p - R_p + d_c \right); \\
+\Theta_2 &=  \pi - \arccos \frac{ p^2  + (c+d_c)^2 - R_n^2}
+                                {2 p \left(c + d_c \right)} \\
+         & \phantom{= \pi - } \Theta \left( p + R_n - d_c -c \right). 
+\end{aligned}
 \end{equation}
 
 \begin{figure}
-\includegraphics[width = .8\textwidth]{plots/figure_rhalf.eps}
+\includegraphics[width = .95\hsize]{plots/figure_rhalf.eps}
 \caption{\label{fig:geom_crescent} Geometry of crescent sources.}
 \end{figure}
 
