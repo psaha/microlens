@@ -60,7 +60,7 @@ wambsganss/cfitsio/libcfitsio.a
 wambsganss/fort.222
 wambsganss/out_line
 
-ms.pdf
+paper1/ms.pdf
 *.aux
 *.log
 *.blg
