@@ -12,7 +12,7 @@ List:
       * figure 10--- 
 - text corrections Introduction                   --- first wave done
 - text corrections Theory                         --- first wave done
-- text corrections Code                           ---
+- text corrections Code                           --- first wave done (To Prasenjit: Can you do the second wave asap?)
 - expand Irshad's text                            ---
 - adjust Discussion                               ---
 - expand the second part of the Abstract          ---
