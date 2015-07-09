@@ -1,9 +1,9 @@
 List:
 
 - fix figures ---                              
-      . figure 1 ---
-      . figure 2 ---
-      . figure 4 ---
+      * figure 1 ---
+      * figure 2 ---
+      * figure 4 ---
       . figure 5 ---
       . figure 6 ---
       . figure 7 ---
