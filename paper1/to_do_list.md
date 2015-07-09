@@ -11,11 +11,11 @@ List:
       * figure 9 ---
       * figure 10--- 
 - text corrections Introduction                   --- first wave done
-- text corrections Theory                         ---
+- text corrections Theory                         --- first wave done
 - text corrections Code                           ---
 - expand Irshad's text                            ---
 - adjust Discussion                               ---
 - expand the second part of the Abstract          ---
-- complete citations data                         ---
+- complete citations data                         --- done
 - final check                                     ---
 - submission                                      --- 
