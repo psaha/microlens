@@ -10,7 +10,7 @@ List:
       * figure 8 ---
       * figure 9 ---
       * figure 10--- 
-- text corrections Introduction                   ---
+- text corrections Introduction                   --- first wave done
 - text corrections Theory                         ---
 - text corrections Code                           ---
 - expand Irshad's text                            ---
