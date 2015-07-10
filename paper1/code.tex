@@ -1,5 +1,18 @@
 \section{Microlensing code and magnification maps}
-For the numerical more complex computations of lightcurves present in the second part of the article , the Microlensing code by Joachim Wambsgans was used \cite{1999A&A...346L...5W}. The code is based on the hierarchical tree technique to calculate the gravitational effect of the lensing masses. The underlying idea is that when the thin lens approximation is valid, the a microlensing distribution can be reduced to three planes, the observer plane, the lens plane and the source plane. The actual effect, namely the distortion of light rays emitted from a distant source, on the path to the observer, is numerically computed by through back-tracing: lightrays are shot backward from the observer to lens plane, where they become deflected according to the angle dependent on the 2D mass distribution in the lens plane.
+
+We now go beyond the case of an ideal fold, and consider microlensing
+by random distributions of point lenses.  This requires numerical
+computation of lightcurves, for which we use the microlensing code by
+\cite{1999A&A...346L...5W}. The code is based on the hierarchical tree
+technique to calculate the gravitational effect of the lensing
+masses. The underlying idea is that when the thin lens approximation
+is valid, the a microlensing distribution can be reduced to three
+planes, the observer plane, the lens plane and the source plane. The
+actual effect, namely the distortion of light rays emitted from a
+distant source, on the path to the observer, is numerically computed
+by through back-tracing: lightrays are shot backward from the observer
+to lens plane, where they become deflected according to the angle
+dependent on the 2D mass distribution in the lens plane.
 \begin{equation}
 \vec{\alpha}_{i}=\frac{4G}{c^{2}} \frac{D_{LS}}{D_{S}}\sum_{j=1}^{n}M_j \frac{\vec{r}_{ij}}{r^2_{ij}} 
 \end{equation}  

@@ -4,19 +4,15 @@ In this section we simulate the fitting of source models to
 lightcurves in the presence of random and systematic errors.  We
 generate mock data for three source models --- a crescent, a uniform
 disc and a Gaussian disc --- and then fit each mock light curve to all
-three source models.  We denote the possible cases letter pairs, with
-the first letter denoting the model and the second letter representing
-the source: thus CG means a {\em C\/}rescent model was fitted to mock
-data from a {\em G\/}aussian source, DC stands for a uniform {\em
-  D\/}isc model fitted to mock data from a {\em C\/}rescent source,
-and so on.
+three source models. Parameter fitting and marginalisation was done by
+Markov-chain Monte Carlo (MCMC).
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\hsize]{plots/data_cc.eps}
 \includegraphics[width=0.9\hsize]{plots/data_dd.eps}
 \includegraphics[width=0.9\hsize]{plots/data_gg.eps}
-\caption{\label{fig:datafitting} Three different mock datasets with
+\caption{\label{fig:mockdata} Three different mock datasets with
   three different parameterisations fitted to each --- crescent (red),
   uniform-disk (blue) and Gaussian disk (green).}
 \end{figure}
@@ -50,16 +46,74 @@ Each mock light curve also has three nuisance parameters, namely the
 beginning and end of the event and the brightness normalization.
 These are to be marginalised out by the MCMC.
 
-Figure~\ref{fig:datafitting} shows the three light curves.  Each has
+Figure~\ref{fig:mockdata} shows the three light curves.  Each has
 250 points regularly spaced in time, with Gaussian noise at the level
 of 10\% of the current brightness.  The effective signal to noise can
 be considered to be $0.1\times\sqrt{250}\simeq150$.
 
-\subsection{Fitting}
+\subsection{Fitting to mock data sets}
 
-Parameter fitting and marginalisation was done by Markov-chain Monte
-Carlo (MCMC).  Figure~\ref{fig:burnin} shows the progress of reduction
-of $\chi^2$.
+Each of the three mock light curves was fitted to all three models.
+We denote the nine possible cases with letter pairs, with the first
+letter denoting the model fitted and the second letter representing
+the source: thus CG means a {\em C\/}rescent model was fitted to mock
+data from a {\em G\/}aussian source, DC stands for a uniform {\em
+  D\/}isc model fitted to mock data from a {\em C\/}rescent source,
+and so on.
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\hsize]{plots/Rp4all.eps}
+\caption{\label{fig:mcmc} Posterior probability distribution for the
+  source size $R_p$.  The vertical line is the correct value. Same
+  color represeents the same dataset whereas same line style
+  corresponds to same model fit.  The legend gives the reduced
+  $\chi^2$ of the best fit in each case.}
+\end{figure}
+
+Figure~\ref{fig:mcmc} shows the posterior probability distribution of
+$R_p$ for all nine cases, along with the minimum reduced $\chi^2$ for
+each case.  The area under each curve is unity. Note that the height
+of the curves are not the likelihood, they are probability densities
+in parameter space.
+
+\begin{figure}
+\centering
+  \includegraphics[width=0.9\hsize]{plots/Rhalf_RnRp.eps}
+  \includegraphics[width=0.9\hsize]{plots/aRp_bRp.eps}
+\caption{\label{fig:crescentfit} The 2$\sigma$ contours (or error ellipses)
+  of the crescent model when fitting with the three different
+  datasets.}
+\end{figure}
+
+Let us first consider the three cases where a crescent model was
+fitted.  These are the solid curves in Figure~\ref{fig:mcmc}, with the
+colours of the curves indicating the source.  Meanwhile,
+Figure~\ref{fig:crescentfit} shows $2\sigma$ of the inferred parameter
+values.
+
+\begin{enumerate}
+
+\item[1) {\bf CC}:] solid red curve in Figure~\ref{fig:mcmc} and red
+  ellipses in Figure~\ref{fig:crescentfit}.  In this case, a light
+  curve from a crescent source was being fitted to a crescent model.
+  The fit gives reduced $\chi^2$ close to unity, as expected.  The
+  recovered parameter values are near or slightly outside the
+  $2\sigma$ ellipses.  This is expected, since we added a small
+  systematic error, by using different caustics (though both clean
+  folds) for the mock data and the model fit.  The apparent degeneracy
+  between $a$ and $b$, seen in Figure~\ref{fig:crescentfit}, is also
+  expected, since only the distance of the crescent's small circle
+  from the caustic influences the magnification.
+
+
+\item[2) {\bf CD}:] solid blue curve and blue ellipses.  Here a
+  crescent model was fitted to a light curve from a uniform disc.  The
+  situation is formally a crescent with $R_n=0$ and $a,b$ arbitrary,
+  and this shows in the blue ellipses in the recovered parameter
+  values.  The redundant parameters $a$ and $b$, in effect, allow the
+  model to partly fit the noise, and hence the $\chi^2$ is somewhat
+  lower than in the previous case.
 
 \begin{figure}
 \centering
@@ -68,77 +122,68 @@ of $\chi^2$.
   for one case.}
 \end{figure}
 
-\begin{figure}
-\centering
-  \includegraphics[width=0.9\hsize]{plots/Rp4all.eps}
-\caption{\label{fig:mcmc} Posterior probability distribution for size
-  of the source, $R_p$. Same color represeents the same dataset
-  whereas same line style corresponds to same model fit. In the legend
-  showing the reduced $\chi^2$ of the best fit in each case.}
-\end{figure}
-
-
-\subsection{Fitting with crescent model}
-
-The main results of the MCMC are shown in figure \ref{fig:mcmc}. In the top row, we show the nine probability density function of recovered size of the source ($R_p$) and its half light radius ($R_{1/2}$) (left and right respectively). The legend of top-left panel has information about the datasets, fitting model and best fit also applicable to top-right panel for $R_{1/2}$. The name of the legend has the same convention as explained in the previous section. The number accompanying the name of the legend is the best fit reduced $\chi^2$. We follow the convention of red, blue and green color for crescent, uniform disc and Gaussian disk datasets respectively whereas the fitting model is represented by different kind of curves: solid, dashed and dot-dashed respectively.
-
-
-
-First we explored the parameter space for crescent source model and run its likelihood exploration for three different datasets. Here we have four interesting parameters as given by equation \ref{eqn:cp} and we marginalise over all other nuisance parameters. Three solid curves in top row of figure \ref{fig:mcmc} represents the resulting likelihood of $R_p$, the overall size of the crescent source fitted with three different datasets. We also show results for half light radius $R_{1/2}$.
-
-\begin{enumerate}
-
-\item Crescent data: This is the true case for crescent model fitting. The red solid line represents this case in upper panels of figure \ref{fig:mcmc} as 1D probability density function marginalised over all other parameters. The true value of $R_p$ can be recovered within 2$\sigma$ level with an accuracy up to 10\%. Also the best fit to the data is shown in red line in upper-left panel of figure \ref{fig:datafitting}. It is a very good fit which also represents a reduced $\chi^2$ close to unity (1.04). The orange contour in the lower panels of figure \ref{fig:mcmc} showing the 2D marginalised error ellipses. There is a certain degeneracy in $R_{1/2}$ and $R_n/R_p$ parameters but all the values are well recovered. 
-
-\item Uniform disk data: In this case, we tried to fit crescent model to disk data. The solid blue line in top row panels and cyan contours in bottom row panel represent this case. The best fit reduced $\chi^2$ (0.90) is better than the previous case as the data is generated by one parameter only and fitting with four parameter that can also model the noise. This can also be seen in the best fit to the data, figure \ref{fig:datafitting} red line in top-right panel, where the curve seems to fit the noise as well. The maximum likelihood (and also average likelihood) is achieved close to $R_n = 0$, as already mentioned, this is intuitive as well. The other paramters, $a$ and $b$ are quite arbitary and highly uncertain. 
-
-\item Gaussian disk data: In this case, Gaussian disc data is fited with crescent model. The solid green line in top row panels and green contours in bottom row panels of figure \ref{fig:mcmc} represent this case. By looking at figure \ref{fig:mcmc}, it can be seen that all the parameters can be constrained really well, even the best fit $\chi^2$ is much better than other two cases (0.85) which also shows a bit of over-fitting problem. However, this is misleading. The reason for these strong constraints is that the full data is not at all fitted, in this case the nuisance parameters are rejecting most of the data during the progress of MCMC. This can be seen in figure \ref{fig:datafitting} bottom-left panel in red line, where the best fit model is fitted only in very small range of data, even before the actual incidence happened. In other words, MCMC is unable to converge in this case and the only way to achieve better likelihood is to reject data points. This can be seen in bottom-left panel of figure \ref{fig:datafitting}. The $\chi^2$ keep on reducing through the span of MCMC chain and not saturating anywhere. 
+\item[3) {\bf CG}:] Solid green curve and green ellipses.
+  Additionally, Figure~\ref{fig:burnin} shows the progress of
+  reduction of $\chi^2$ in this case, where a crescent-source model is
+  used to fit data from a Gaussian source.  The parameter values are
+  seemingly tightly constrained, but the recovered $R_p$ is completely
+  wrong.  The reduced $\chi^2$ is only 0.85, indicative of
+  over-fitting.  We can see what has happened from the red curve in
+  the bottom panel of Figure~\ref{fig:mockdata}.  The best-fit model
+  covers only a small part of the light curve.  That is, the fitting
+  procedure has exploited the nuisance parameters to find a good fit
+  to mainly noise.
 
 \end{enumerate}
 
-Therefore we can conclude that by fitting with crescent source model, one can recover the parameters very well if the dataset is generated by crescent source model. The uniform disk source model can also be recovered very well for the overall shape of the disk, as the latter is the special case of the former, but other parameters like $a$ and $b$ are arbitary and $R_n \sim 0$. No convergence can be achieved for data generated by Gaussian disk model. 
-
-Please notice that in top row of figure \ref{fig:mcmc}, the height of the peaks does not represents the likelihood, it is just ensuring that the area under the curve is unity. The likelihood can be estimated from the number in the legend which is the best fit $\chi^2$.
-
-
- In the bottom rows we show three contours, for three different datasets (same color convention) fitted with crescent parameters only because this is the only case with more than one relevant parameter. Note that we plotted the 2D ellipses with principal component analysis of the MCMC and this is the reason they are perfect ellipses and not arbitary shape.
-
-\subsection{Fitting with uniform disc model}
-In this case, we have only one interesting parameter to fit, the outer radius of the uniform disc with uniform intensity. When fitting with the true case, the uniform disk data itself (dashed blue line in upper panels of figure \ref{fig:mcmc}), the best fit $\chi^2$ is very good (0.91) and also it recovers the true value of $R_p=50$. When fitting with crescent data (dashed red line), the maximum likelihood shifts towards higher values of $R_p$ as compared to the fiducial value. This is justified and intuitive as $R_n \sim > 0$. Also the best fit reduced $\chi^2$ is 1.29 which is much worse than the true case. However, when fitting with Gaussian disc data (dashed green line), the best fit reduced $\chi^2$ is still very low but still worse than the true case. However, it can be seen in figure \ref{fig:datafitting} (blue line bottom-left panel) that in this case also many points are rejected in order to gain better likelihood.
-
-Therefore we conclude here that looking at the maximum likelihood one can identify the true dataset and also recover the true values of the parameters. 
-
-
-\subsection{Fitting with Gaussian disc model}
-In the last case, we fit Gaussian disc model to the three datasets (dot-dashed curves in top panels of figure \ref{fig:mcmc}). In this case, when fitted with the true case, Gaussian disc dataset, the true parameters can be recovered at the correct value and also the best fit reduced $\chi^2$ is close to unity (0.98). In all other cases the maximum likelihood is much worse and also the recovered values of $R_p$ are many $\sigma$ away.
-
-Hence, in this case also by looking at the maximum likelihood true case can be identified and parameters can be restored correctly.
-
-
-
-\subsection{Conclusions and interpretations}
-The main results of this work is given in figure \ref{fig:mcmc} and described in the previous section. Here we try to interpret those results and conclude the take away message.
-
-Lets assume that an ideal telescope observes a quasar for a long time and we get the lightcurve  and one can clearly see the event of caustic crossing in the light curve. Now one wants to extract the true shape of the source. To comment more specifically, lets assume three cases when the true shape of the source is: crescent, uniform disc or Gaussian disc:
+Next we consider the three cases where a disc model is fitted.  These
+correspond to he dashed curves in Figure~\ref{fig:mcmc}.  There is
+only one interesting parameter to fit, the disc radius $R_p$, and no
+equivalent of Figure~\ref{fig:crescentfit} is needed.
 
 \begin{enumerate}
 
-\item Crescent shape source: if one tries to fit this curve with crescent model, the maximum likelihood will be good and one can recover the true parameters with good precision. In the other two cases, the maximum likelihood will be bad. Hence this shape can be recovered very well by trusting the maximum likelihood analysis.
-\item Uniform disc shape source: if one tries to fit this curve with Gaussian disk model, the likelihood will be very little to disprove it, however, the other two models are inditinguishable with nearly the same likelihood. At this point it does not matter as one can obtain the true result from both uniform disk and crescent model.
-\item Gaussian disc shape source: if one tries to fit this curve with uniform disk model or crescent model, again likelihood will discard this choice. Again the maximum likelihood analysis will point towards the best fitted true model.
+\item[4) {\bf DC}:] red dashed curve.  On fitting a disc model to a
+  crescent-source source, the recovered $R_p$ is incorrect, but the
+  reduced $\chi^2$ of 1.29 signals that the data reject the model.
+
+\item[5) {\bf DD}:] red dashed curve.  When the correct model is
+  fitted to a disc-source, the best fit $\chi^2=0.91$ is good and
+  $R_p$ is recovered within the uncertainty estimate.
+
+\item[6) {\bf DG}:] green dashed curve.  On fitting a disc model to a
+  Gaussian-source model, the recovered $R_p$ is incorrect, but the
+  reduced $\chi^2$ gives no signal that something is amiss.  It
+  appears that a Gaussian source could mimic a uniform disc.
+
 \end{enumerate}
 
-Therefor, we conclude that maximum likelihood analysis can be well trusted in order to recover true shape and recovering the corresponding parameters. This will provide the accurate recovery of the model parameters, however, for more precise recovery, one rely on precise measurements of the lightcurve. 
+Finally, we consider the three cases where a Gaussian model is fitted.
+These correspond to he dotted curves in Figure~\ref{fig:mcmc}.  Again,
+there is only one interesting parameter to fit, the Gaussian
+$3\sigma$-radius, which we have called $R_p$.
 
+\begin{enumerate}
 
+\item[7) {\bf GC}:] red dotted curve.  When a Gaussian-source model is
+  fitted to data from a crescent source, the recovered $R_p$ is wrong
+  but the reduced $\chi^2=1.29$ shows the data rejecting the model.
 
-\begin{figure}
-\centering
-  \includegraphics[width=0.9\hsize]{plots/Rhalf_RnRp.eps}
-  \includegraphics[width=0.9\hsize]{plots/aRp_bRp.eps}
-\caption{\label{fig:mcmc} The 2$\sigma$ contours (or error ellipses)
-  of the crescent model when fitting with the three different
-  datasets.}
-\end{figure}
+\item[8) {\bf GD}:] blue dotted curve.  When a Gaussian-source model
+  is fitted to data from a uniform disc, the recovered $R_p$ is wrong
+  but the model is rejected anyway.
 
+\item[9) {\bf GG}:] green dotted curve.  When data from a Gaussian is
+  fitted to the correct model, $R_p$ is recovered within its estimated
+  uncertainty, and the best fit reduced $\chi^2$ is close to unity.
+
+\end{enumerate}
+
+The above results suggest the following strategy for fitting a
+lightcurve from an unknown source profile: first try a Gaussian-source
+model; if the data reject that model, try a uniform disc; if the
+uniform disc is also rejected by the data, try a crescent model.  Our
+numerical experiments indicate --- assuming one of the three source
+models is correct --- that the reduced $\chi^2$ would unmask the
+correct model, and its parameters would be correctly recovered.
 

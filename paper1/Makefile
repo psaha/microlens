@@ -3,7 +3,8 @@ all:
 	bibtex ms
 	latex ms
 	latex ms
-	dvipdf ms
+	dvipdfm ms
+
 clean:
 	rm -f *.log *.aux *.dvi *.blg *~
 	rm -f msdiff.ps msdiff.bbl
