@@ -1,8 +1,8 @@
 all:
-	pdflatex ms
+	latex ms
 	bibtex ms
-	pdflatex ms
-	pdflatex ms
+	latex ms
+	latex ms
 	dvipdfm ms
 
 clean:
