@@ -3,40 +3,117 @@
 We now go beyond the case of an ideal fold, and consider microlensing
 by random distributions of point lenses.  This requires numerical
 computation of lightcurves, for which we use the microlensing code by
-\cite{1999A&A...346L...5W}. The code is based on the hierarchical tree
-technique to calculate the gravitational effect of the lensing
-masses. The underlying idea is that when the thin lens approximation
-is valid, the a microlensing distribution can be reduced to three
-planes, the observer plane, the lens plane and the source plane. The
-actual effect, namely the distortion of light rays emitted from a
-distant source, on the path to the observer, is numerically computed
-by through back-tracing: lightrays are shot backward from the observer
-to lens plane, where they become deflected according to the angle
-dependent on the 2D mass distribution in the lens plane.
-\begin{equation}
-\vec{\alpha}_{i}=\frac{4G}{c^{2}} \frac{D_{LS}}{D_{S}}\sum_{j=1}^{n}M_j \frac{\vec{r}_{ij}}{r^2_{ij}} 
-\end{equation}  
-The choice for reversing the photon motion is motivated by computational resources considerations. 
-For the computation of the individual deflection angles the tree concept is used. The positions of all lensing masses are sorted into a 2-dimensional grid (in the lens plane). Which is subdivided into 4 smaller squares recursively until every cell contains only one mass. For the actual calculations of the deflection angle not every mass gravitational influence is treated equally. Instead it is made use of the fact that the influence of lenses on the considered light ray falls off with $r^{-1}$ from the point where the ray hits the lens plane. Hence masses situated at higher distances, can be grouped together in the calculation of their gravitational potential, using multipole moments. With this approach the amount of computation time is reduced. \\
+\cite{1999A&A...346L...5W}.
+
+
+
+
+The code is based on the hierarchical tree technique to calculate the
+gravitational effect of the lensing masses. The underlying idea is
+that when the thin lens approximation is valid, the a microlensing
+distribution can be reduced to three planes, the observer plane, the
+lens plane and the source plane. The actual effect, namely the
+distortion of light rays emitted from a distant source, on the path to
+the observer, is numerically computed by through back-tracing:
+lightrays are shot backward from the observer to lens plane, where
+they become deflected according to the angle dependent on the 2D mass
+distribution in the lens plane.  The choice for reversing the photon
+motion is motivated by computational resources considerations.  For
+the computation of the individual deflection angles the tree concept
+is used. The positions of all lensing masses are sorted into a
+2-dimensional grid (in the lens plane). Which is subdivided into 4
+smaller squares recursively until every cell contains only one
+mass. For the actual calculations of the deflection angle not every
+mass gravitational influence is treated equally. Instead it is made
+use of the fact that the influence of lenses on the considered light
+ray falls off with $r^{-1}$ from the point where the ray hits the lens
+plane. Hence masses situated at higher distances, can be grouped
+together in the calculation of their gravitational potential, using
+multipole moments. With this approach the amount of computation time
+is reduced. \\
 
 %I don't think this part is necessary
 
-When the deflection angles are determined, the deflected lightrays are traced to the source plane and a magnification map is created by counting the number of rays which hit each of its pixels. This is the inverse of what would happen in a real observation: here an observer on earth would detect light emitted by several sources with her/his telescope. Each of these sources emits lightrays which are subject to the deflection by the intervening gravitational potential of the lensing mass. However only a fraction of those will end in the observers telescope on earth. Interesting for the analysis are hence those lightrays which are originating by the source of interest and further the subset of these which actually converge at the location of the observer. So instead of calculating the trajectories of lightrays emitted by the source in all directions and then succeedingly pick out the ones which end in the telescope of the observer, the computational effort can be restricted to these lightrays of interest in the first place. This is done by treating the problem from the opposite direction, namely by using the observers location as starting point and then shooting the lightrays backwards till they hit the source plane. 
+When the deflection angles are determined, the deflected lightrays are
+traced to the source plane and a magnification map is created by
+counting the number of rays which hit each of its pixels. This is the
+inverse of what would happen in a real observation: here an observer
+on earth would detect light emitted by several sources with her/his
+telescope. Each of these sources emits lightrays which are subject to
+the deflection by the intervening gravitational potential of the
+lensing mass. However only a fraction of those will end in the
+observers telescope on earth. Interesting for the analysis are hence
+those lightrays which are originating by the source of interest and
+further the subset of these which actually converge at the location of
+the observer. So instead of calculating the trajectories of lightrays
+emitted by the source in all directions and then succeedingly pick out
+the ones which end in the telescope of the observer, the computational
+effort can be restricted to these lightrays of interest in the first
+place. This is done by treating the problem from the opposite
+direction, namely by using the observers location as starting point
+and then shooting the lightrays backwards till they hit the source
+plane.
 % up to here (would remove it)
 
-The result is a pixel map of the number of lightrays which arrive at the source plane. This intermediate result is denoted as the magnification map. It characterizes the information about the mass distribution in the lens plane and its effect on lightrays, and projects this information onto the source plane. \\\\
-Once the map is created, the lightcurve can be obtained by specifying the transition path of the source within the map. The code thereby convolves the function describing the shape of the source with the magnification pattern of the map for each time step (see equation \ref{eqn:ft2d}).
+The result is a pixel map of the number of lightrays which arrive at
+the source plane. This intermediate result is denoted as the
+magnification map. It characterizes the information about the mass
+distribution in the lens plane and its effect on lightrays, and
+projects this information onto the source plane. \\\\ Once the map is
+created, the lightcurve can be obtained by specifying the transition
+path of the source within the map. The code thereby convolves the
+function describing the shape of the source with the magnification
+pattern of the map for each time step (see equation \ref{eqn:ft2d}).
 
 %this is problematic
- Note that in most observational cases in microlensing, both lens and source are moving and further that the lens configuration, and with it the magnification pattern, is changing with time. While the first subtlety is taken care of by a coordinate transformation in this analysis, for the second one the lens configuration is assumed to be constant in time.  \\\\
-For the model a it was desirable to work with a caustic geometry as simple as possible. 
+ Note that in most observational cases in microlensing, both lens and
+ source are moving and further that the lens configuration, and with
+ it the magnification pattern, is changing with time. While the first
+ subtlety is taken care of by a coordinate transformation in this
+ analysis, for the second one the lens configuration is assumed to be
+ constant in time.  \\\\ For the model a it was desirable to work with
+ a caustic geometry as simple as possible.
 % up to here   (would remove it)
 
-When generating the caustic map used in our analysis presented in the second part of the article only two equal point like masses were used as lenses, to produce the magnification map depicted in figure \ref{fig:magnification_map}. The magnification maps calculated by the Microlensing code are in units of Einstein radii, hence they are scale free. Physical scale is introduced to them by multiplying the pixels by the correct distance factor. The Einstein angle is given by   
+When generating the caustic map used in our analysis presented in the
+second part of the article only two equal point like masses were used
+as lenses, to produce the magnification map depicted in figure
+\ref{fig:magnification_map}. The magnification maps calculated by the
+Microlensing code are in units of Einstein radii, hence they are scale
+free. Physical scale is introduced to them by multiplying the pixels
+by the correct distance factor. The Einstein angle is given by
 \begin{equation}
 \theta_{E}=\sqrt{\frac{4GM}{c^{2}} \frac{D_{LS}}{D_{S}D_{L}}} 
 \end{equation}  
-and therefore depends on the four parameters $M,D_{S},D_{L},D_{LS}$. For the cosmological application or quasar lensing $D_{L}$ is of order 100 Mps to Gpc and $D_{S}$ of order Gpc.\\   
-The scale of the magnification map can be converted into a physical length by multiplying it by a factor of $ \sqrt{\frac{D_{LS}}{D_{S}D_{L}}}$.\\\\
-For the next step, the computation of the actual lightcurve, the code was modified to also allow for crescent shaped images specified through the parameter set $R_p,R_n,a,b$. Here $R_p$ denotes the outer radius of the crescent and $R_n$ the inner one. The orientation of the source image with respect to the magnification map is specified by the parameters $a$ and $b$ as the shift of the center of the inner disk from the center of the outer disk in $x$- and $y$-direction respectively. In the original version of the code, gaussian and disk shaped images where already implemented. Those are completely characterized by the single parameter $R_p$. The values of the parameters are specified in pixel units corresponding to the magnification map. Further one needs to specify the start and end point coordinates of the path, which the center of the source image follows through the magnification map (see the depiction in figure \ref{fig:magnification_map}). Hence the points along this path are specified through the number of timesteps for which the computation of the brightness is to be carried out. Those points correspond to the actual measurement of the brightness of an object in the observational case. For each timestep the two-dimensional convolution of equation \ref{eqn:ft2d} is carried out numerically for the position of the source on the magnification map. \\
-For the purpose of this analysis it was desirable to mimic the analytical behaviour of a simple fold as much as possible, for comparing the numerical result with the analytical one, therefore the path of the source was chosen, so that it intersects the border of the caustic perpendicularly, and on a point where the border is a fold caustic.  
+and therefore depends on the four parameters
+$M,D_{S},D_{L},D_{LS}$. For the cosmological application or quasar
+lensing $D_{L}$ is of order 100 Mps to Gpc and $D_{S}$ of order
+Gpc.\\ The scale of the magnification map can be converted into a
+physical length by multiplying it by a factor of
+$\sqrt{\frac{D_{LS}}{D_{S}D_{L}}}$.\\\\ For the next step, the
+computation of the actual lightcurve, the code was modified to also
+allow for crescent shaped images specified through the parameter set
+$R_p,R_n,a,b$. Here $R_p$ denotes the outer radius of the crescent and
+$R_n$ the inner one. The orientation of the source image with respect
+to the magnification map is specified by the parameters $a$ and $b$ as
+the shift of the center of the inner disk from the center of the outer
+disk in $x$- and $y$-direction respectively. In the original version
+of the code, gaussian and disk shaped images where already
+implemented. Those are completely characterized by the single
+parameter $R_p$. The values of the parameters are specified in pixel
+units corresponding to the magnification map. Further one needs to
+specify the start and end point coordinates of the path, which the
+center of the source image follows through the magnification map (see
+the depiction in figure \ref{fig:magnification_map}). Hence the points
+along this path are specified through the number of timesteps for
+which the computation of the brightness is to be carried out. Those
+points correspond to the actual measurement of the brightness of an
+object in the observational case. For each timestep the
+two-dimensional convolution of equation \ref{eqn:ft2d} is carried out
+numerically for the position of the source on the magnification
+map. \\ For the purpose of this analysis it was desirable to mimic the
+analytical behaviour of a simple fold as much as possible, for
+comparing the numerical result with the analytical one, therefore the
+path of the source was chosen, so that it intersects the border of the
+caustic perpendicularly, and on a point where the border is a fold
+caustic.
