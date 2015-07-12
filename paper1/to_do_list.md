@@ -1,7 +1,7 @@
 List:
 
 - fix figures ---                            
-      * figure 1 --- 
+      * figure 1 --- done
       * figure 2 --- done
       * figure 4 --- done
       * figure 5 --- done
