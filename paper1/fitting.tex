@@ -37,7 +37,7 @@ and inner circles and $(\alpha,\beta)$ being the coordinates of the inner
 circle with respect to the centre of the outer circle in the coordinate system associated with the image in Figure 1 and not associated 
 with the caustic surface as defined in the previous sections.  The parameter values were
 \begin{equation}
-   (R_p, R_n, $\alpha$, $\beta$) = (50.0, 30.0, 15.0, 10.0).
+   (R_p, R_n, \alpha, \beta) = (50.0, 30.0, 15.0, 10.0).
 \label{eqn:cp}
 \end{equation}
 The uniform disc had the same (outer) radius as the crescent.  In the
@@ -49,12 +49,10 @@ Each mock light curve also has three nuisance parameters, namely the
 beginning and end of the event and the brightness normalisation.
 These are to be marginalised out by the MCMC.
 
-Figure~\ref{fig:mockdata} shows the three light curves.  Each has
-250 points regularly spaced in time, with Gaussian noise at the level
-of 10\% of the current brightness.  The effective signal to noise can
-be considered to be \textbf{ bad math here -- $0.1\times\sqrt{250}\simeq150$}.
-
-
+Figure~\ref{fig:mockdata} shows the three light curves.  Each has 250
+points regularly spaced in time, with Gaussian noise at the level of
+10\% of the current brightness.  The effective signal to noise can be
+considered to be $0.1\times\sqrt{250}\simeq15$.
 
 \subsection{Fitting to mock data sets}
 
@@ -99,9 +97,7 @@ Let us first consider the three cases where a crescent model was
 fitted.  These are the solid curves in Figure~\ref{fig:mcmc}, with the
 colours of the curves indicating the source.  Meanwhile,
 Figure~\ref{fig:crescentfit} shows $2\sigma$ of the inferred parameter
-values. \textbf{In the following enumerated conclusions we associate the word "wrong"
-with parameters for which the real value corresponds to a PDF of the fitted model smaller than 
-0.01. }
+values.
 
 \begin{enumerate}
 
@@ -139,7 +135,8 @@ with parameters for which the real value corresponds to a PDF of the fitted mode
   reduction of $\chi^2$ in this case, where a crescent-source model is
   used to fit data from a Gaussian source.  The parameter values are
   seemingly tightly constrained, but the recovered $R_p$ is completely
-  wrong.  The reduced $\chi^2$ is only 0.85, indicative of
+  wrong, since the correct value is far from the green curve and green
+  ellipses.  The reduced $\chi^2$ is only 0.85, indicative of
   over-fitting.  We can see what has happened from the red curve in
   the bottom panel of Figure~\ref{fig:mockdata}.  The best-fit model
   covers only a small part of the light curve.  That is, the fitting
