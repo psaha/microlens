@@ -2,6 +2,7 @@ import numpy
 import pylab
 
 from circles import Rhalf
+pylab.figure(figsize=(8.7,7))
 
 def plottinghist(chain,specs,burn):
 	from numpy import genfromtxt,mean,std,log,max,linspace
@@ -51,9 +52,12 @@ plottinghist('GG.chain',':g',500)
 pylab.legend(loc=9,fontsize=12)
 pylab.xlim(25,102)
 #pylab.xlim(15,50)
-pylab.xlabel('$\mathtt{R_{p}}$',fontsize=20)
-pylab.ylabel('$\mathtt{Probability\ density\ function}$',fontsize=20)
+pylab.xlabel('$\mathrm{R_{p}}$',fontsize=20)
+pylab.ylabel('$\mathrm{Probability\ density\ function}$',fontsize=20)
 pylab.ylim(ymax=1.0)
 pylab.axvline(x=50,color='k',ls='-.',lw=2)
 pylab.savefig('Rp4all.eps')
+
+pylab.tick_params(axis='both', which='major', labelsize=20)
+pylab.tick_params(axis='both', which='minor', labelsize=20)
 pylab.show()

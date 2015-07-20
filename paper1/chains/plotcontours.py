@@ -1,6 +1,7 @@
 import numpy
 import pylab
 
+pylab.figure(figsize=(8.7,7))
 
 def plotcontours(array1,array2,CL,spec,opaque,description):
 	import numpy as np
@@ -95,8 +96,8 @@ files = files[::-1]
 spec = ['#999933','#009999','#cc6633']
 spec = ['g','b','r']
 spec = spec[::-1]
-labels = ['$\mathtt{GaussianDiskData}$',\
-'$\mathtt{UniformDiskData}$','$\mathtt{CrescentData}$']
+labels = ['$\mathrm{GaussianDiskData}$',\
+'$\mathrm{UniformDiskData}$','$\mathrm{CrescentData}$']
 labels = labels[::-1]
 for i in range(len(files)):
 	f1 = numpy.genfromtxt(files[i]+'.chain',skip_header=burn[i])
@@ -116,8 +117,12 @@ pylab.plot(50.0,30.0/50.0,'xk',ms=14)
 pylab.legend(loc=1)
 pylab.ylim(0.0,1.0)
 pylab.xlim(25,102)
-pylab.xlabel('$\mathtt{R_{P}}$',fontsize=22)
-pylab.ylabel('$\mathtt{R_n/R_p}$',fontsize=22)
+pylab.xlabel('$\mathrm{R_{P}}$',fontsize=20)
+pylab.ylabel('$\mathrm{R_n/R_p}$',fontsize=20)
+
+pylab.tick_params(axis='both', which='major', labelsize=20)
+pylab.tick_params(axis='both', which='minor', labelsize=20)
+pylab.tight_layout()
 pylab.savefig('Rhalf_RnRp.eps')
 pylab.show()
 
@@ -140,7 +145,22 @@ pylab.plot(15./50.,-10./50.,'xk',ms=14)
 pylab.legend(loc=1)
 pylab.ylim(-0.4,1.0)
 pylab.xlim(0.0,0.8)
-pylab.xlabel('$\mathtt{a/R_{p}}$',fontsize=22)
-pylab.ylabel('$\mathtt{b/R_p}$',fontsize=22)
+pylab.xlabel('$\mathrm{\\alpha/R_{p}}$',fontsize=20)
+pylab.ylabel('$\mathrm{\\beta/R_p}$',fontsize=20)
+
+pylab.tick_params(axis='both', which='major', labelsize=20)
+pylab.tick_params(axis='both', which='minor', labelsize=20)
+pylab.tight_layout()
 pylab.savefig('aRp_bRp.eps')
 pylab.show()
+
+
+
+
+
+
+
+
+
+
+
