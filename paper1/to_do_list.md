@@ -1,6 +1,6 @@
 List:
 
-- fix figures ---                            
+- fix figures --- done                           
       * figure 1 --- done
       * figure 2 --- done
       * figure 4 --- done
@@ -14,8 +14,8 @@ List:
 - text corrections Theory                         --- first wave done
 - text corrections Code                           --- first wave done
 - expand Irshad's text                            --- done
-- adjust Discussion                               ---
-- expand the second part of the Abstract          ---
+- adjust Discussion                               --- done
+- expand the second part of the Abstract          --- 
 - complete citations data                         --- done
 - final check                                     ---
 - submission                                      --- 
