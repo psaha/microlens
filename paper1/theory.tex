@@ -67,9 +67,15 @@ they cross the micro-caustics \citep[e.g.,][]{2012A&A...544A..62S}.
 
 \begin{figure}
 \centering
-  \includegraphics[width=.9\hsize]{plots/IRIS567_path_2.eps}
-\caption{\label{fig:magnification_map} Magnification map}
+\includegraphics[width=0.9\hsize,bb=0 0 576 432
+		]{plots/IRIS567_path_2.eps}
+\caption{\label{fig:magnification_map} Magnification map used in the second part of the presented work. The white line marks the trajectory of the center of the sources for which the lightcurves presented in figure 12 are generated.}
 \end{figure}
+
+
+
+
+
 
 \subsection{Magnification near a fold caustic}
 
@@ -235,7 +241,10 @@ For the distances between the centers of the two disks we will use the same nota
 The half-light radius of any source is invariant to any rotational transformation. In the present case of a crescent source the effective radius is dependent on the parameters $R_p$, $R_n$ and $\sqrt{a^2+b^2}\equiv c $ exclusively. From symmetry considerations the centroid of the source is collinear with the centers of the two disks and it is situated at a distance $d_c$ from the center of the bright disk. $d_c$ can be computed numerically with the use of a variation of equation \ref{eqn:s1_d}:
 
 \begin{equation}
-\frac{S_0^C}{2} =  \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{d_c}^{R_p} \left[ \sqrt{R_p^2 - p^2} - \sqrt{R_p^2 - \left(p-c\right)^2} \Theta \left(R_p^2 - \left(p-c\right)^2 \right) \right] dp.
+\begin{aligned}
+\frac{S_0^C}{2} & = \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{d_c}^{R_p} \bigg[ \sqrt{R_p^2 - p^2} \\ 
+		& - \sqrt{R_p^2 - \left(p-c\right)^2} \Theta \left(R_p^2 - \left(p-c\right)^2 \right) \bigg] dp. 
+\end{aligned}
 \end{equation}   
 
 With the position of the centroid determined, the half-light radius can be also be computed numerically:
@@ -272,15 +281,20 @@ The amount of light received by an observer from a source with a gaussian distri
 \begin{equation}
  F^G(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{S_0^G}{\sqrt{2 \pi} \sigma} e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}} \right) \mathrm{d}p.
 \end{equation}
+
 which can be simplified to:
 \begin{equation}
  F^G(t) = \mu_0 S_0^G + \frac{C_0 S_0^G}{\sqrt{2\pi} \sigma} \int_{0}^\infty \frac{e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}}}{\sqrt{p}} \mathrm{d}p.
 \end{equation}
 
+
+
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/S1D_all.eps}
-	\includegraphics[width = 0.48\textwidth]{plots/4source_magnification.eps}
+	\includegraphics[width = 0.48\textwidth ,bb=0 0 576 520
+	]{plots/S1D_all.eps}
+	\includegraphics[width = 0.48\textwidth ,bb=0 0 576 520
+	]{plots/4source_magnification.eps}
 \caption{\label{fig:lightcurve_gauss} Lightcurves of crescents, Gaussian and disk for sources with identical $S_0$ and $r_{1/2}$. Crescent source has $r_{1/2}$ = 0.72754 $R_p$, $R_n$ = 0.4 $R_p$, a = 0.3/-0.3 $R_p$ }
 \end{figure}
 
@@ -290,7 +304,10 @@ which can be simplified to:
 Analogous to the gaussian shaped source, the disk source with uniform brightness, radius $R$ and unmagnified flux $S_0^D$ has a lightcurve described by the equation:
 
 \begin{equation}
- F^D(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{2 S_0^D}{ \pi R} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}} \Theta \left(R^2 - \left(p-p_s(t) \right)^2 \right) \right) \mathrm{d}p.
+\begin{aligned}
+ F^D(t) &= \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \\
+	& \bigg[ \frac{2 S_0^D}{ \pi R} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}}  \Theta \left(R^2 - \left(p-p_s(t) \right)^2 \right) \bigg] \mathrm{d}p.
+\end{aligned}
 \end{equation}
 
 which is equivalent to:
@@ -300,8 +317,10 @@ which is equivalent to:
 
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/S1D_var_a.eps}
-	\includegraphics[width = 0.48\textwidth]{plots/4avar_magnification.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/S1D_var_a.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/4avar_magnification.eps}
 \caption{\label{fig:lightcurve_disk} Lightcurves of crescent sources with $R_n$ = 0.4 $R_p$.}
 \end{figure}
 
@@ -309,17 +328,23 @@ which is equivalent to:
 \subsection{Lightcurve of the crescent shaped source}
 
 The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii $R_p$, $R_n$ and center displacement $a(t)$ is:
+
+
 \begin{equation}
- F^c(t) = \mu_0 S_0^C + C_0 \frac{2 S_0^C}{\pi \left( R_p^2 -R_n^2 \right) } 
-\left(\int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) \right)^2 }{p}} \mathrm{d}p 
-  -  \int_{max(0, p_s(t) - a(t) - R)}^{max(0, p_s(t) -a(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) +a(t) \right)^2 }{p}}  \mathrm{d}p \right)
+\begin{aligned}
+ F^c(t) &= \mu_0 S_0^C + C_0 \frac{2 S_0^C}{\pi \left( R_p^2 -R_n^2 \right) } \\
+	&\bigg[ \int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) \right)^2 }{p}} \mathrm{d}p \\
+	&  -  \int_{max(0, p_s(t) - a(t) - R)}^{max(0, p_s(t) -a(t) + R)} \sqrt{\frac{R_p^2 - \left( p-p_s(t) +a(t) \right)^2 }{p}} \mathrm{d}p  \bigg] .
+\end{aligned}
 \end{equation}
 
 
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/S1D_var_rn_a_poz.eps}
-	\includegraphics[width = 0.48\textwidth]{plots/5Rn_back_var_magnification.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/S1D_var_rn_a_poz.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/5Rn_back_var_magnification.eps}
 \caption{\label{fig:lightcurve_crescent_back} Lightcurves of backwards crescents with  a = 0.3 $R_p$.}
 \end{figure}
 
@@ -329,8 +354,10 @@ choosing the function $a(t)$ to be constant in time.
 
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/S1D_var_rn_a_neg.eps}
-	\includegraphics[width = 0.48\textwidth]{plots/5Rn_forw_var_magnification.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/S1D_var_rn_a_neg.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/5Rn_forw_var_magnification.eps}
 \caption{\label{fig:lightcurve_crescent} Lightcurve of forwards crescents with a = -0.3 $R_p$.}
 \end{figure}
 
@@ -372,8 +399,10 @@ With the use of the previous four equations the following identities can be writ
 
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/ch_points.eps}
-        \includegraphics[width = 0.48\textwidth]{plots/ch_instances.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/ch_points.eps}
+        \includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/ch_instances.eps}
 \caption{\label{fig:char_points} The characteristic points and instances of a crescent source's one dimensional profile and microlensing lightcurve. }
 \end{figure}
 
@@ -422,8 +451,10 @@ In the opposite case the peak appears before the end of the bright disc reaches 
 
 \begin{figure}
 \centering
-	\includegraphics[width = 0.48\textwidth]{plots/M87_shape.eps}
-        \includegraphics[width = 0.48\textwidth]{plots/M87_lc.eps}
+	\includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/M87_shape.eps}
+        \includegraphics[width = 0.48\textwidth,bb=0 0 576 520
+	]{plots/M87_lc.eps}
 \caption{\label{fig:M87_plots} The one dimensional profile obtained from the numerical integration along the ordonata axis of the source image (figure 9) is presented in the left subplot. The corresponding lightcurve associated to the 1D profile is presented in the right subplot. The points p2 and p3 mark the start and end of the equivalent dark disk and are associated to the moments of their overlap with the caustic: t2 and t3.}
 \end{figure}
 

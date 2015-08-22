@@ -56,8 +56,23 @@ In case of a high quality lightcurve with insignificant noise and measurement er
 by simply identifying the characteristic instances of time without making use of the actual values of the magnification
  map. If the effect of the errors and the noise distorts the magnification time function enough so that the 
 characteristic epochs are not identifiable with the characteristic periods still visible, the boundaries of the periods 
-can be roughly estimated. Furthermore, if direct estimates of the parameters cannot be obtained we propose the use of a strong statistical tool such as Markov-Chain Monte Carlo. In Section 6  we have studied the possibility of identifying a crescent source and  the possibility of recovering the respective parameters. As magnification map we have used a complex numerical one generated with the microlensing code by \cite{1999A&A...346L...5W}. In addition we have added to the signal a Gaussian  noise with a SNR of 1.6.   In the experiment we have considered all nine combinations of original source profiles and assumed fitting source models. Effectively we have fitted using MCMC all three sources with all three fitting assumed models. The results of the experiment allowed us build a procedure for distinguishing the shape of the source assuming the one of the three models we have considered are a good approximation.  The procedure would be useful for observers that endeavour to gain more information about an unresolved source for which they can study the microlensing lightcurve.  As a first step in the procedure, one should first attempt to use MCMC with a Gaussian model assumption. If either the value of the $\chi^2$ or the number of rejected datapoints is large then the next step is to change the assumed source model to an uniform disc and redo the fitting. Finally if the uniform disc assumption is rejected as well then the fitting should be done with a crescent source model assumption. If at each of the three steps the data rejects the model than the source cannot be approximated by none of the three models. Otherwise if at one of the steps the data does not reject the model then the respective model is a good approximation.   
+can be roughly estimated. Furthermore, if direct estimates of the parameters cannot be obtained we propose the use of a strong
+statistical tool such as Markov-Chain Monte Carlo. In Section 6  we have studied the possibility of identifying a crescent 
+source and  the possibility of recovering the respective parameters. As magnification map we have used a complex numerical 
+one generated with the microlensing code by \cite{1999A&A...346L...5W}. In addition we have added to the signal a Gaussian 
+noise with a SNR of 1.6.  In the experiment we have considered all nine combinations of original source profiles and assumed fitting source models.
+Effectively we have fitted using MCMC all three sources with all three assumed fitting models. The results of the experiment allowed us build a 
+procedure for distinguishing the shape of the source assuming that one of the three models we have considered is a good approximation.  
+The procedure would be useful for observers that endeavour to gain more information about an unresolved source for which they can study 
+the microlensing lightcurve.  As a first step in the procedure, one should first attempt to use MCMC with a Gaussian model assumption. 
+If either the value of the $\chi^2$ or the number of rejected datapoints is large then the next step is to change the assumed source model to 
+an uniform disc and redo the fitting. Finally if the uniform disc assumption is rejected as well then the fitting should be done with a 
+crescent source model assumption. If at each of the three steps the data rejects the model then the source cannot be approximated by any of the three models. 
+Otherwise if at one of the steps the data does not reject the model then the respective model is a good approximation.   
 
 
-[Contributions from authors]\\
-Prasenjit Saha provided the original idea and plan for the research project as well as multiple contributions to the analysis. Mihai Tomozeiu simulated and studied the ideal behaviour of the microlensing lightcurves for the different source profiles discussed. Joachim Wambsganss provided the numerical code used by Manuel Rabold to create the magnification map and corresponding lighcurves used in the MCMC analysis, analysis that was performed by Irshad Mohammed in the last part of the presented work. 
+[Contributions from the authors]\\
+P.S. provided the original idea and plan for the research project as well as multiple contributions to the analysis. M.T. simulated and studied the microlensing 
+lightcurves for the different source profiles discussed for clean data and approximated fold magnification amplification. J.W. provided the training and the
+numerical code used by M. R. to create the magnification map and corresponding lighcurves used in the MCMC analysis, analysis that was performed by 
+I. M. in the last part of the presented work. 
