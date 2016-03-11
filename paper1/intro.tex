@@ -34,10 +34,10 @@ The great majority of quasars, however, lie at redshifts beyond 2
 \citep{2014A&A...563A..54P} and their central engines would be orders
 of magnitude smaller on the sky. The direct observations of the black
 hole silhouettes of quasars is far beyond foreseeable instrumentation.
-In the present paper we consider a possible indirect method,
-previously investigated by \cite{1999ApJ...524...49A}, through which
-gravitational microlensing could probe the black hole shadow and its
-proximal quasar environment.
+In the present paper we consider a possible indirect method, related
+to \cite{1999ApJ...524...49A}, through which gravitational
+microlensing could probe the black hole shadow and its proximal quasar
+environment.
 
 Gravitational microlensing of quasars, reviewed in
 Section~\ref{sec:microlensing} below, refers to sharp changes in the
@@ -48,71 +48,90 @@ quasar, such as the optical continuum
 \citep[e.g.,][]{2012A&A...544A..62S} and is a consequence of two
 things: the very small size of the central engine, and granularity of
 the mass distribution of a lensing galaxy due to stars.  The latter
-means that lensed brightness is not a smooth function of source
-position, but a complicated network of singular curves known as
-caustics.  Most astrophysical sources straddle several caustics, and
-hence their net brightness varies smoothly with location.  The central
-engine of quasars, however, is smaller.  Hence the lensed brightness
-undergoes sudden changes as a quasar crosses a caustic.
-Figure~\ref{fig:magnification_map} is a simple illustration.  The
-effect supplies an upper limit on the size of the central engine, and
-can also be used to study the mass distribution and kinematics of
-stars in the lensing galaxy as well
+means that the brightness of a lensed object (or lensing
+magnification) is not a smooth function of source position, but a
+contains a complicated network of singular curves, known as caustics.
+Figure~\ref{fig:magnification_map} shows part of a magnification map
+with a few caustics.  The lensed brightness would be given by placing
+the source on such a magnification map and integrating the surface
+brightness weighted by the magnification.  Most astrophysical sources
+straddle several caustics, and hence their net brightness varies
+smoothly with location.  The central engine of quasars, however, is
+smaller than the typical spacing between caustics.  As a result, the
+lensed brightness undergoes sudden changes as a quasar crosses a
+caustic.  The effect supplies an upper limit on the size of the
+central engine, and can also be used to study the mass distribution
+and kinematics of stars in the lensing galaxy as well
 \citep[e.g.,][]{2012ApJ...744..111P}.  Caustics have an additional
 remarkable feature: though they can be very complicated, they have
 some universal properties well-known from catastrophe theory.  In
 particular, very close to the simplest caustics (known as folds), the
-observed brightness is simple $\propto1/\sqrt p$ where $p$ is the
-transverse distance of the source from the caustic.  Since the
-observed brightness is a convolution of the magnification map with the
-source brightness, the lightcurve provides tomographic information
-about the source profile if the magnification map is known.
-\cite{1999ApJ...524...49A} showed that if the latter is the
-magnification near a pure fold, the brightness distribution of the
-source can in principle be deconvolved out of the light curve.
-Applied by \cite{2012MNRAS.423..676A} Pure folds, however, are not to
-be found in real systems.  In this paper we argue a simpler form of
-the idea holds more promise.  We show that if a quasar crosses not a
-pure but still fairly clean fold, such as in
-Figure~\ref{fig:magnification_map}, the simple crescent model of
-\cite{2013MNRAS.434..765K} approximating a black-hole silhouette could
-be recovered from the light curve.
+magnification is approximately constant on one side and
+$\propto1/\sqrt p$ where $p$ is the transverse distance of the source
+from the caustic.  This property will be exploited later.
 
-     
-Gravitational microlensing of QSOs have been predicted as early as 1981 when \cite{1981ApJ...243..140G} suggested that 
-``if haloes of galaxies were composed of stars with masses less than  0.1 $M_\odot$, then these stars acting as individual lenses would produce fluctuations of the order of 
-unity in the intensities of the QSO images on time scales of 1 -14 years '' . 
-What creates the magnification event is the relative and independent motion of the lens and source with respect to the observer.
-Since the respective lens is surrounded by similar objects one would expect to observe during a long enough time interval
-multiple microlensing events of the same source, the QSO. 
-The sequential alignment of the source and observer with different lensing objects will result in an apparently random increase of the QSO light flux analogous to the scintillation events in a meter of radioactivity.\\
+In Section~\ref{sec:source-models} we introduce the three source
+profiles used in our subsequent models and simulations: a
+constant-brightness disc, a circular Gaussian, and the crescent source
+introduced by \citep{2013MNRAS.434..765K}.  The latter is simply a
+constant-brightness disc with a smaller, non-concentric disc cut out
+of it.  We also derive the half-light radius for a crescent.  The
+half-light radius can characterise the source size for all three types
+of source.
+
+Section~\ref{sec:fold-crossing} shows the light curves that result
+when each of the model sources crosses an ideal fold.  This would
+apply in Figure~\ref{fig:magnification_map} to sources along the path
+AB or BC, for sources small enough that the curvature of the caustics
+is negligible.  With this assumption one can imagine the caustic as an
+infinite wall to be crossed by the source as presented in
+Figure~\ref{fig:infinite_fold}.  The source brightness distribution
+parallel to the caustic naturally makes no difference to the
+observable brightness; each source can be replaced by an effective
+one-dimensional source profile, by flattening the source so it becomes
+perpendicular to the caustic.  In principle, the effective
+one-dimensional brightness profile could be recovered from the light
+curve by deconvolution.  \cite{1999ApJ...524...49A} modelled this
+profile as the result of a circular accretion disc seen through the
+spacetime around a Kerr black hole, and \cite{2012MNRAS.423..676A}
+have applied the idea to observed light curves to infer properties of
+quasar accretion discs.  In this work we take a simpler but arguably
+more robust approach: we study features in the light curves
+characteristic of a crescent-like source which in turn would indicate
+a black-hole silhouette.  Figure~\ref{fig:char_points} shows the
+qualitative features: there is a period during which the dark cutout
+disc is crossing the caustic, and before and after there are periods
+when the only the bright parts of the crescent are in transit across
+the caustic.  The details depend on the orientation of the crescent,
+but basically the dark disc causes a rising light curve to plateau or
+dip.
+
+The crescent characteristics identified in
+Figure~\ref{fig:char_points} are from an idealised source crossing an
+idealised caustic.  In Section~\ref{sec:numerics} we see what happens
+when we replace both of these with numerical simulations.  The ideal
+fold-transit is replaced by the path AB in
+Figure~\ref{fig:magnification_map}.  The simple crescent is replaced
+by a source (Figure~\ref{fig:M87_image}) from published simulations of
+the black-hole environment of M87
+\citep{2009MNRAS.394L.126M,2012MNRAS.421.1517D}.  The simulated light
+curve so obtained (lower panel of Figure~\ref{fig:M87_plots}) still
+shows, albeit faintly, features from the crescent.
+
+In Section~\ref{sec:fitting} we carry out source fitting to
+lightcurves, with both noise and systematic errors are present.  We
+generate three lightcurves by taking a uniform disc, a circular
+Gaussian, and a crescent across the path AB in
+Figure~\ref{fig:magnification}, and then adding noise.  The path
+simulates crossing a clean but not ideal fold.  In addition, we
+generate templates lightcurves by running the three source types, with
+various parameter values, across the path CB.  That is, the templates
+come from a similar but not identical caustic, thus deliberately
+generating a systematic error.  We then fit the noisy lightcurves to
+the templates using Markov chain Monte-Carlo.  We find that the
+correct source type can be inferred from the $\chi^2$ values.  The
+parameter values can also be inferred. The fitting errors are larger
+than the formal uncertainties, which is expected in the presence of
+systematic errors, but still appear acceptable.
 
 
-The Schwarzschild radius of the Sgr A* black hole, situated at 8~kpc from Earth \citep{1993ARA&A..31..345R} spans an angle of 10 microarcsec on the sky \citep{2008JPhCS.131a2055D}. If the quasars observed at $z=2$ would have similar linear sizes, the aparent size of the luminous part of the QSO would be many orders of magnitude below the 1 microarcsec level. Therefore the aparent size would be significantly smaller than the corresponding Einstein radius of a solar mass lens.
-The magnitude differences between the Einstein angle and the aparrent size of the bright part of the QSO motivates the introduction in the first part of the paper of simplified models for     
-calculating the lightcurves of QSO magnification events. The simplified models are introduced in the theory section of the present paper. The theory (II) section of the present article starts with an introduction to the basic microlensing theory in which we present the general microlensing equation followed by the concept of magnification. We underline that for the particular case of micro gravitational lensing,
-the images are not resolved and thus the magnifications of each images contribute to a total magnification. 
-Furthermore, the concept of critical curves and caustics are introduced. Afterwards we focus on a particular catastrophe, namely the fold. 
-We choose to study events related to the previously mentioned singularity since the magnification events caused by the crossing of such boundaries are most probable. A quick inspection of figure \ref{fig:magnification_map} by the reader should motivate the previous statement. 
-In continuation we introduce the commonly used result involving the magnification of a point-like source near a fold singularity. 
-Namely that the magnification is approximately linear outside the caustic and decreases from infinity with the square root of the distance to the boundary when inside the caustic.  
-In the last section of the theory (II) we present the general equations for estimating the flux received from an extended source near a fold. 
-The only elements required to compute the flux as a function of time are the two dimensional brightness function of the object and the magnification of a point-like source. 
-One of the core assumptions made when developing the simple models is that the Einstein angle is orders of magnitude greater than the apparent size of the source. 
-Due to this assumption one can imagine the caustic as an infinite wall to be crossed by the source as presented in \ref{fig:infinite_fold}. 
-The consequence of the limit is that the information regarding the profiles of the source along any direction parallel to the boundary value is reduced to the corresponding integral value. 
-The effect allows the introduction of a one dimensional flux function, which is the two dimensional flux integrated along the axis parallel to the boundary. 
-The one dimensional profile contains exhaustively all the information that can be extracted  from the lens generated light-curve \\
-
-
-In the third section we introduce the three source profiles used in our models and simulations. We start with two commonly used and simple sources. Namely the gaussian brightness distribution and the constant intensity disk. In addition we use a geometric crescent-shaped source effectively the same as the one introduced by \citep{2013MNRAS.434..765K} with constant surface brightness. \\ The fourth section contains the results of our simplified models calculations, including the numerical equation for lightcurve calculations and the corresponding plots. 
-In order to facilitate comparison between the lightcurves of the three distinct sources, we constrain the luminosity and half-light radius of all sources to have the same value. 
-Furthermore, towards the end of the section, the microlensing light curves were generated for more complex images of black hole silhouettes. 
-Namely the images of Sgr A* and M87 compiled in the paper \citep{2015MNRAS.446.1973R} and based on simulations presented in \citep{2009MNRAS.394L.126M} article were used as sources.     
-       
-We continue to the second part of the paper, where we have advanced the level of complexity of the amplification map. Using the Wambsganss gravitational lensing code \citep{1990LNP...360..186W} a realistic magnification map is generated. The numerical method, hierarchical tree structure and backwards raytracing, underlying the microlensing code is treated in section five. Aside from a basic review of the physical and numerical principles of the code, the description of its generalization from disk shaped source images to crescent ones can be found in the Microlensing code and magnification map as well. Furthermore, the mass distribution in the lens plane, chosen to produce the magnification map used in this analysis, is introduced and motivated.   
-
-In section \ref{sec:fitting}, we carried out a likelihood analysis for the parametrisation of the different source shapes and study the degeneracies involved amongst them. To do so, we mocked the datasets corresponding to each source shape and contaminate them with different noise components. Finally we run MCMC to explore the parameter space of the source shape and some nuisance parameters. The motivation of this part is to explore the possibility if using a simple toy model is it possible to differentiate between symmetric and asymmetric sources based on maximum likelihood analysis. 
-
-
-Finally, in the Discussion (VII) section, the main results of the current work and their implications are discussed. 

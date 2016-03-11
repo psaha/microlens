@@ -67,7 +67,11 @@ is even smaller.
 \begin{figure}
 \centering
 \includegraphics[width=0.9\hsize]{figures/IRIS567_path.eps}
-\caption{\label{fig:magnification_map} Magnification map used in the second part of the presented work. The white line marks the trajectory of the center of the sources for which the lightcurves presented in figure 12 are generated.}
+\caption{\label{fig:magnification_map} Magnification map used later in
+  this paper (Section~\ref{sec:fitting}). The white line marks the
+  trajectory of the center of the sources for which the lightcurves
+  presented in figure 12 are generated.  Note that this represents an
+  atypically simple region of any realistic magnification map.}
 \end{figure}
 
 
@@ -134,7 +138,7 @@ all the information about the source shape and brightness that can be contained 
 In other words, if two sources with different $S_{2D}$ have the same $S_{1D}$ they cannot be distinguished by studying their lightcurves.
  
  
-\section{Models for extended sources}
+\section{Models for extended sources}\label{sec:source-models}
 
 In the present study we are analysing three types of sources with different surface brightness: 
 \begin{enumerate}
@@ -261,12 +265,11 @@ S_0^C &=  \frac{4S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{0}^{r_{1/2}} \left[
 \end{figure}
 
 
+\section{Lightcurves of the extended sources during fold crossing}\label{sec:fold-crossing}
 
-
-
-\section{Lightcurves of the extended sources during fold crossing}
-
-Using equation \ref{eqn:ft} and the one-dimensional flux function presented in the previous section one can compute numerically the lightcurves of the three extented sources for the simplified 
+Using equation \ref{eqn:ft} and the one-dimensional flux function
+presented in the previous section one can compute numerically the
+lightcurves of the three extented sources for the simplified
 infinite-wall-caustics model.
 
 \subsection{Lightcurve of the gaussian source}
@@ -420,27 +423,5 @@ disc is comparable to the value of the radius of the bright one then the positio
  are strikingly different. In case the crescent reaches the caustic with the bright region first, the peak magnification
  happens when the dark region reaches the caustic and it is characterized by a sharp variation in magnification growth,
 In the opposite case the peak appears before the end of the bright disc reaches the caustic and shape is smoother. \\
-
-
-\subsection{Microlensing a simulated image of M87}
-
-\begin{figure}
-\centering
-        \includegraphics[width = 0.48\textwidth]{figures/M87_image.eps}
-\caption{\label{fig:M87_image} The simulated image of M87's black hole sillouette obtained by \citep{2012MNRAS.421.1517D} from a GRMHD simulation presented in \citep{2009MNRAS.394L.126M}. The color bar is linear and scaled to reach value 1 for the maximum brightness. Points p2 and p3, mark the start and end of the equivalent dark disk and are associated to the moment of their overlap with the caustic t2 and t3.}
-\end{figure}
-
-
-\cite{2012MNRAS.421.1517D} have created a radiative image of M87 based on the GRMHD simulations presented in \citep{2009MNRAS.394L.126M}. The respective image, reproduced in figure \ref{fig:M87_image}, has been projected to a 1D profile associated to the perpendicular direction to a fold caustic approaching the image from the right. The projection is presented in the left panel of figure 10. The amplification values of the flux of light corresponding to a microlensing event are presented in the right panel of figure 10. In general the behaviour of the lightcurve is similar to the geometric crescent source with the caveat that the outer regions surrounding the luminous parts of the image have non-zero flux and thus are more extended than the simplified source model.
-
-\begin{figure}
-\centering
-	\includegraphics[width = 0.48\textwidth]{figures/M87_shape.eps}
-        \includegraphics[width = 0.48\textwidth]{figures/M87_lc.eps}
-\caption{\label{fig:M87_plots} The one dimensional profile obtained from the numerical integration along the ordonata axis of the source image (figure 9) is presented in the left subplot. The corresponding lightcurve associated to the 1D profile is presented in the right subplot. The points p2 and p3 mark the start and end of the equivalent dark disk and are associated to the moments of their overlap with the caustic: t2 and t3.}
-\end{figure}
-
-
-
 
 
