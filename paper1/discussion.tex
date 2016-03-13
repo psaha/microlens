@@ -1,5 +1,5 @@
 \section{Discussion}
-[Mihai's contribution]\\
+
 In the current paper we simulate and study the resulting microlensing lightcurves of geometric crescent-shaped sources 
 and compare them with the microlensing lightcurves of other simple mathematically describable source profiles. 
 In order to mimic the behaviour of the flux of light from the source in the proximity of a fold caustic we make use of the simple approximation described in equation (5). 
@@ -37,22 +37,14 @@ the microlensed lightcurve, as can be seen in figures 5, 6 and 7. Moreover, the 
 
 With the different source profiles and their corresponding lightcurves studied we can change our point of view of the system to that of an observer. The observer would basically detect only the lightcurve of such as source. As described in section 4.3 (Lightcurve of a crescent shaped source) the timing of the onset and offset of the previously described periods can be used to estimate the values of the radii and one of the displacement parameters when assuming a geometric crescent. All quantities can be estimated in terms of the relative velocity of the source in a direction perpendicular to the caustic.\\
 
-The previously mentioned abstract parameters can be related to physical quantities specific to the central region of a quasar. Thus the luminous region would correspond to the bright accretion disc that surrounds the black hole. The later's gravity would cause a shadow in the bright region limited by the extent of the event horizon of the black hole. Therefore the radius of the bright disk would provide an estimate of the size of the accretion disk and the radius of the dark disc would provide and estimate of the Schwarzschild radius of the black hole. Moreover a value of the Schwarzschild radius 
-can be used to estimate the mass of the black hole $M \approx \frac{\Delta t_{dark}  v_p c^2}{2G}$. In the previous 
+The previously mentioned abstract parameters can be related to physical quantities specific to the central region of a quasar. Thus the luminous region would correspond to the bright accretion disc that surrounds the black hole. The later's gravity would cause a shadow in the bright region limited by the extent of the event horizon of the black hole. \textbf{Therefore the radius of the bright disk would provide an estimate of the size of the accretion disk and the radius of the dark disc would provide and estimate of the gravitationally magnified Schwarzschild radius of the black hole $R_{S}^{magnified} = \Delta t_{dark}*v_p$. By $R_{S}^{magnified}$ we refer to the apparent Schwarzschild radius which is larger than the real value at large distances due to the black hole's own gravity.  Moreover the gravitationally magnified value of the Schwarzschild radius is a monotonic function of the black hole's mass. Therefore it 
+can be used to estimate the mass of the black hole if it was not rotating.} In the previous 
 expression the $\Delta t_{dark}$ denotes the period of overlap between the black hole shadow and fold caustic. 
 $v_p$ denotes the component of the relative velocity of the source and fold which is perpendicular to the caustic.  
 The respective velocity is an unknown, though it can be constrained on a case by case basis to an order of magnitude or even better. This would require the 
 study of the dynamics of the stellar structure which contains the gravitational lens. A better estimate of the relative velocity would facilitate a better estimate of the effective non-rotating black hole mass associated to the black hole shadow.  
 
-
-Furthermore, a simulated image of M87 presented in \citep{2012MNRAS.421.1517D} (figure 9) has been microlensed. On the resulting lightcurve the instances corresponding to the start and end of the black hole shadow and caustic overlap were distinguishable as can be seen in figure 10.
-    
-The parameters whose values cannot be determined due to the loss of information from the directions parallel to the 
-caustic could be obtained in the eventuality in which the same source crosses multiple caustics that are not parallel. 
-Multiple crossing of caustics can reveal details of the one dimensional flux profile corresponding to multiple distinct 
-directions which would allow the reconstruction of the two dimensional profile analogous to the process through which an image of a CT scan is obtained.  
-
-In case of a high quality lightcurve with insignificant noise and measurement errors, the parameters can be obtained 
+\textbf{In case of a high quality lightcurve with insignificant noise and measurement errors, the parameters can be obtained 
 by simply identifying the characteristic instances of time without making use of the actual values of the magnification
  map. If the effect of the errors and the noise distorts the magnification time function enough so that the 
 characteristic epochs are not identifiable with the characteristic periods still visible, the boundaries of the periods 
@@ -68,11 +60,14 @@ the microlensing lightcurve.  As a first step in the procedure, one should first
 If either the value of the $\chi^2$ or the number of rejected datapoints is large then the next step is to change the assumed source model to 
 an uniform disc and redo the fitting. Finally if the uniform disc assumption is rejected as well then the fitting should be done with a 
 crescent source model assumption. If at each of the three steps the data rejects the model then the source cannot be approximated by any of the three models. 
-Otherwise if at one of the steps the data does not reject the model then the respective model is a good approximation.   
+Otherwise if at one of the steps the data does not reject the model then the respective model is a good approximation.   }
 
+\textbf{Furthermore, a simulated image of M87 presented in \citep{2012MNRAS.421.1517D} (figure 9) has been microlensed. On the resulting lightcurve the instances corresponding to the start and end of the black hole shadow and caustic overlap were distinguishable as can be seen in figure 10.}
+    
+The parameters whose values cannot be determined due to the loss of information from the directions parallel to the 
+caustic could be obtained in the eventuality in which the same source crosses multiple caustics that are not parallel. 
+Multiple crossing of caustics can reveal details of the one dimensional flux profile corresponding to multiple distinct 
+directions which would allow the reconstruction of the two dimensional profile analogous to the process through which an image of a CT scan is obtained.  
 
-[Contributions from the authors]\\
-P.S. provided the original idea and plan for the research project as well as multiple contributions to the analysis. M.T. simulated and studied the microlensing 
-lightcurves for the different source profiles discussed for clean data and approximated fold magnification amplification. J.W. provided the training and the
-numerical code used by M. R. to create the magnification map and corresponding lighcurves used in the MCMC analysis, analysis that was performed by 
-I. M. in the last part of the presented work. 
+ 
+
