@@ -1,9 +1,4 @@
 all:
-	latex msdiff
-	bibtex msdiff
-	latex msdiff
-	latex msdiff
-	dvipdfm msdiff
 	latex ms
 	bibtex ms
 	latex ms
