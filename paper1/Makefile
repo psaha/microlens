@@ -4,6 +4,11 @@ all:
 	latex msdiff
 	latex msdiff
 	dvipdfm msdiff
+	latex ms
+	bibtex ms
+	latex ms
+	latex ms
+	dvipdfm ms
 
 clean:
 	rm -f *.log *.aux *.dvi *.blg *~
