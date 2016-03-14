@@ -1,11 +1,81 @@
-\section{Model fitting and likelihood analysis}\label{sec:fitting}
+\section{Fitting mock data}\label{sec:numerics}
 
-In this section we simulate the fitting of source models to
-lightcurves in the presence of random and systematic errors.  We
-generate mock data for three source models --- a crescent, a uniform
+Having used the simple model of an ideal fold to gain insight, we now
+move to the numerical computation of microlensing light curves with
+realistic mass distributions, and then fit source models to
+lightcurves in the presence of random and systematic errors.
+
+First we generate microlensing magnification maps using the
+microlensing code by \cite{1999A&A...346L...5W}.  We then generate
+mock light curves for three source models --- a crescent, a uniform
 disc and a Gaussian disc --- and then fit each mock light curve to all
 three source models. Parameter fitting and marginalising was done by
 Markov-chain Monte Carlo (MCMC).
+
+\subsection{Numerical microlensing magnification maps}
+
+The code uses a ray-shooting technique to compute the gravitational
+lensing effect of a mass distribution consisting of (a)~a smooth
+component and (b)~a random distribution of point masses representing
+stars.  The ray shooting maps a grid of $\vec\theta$ to $\vec\beta$
+using the lens equation (\ref{eqn:lens}).  That is, the rays are shot
+from the observer back to the source.
+
+For the computation of the individual deflection angles
+$\vec\alpha(\vec\theta)$ a heirarchical or tree method is used.  The
+positions of all lensing masses are put into a grid of $\vec\theta$.
+Each grid cell is subdivided into four smaller squares recursively
+until every cell contains only one mass.  Nearby masses are added
+individually, while distance masses are clumped into larger grid cells
+whose net contribution is approximated by its first few multipole
+moments.  Scaled units are used, with the constant pre-factor in the
+deflection angle (\ref{eqn:alpha}) separated out.
+
+The result of ray shooting is a pixel map on the $\vec\beta$ plane of
+the number of lightrays which arrive at the source plane from a
+particular observer.  This intermediate result is effectively a
+magnification map on the source plane.  Once the map is created, the
+lightcurve can be obtained by specifying the transit path of the
+source across the map.  At each point on this transit line, the code
+computes equation (\ref{eqn:ft2d}) convolving the brightness
+distribution of the source with the magnification pattern of the map.
+In real life, not only are both lens and source moving, but the lens
+lens configuration, and with it the magnification pattern, is also
+changing with time.  While the first subtlety is taken care of by a
+coordinate transformation in this analysis, for the second one the
+lens configuration is assumed to be constant in time.
+
+When generating the magnification map depicted in
+Figure~\ref{fig:magnification_map}, which is used in our analysis
+below, only two point masses were included.  This was done in order to
+have clean fold caustics.  For the computation of the actual
+lightcurve, the code was modified to also allow for crescent shaped
+images specified through the parameter set $R_p,R_n,a,b$. Here $R_p$
+denotes the outer radius of the crescent and $R_n$ the inner one. The
+orientation of the source image with respect to the magnification map
+is specified by the parameters $a$ and $b$ as the shift of the center
+of the inner disk from the center of the outer disk in $x$- and
+$y$-direction respectively. In the original version of the code,
+gaussian and disk shaped images where already implemented. Those are
+completely characterised by the single parameter $R_p$. The values of
+the parameters are specified in pixel units corresponding to the
+magnification map. Further one needs to specify the start and end
+point coordinates of the path, which the center of the source image
+follows through the magnification map (see the depiction in figure
+\ref{fig:magnification_map}). Hence the points along this path are
+specified through the number of timesteps for which the computation of
+the brightness is to be carried out. Those points correspond to the
+actual measurement of the brightness of an object in the observational
+case. For each timestep the two-dimensional convolution of equation
+\ref{eqn:ft2d} is carried out numerically for the position of the
+source on the magnification map.
+
+For the purpose of this analysis it was desirable to mimic the
+analytical behaviour of a simple fold as much as possible, for
+comparing the numerical result with the analytical one, therefore the
+path of the source was chosen, so that it intersects the border of the
+caustic perpendicularly, and on a point where the border is a fold
+caustic.
 
 \begin{figure}
 \centering
@@ -17,7 +87,7 @@ Markov-chain Monte Carlo (MCMC).
   uniform-disk (blue) and Gaussian disk (green).}
 \end{figure}
 
-\subsection{Mock datasets}
+\subsection{Mock light curves}
 
 Mock light curves were generated by running a source across a
 caustic, specifically along the line from point C to point B in
@@ -30,9 +100,11 @@ unavoidable systematic error of not knowing the caustic exactly.
 
 The crescent source had parameters (as explained in
 \S\ref{subsec:crescent}) $R_p$ and $R_n$ being the radii of the outer
-and inner circles and $(\alpha,\beta)$ being the coordinates of the inner
-circle with respect to the centre of the outer circle in the coordinate system associated with the image in Figure 1 and not associated 
-with the caustic surface as defined in the previous sections.  The parameter values were
+and inner circles and $(\alpha,\beta)$ being the coordinates of the
+inner circle with respect to the centre of the outer circle in the
+coordinate system associated with the image in Figure 1 and not
+associated with the caustic surface as defined in the previous
+sections.  The parameter values were
 \begin{equation}
    (R_p, R_n, \alpha, \beta) = (50.0, 30.0, 15.0, 10.0).
 \label{eqn:cp}
@@ -52,7 +124,7 @@ points regularly spaced in time, with Gaussian noise at the level of
 summary data point with a signal to noise of
 $10\times\sqrt{250}\simeq160$.
 
-\subsection{Fitting to mock data sets}
+\subsection{Model fitting and likelihood analysis}
 
 Each of the three mock light curves was fitted to all three models.
 We denote the nine possible cases with letter pairs, with the first
