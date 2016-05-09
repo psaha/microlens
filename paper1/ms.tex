@@ -11,7 +11,7 @@ Irshad Mohammed,$^{1,2,3}$
 Manuel Rabold,$^{1,2}$
 Prasenjit Saha,$^{1,2}$  
 \newauthor
-and Joachim Wambsganss$^4$\\
+and Joachim Wambsganss$^{1,4}$\\
 $^1${Physik-Institut, University of Zurich, Winterthurerstrasse 190,
   8057 Zurich, Switzerland} \\
 $^2${Institute for Computational Science, University of Zurich,
@@ -27,19 +27,16 @@ $^4${Zentrum f\"ur Astronomie der Universit\"at Heidelberg,
 
 \begin{abstract}
 
-In quasars that have been lensed by galaxies, the point-like images
-sometimes show sharp brightness variations (microlensing).  These
-brightness changes are associated with the innermost region of the
-quasar passing behind a complicated pattern of caustics due to the
-stars in the lensing galaxy.  In this paper, we study whether the
-universal properties of optical caustics could enable extraction of
-shape information about the central engine of quasars.  We present a
-toy model with a crescent-shaped source crossing a fold caustic.  The
-silhouette of a black hole over an accretion disk tends to produce
-roughly crescent sources.  When a crescent source crosses a fold
-caustic, the resulting light curve is noticeably different from the
-case of a disc or Gaussian source.  The crescent parameters, apart
-from one degeneracy, can be recovered.
+In quasars which are lensed by galaxies, the point-like images sometimes show sharp and uncorrelated brightness 
+variations (microlensing). These brightness changes are associated with the innermost region of the quasar passing 
+through a complicated pattern of caustics produced by the stars in the lensing galaxy. In this paper, we study 
+whether the universal properties of optical caustics could enable extraction of shape information about the central 
+engine of quasars. We present a toy model with a crescent-shaped source crossing a fold caustic. The silhouette 
+of a black hole over an accretion disk tends to produce roughly crescent sources. When a crescent-shaped source 
+crosses a fold caustic, the resulting light curve is noticeably different from the case of a circular luminosity 
+profile or Gaussian source. With good enough monitoring data, the crescent parameters, apart from one degeneracy, 
+can be recovered.
+
 \end{abstract}
 
 
@@ -261,7 +258,7 @@ is even smaller.
 \caption{\label{fig:magnification_map} Magnification map used later in
   this paper (Section~\ref{sec:numerics}). The white line marks the
   trajectory of the center of the sources for which the lightcurves
-  presented in figure 12 are generated.  Note that this represents an
+  presented in figure 11 are generated.  Note that this represents an
   atypically simple region of any realistic magnification map.}
 \end{figure}
 
@@ -616,17 +613,13 @@ In the opposite case, the peak appears before the end of the bright disc reaches
 
 \subsection{Microlensing a simulated image of M87}
 
-\begin{figure}
-\centering
-        \includegraphics[width = 0.48\textwidth]{figures/M87_image.eps}
-\caption{\label{fig:M87_image} The simulated image of M87's black hole
-  silhouette obtained by \citep{2012MNRAS.421.1517D} from a GRMHD
-  simulation presented in \citep{2009MNRAS.394L.126M}. The color bar
-  is linear and scaled to reach value 1 for the maximum
-  brightness.}
-\end{figure}
 
-\cite{2012MNRAS.421.1517D} have created a radiative image of M87 based on the GRMHD simulations presented in \citep{2009MNRAS.394L.126M}. The respective image reproduced in figure \ref{fig:M87_image}, has been projected to a 1D profile associated to the perpendicular direction to a fold caustic approaching the image from the right. The projection is presented in the left panel of figure 10. The amplification values of the flux of light corresponding to a microlensing event are presented in the right panel of figure 10. In general, the behaviour of the lightcurve is similar to the geometric crescent source with the caveat that the outer regions surrounding the luminous parts of the image have non-zero flux and thus are more extended than the simplified source model.
+\cite{2012MNRAS.421.1517D} have created a radiative image of M87 based on the GRMHD simulations presented in \citep{2009MNRAS.394L.126M}. 
+The top right-most image in figure 5 of \cite{2012MNRAS.421.1517D} has been projected to a 1D profile associated to the perpendicular 
+direction to a fold caustic approaching the image from the right. The projection is presented in the upper panel of figure 9. 
+The amplification values of the flux of light corresponding to a microlensing event are presented in the lower panel of figure 9. 
+In general, the behaviour of the lightcurve is similar to the geometric crescent source with the caveat that the outer regions 
+surrounding the luminous parts of the image have non-zero flux and thus are more extended than the simplified source model.
 
 \begin{figure}
 \centering
@@ -634,8 +627,8 @@ In the opposite case, the peak appears before the end of the bright disc reaches
         \includegraphics[width = 0.48\textwidth]{figures/M87_lc.eps}
 \caption{\label{fig:M87_plots} The one dimensional profile obtained
   from the numerical integration along the ordonata axis of the source
-  image (figure 9) is presented in the lower panel. The corresponding
-  lightcurve associated to the 1D profile is presented in the right
+  image is presented in the upper panel. The corresponding
+  lightcurve associated to the 1D profile is presented in the lower
   panel. The points p2 and p3 mark the start and end of the equivalent
   dark disk and are associated with the moments of their overlap with
   the caustic: t2 and t3.}
@@ -649,7 +642,8 @@ realistic mass distributions, and then fit source models to
 lightcurves in the presence of random and systematic errors.
 
 First we generate microlensing magnification maps using the
-microlensing code by \cite{1999A&A...346L...5W}.  We then generate
+microlensing code created by Joachim Wambsgans (\citep{1999A&A...346L...5W, 1990PhDT.......180W, 1999JCoAM.109..353W}, 
+\cite{1990PhDT.......180W}, \cite{1999JCoAM.109..353W}). We then generate
 mock light curves for three source models --- a crescent, a uniform
 disc and a Gaussian disc --- and then fit each mock light curve to all
 three source models. Parameter fitting and marginalising was done by
@@ -903,7 +897,7 @@ model; if the data reject that model, try a uniform disc; if the
 uniform disc is also rejected by the data, try a crescent model.  Our
 numerical experiments indicate --- assuming one of the three sources
 models are correct --- that the reduced $\chi^2$ would unmask the
-correct model, \textbf{and its parameters would be correctly recovered}.
+correct model, and its parameters would be correctly recovered.
 
 \section{Discussion}\label{sec:discussion}
 
@@ -949,8 +943,8 @@ described periods can be used to estimate the values of the radii and one of the
 All quantities can be estimated in terms of the relative velocity of the source in a direction perpendicular to the caustic.
 
 
-Furthermore, a simulated image of M87 presented in \citep{2012MNRAS.421.1517D} (figure 9) has been microlensed. On the resulting lightcurve the instances 
-corresponding to the start and end of the black hole shadow and caustic overlap were distinguishable as can be seen in figure 10.
+Furthermore, a simulated image of M87 presented in \citep{2012MNRAS.421.1517D} has been microlensed (figure 9). On the resulting lightcurve the instances 
+corresponding to the start and end of the black hole shadow and caustic overlap were distinguishable.
     
 
 In the case of a high-quality lightcurve with insignificant noise and measurement errors, the parameters can be obtained 
@@ -1004,13 +998,17 @@ Multiple crossing of caustics can reveal details of the one-dimensional flux pro
 directions which would allow the reconstruction of the two-dimensional profile analogous to the process through which an image of a CT scan is obtained.  
 
 \textit{Author contributions}\\
-Prasenjit Saha provided the original idea and plan for the research project as well as multiple contributions to the analysis and manuscript preparation. Mihai Tomozeiu simulated and studied the ideal behaviour of the microlensing lightcurves for the different source profiles discussed and prepared the manuscript.
- Joachim Wambsganss provided the numerical code used by Manuel Rabold to create the magnification map and corresponding lightcurves 
-used in the MCMC analysis performed by Irshad Mohammed in the last part of the presented work. Both Manuel Rabold and Irshad Mohammed had large contributions in writing the "Fitting Mock Data" section.
+Prasenjit Saha provided the original idea and plan for the research project as well as multiple contributions to the analysis 
+and manuscript preparation. Mihai Tomozeiu simulated and studied the ideal behaviour of the microlensing lightcurves for the 
+different source profiles discussed and prepared the manuscript.
+Joachim Wambsganss contributed to the research planning and provided the numerical code used by Manuel Rabold to create 
+the magnification map and corresponding lightcurves used in the MCMC analysis performed by Irshad Mohammed in the last 
+part of the presented work. Both Manuel Rabold and Irshad Mohammed had large contributions in writing the "Fitting Mock Data" section.
 
 \section{Acknowledgement}
 IM is supported by Fermi Research Alliance, LLC under Contract No. De-AC02-07CH11359 with the United States Department of Energy.
-
+J.W. would like to acknowledge and thank the Pauli Center for Theoretical Studies of ETH Zurich and University of Zurich for 
+generous support during the Schrödinger visiting professorship in 2013.
 
 \bibliographystyle{mn2e}
 
