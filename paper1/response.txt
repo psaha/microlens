@@ -1,0 +1,226 @@
+| This paper is an original contribution to the study of AGN structure
+| using the microlensing technique. The paper investigates whether the
+| shape of the luminosity profile can be extracted from caustic crossing
+| events, using a toy model for the source profile. The idea is surely
+| worth investigating and the proposed "toy model" for the source
+| profile is scientifically relevant and has not been (to my knowledge)
+| investigated before in the context of microlensing. Despite of this,
+| the paper suffers from a number of flaws that I have listed in my
+| report and would like to be corrected prior to considering the paper
+| for acceptance. In addition to a rather poor presentation of the
+| scientific context and of the results, the paper does not demonstrate
+| that "black hole silhouette" could potentially be detected
+| observationally as claimed. Although the paper shows that microlensing
+| lightcurves of a crescent profile differs significantly from the one
+| of a Gaussian profile, it does not show that it does for physically
+| realistic astrophysical situations. Indeed, sizes are at best quoted
+| in pixels when "realistic situations" are presented. This is
+| irrelevant and could easily be adapted by considering the sizes in
+| units of Einstein radii and conversions to parsecs assuming some
+| stellar mass and source/lens redshifts.
+| 
+| My comments are listed below:
+| 
+| 1) The introduction is particularly unsatisfactory. It is rather a
+| long abstract/an extended summary rather than an introduction.
+| 
+| An introduction should :
+| 
+| - Provide a proper overview of the scientific context.
+| 
+| - Explain what are the key questions (here: what is the key scientific
+|   question / main scientific advance on quasar structure that could be
+|   answered with the proposed technique ?)
+| 
+| - Give an overview of the methodology used to answer this question
+|   (here: what is microlensing ? How will it be used to probe quasar
+|   structure ?)
+| 
+| - Put the scientific question in perspective, with proper references
+|   to pioneering and related works on the topic. Describe what is new
+|   with the present work ?
+| 
+| - Provide an overview of the structure of the paper (not a detailed
+|   summary of each section).
+| 
+| Unfortunately, I don't think that the current introduction fulfills
+| those requirements. In my opinion, the introduction needs to be
+| completely re-written with these requirements in mind. This would
+| broaden the potential audience of the paper.
+| 
+| In addition, the introduction suffers from imprecision that make
+| several sentences a bit misleading.
+|
+| For example:
+| 
+| * p1: l48-49: "If a jet is oriented towards the earth, a quasar is
+|   observed". This is correct for a blazar, but quasars by themselves
+|   do not always show a clear jet pointed towards the observer. Many
+|   quasars are not radio loud and do not show clear sign of a jet at
+|   radio wavelengths.
+| 
+| * The results of the Horizon Event Telescope (Doeleman et al.)
+|   motivate the use of a crescent model, but those results are at radio
+|   wavelengths where microlensing has currently not been
+|   observationally confirmed (Except Koopmans and de Bruyn 2000 who
+|   provide supporting evidence for it). The introduction should clarify
+|   the domain of usability of the profiles proposed in this work (and
+|   in particular crescent profiles, which is also qualitatively similar
+|   to relativistic Accretion disc at UV-wavelengths).
+| 
+| * p1: l47 (col 2): A sentence like "This motivated K & D to use a
+|   simple geometric crescent model to fit the data" lacks a bit of
+|   specificity. "data" is a too generic word.
+| 
+| * magnification maps is a concept that is not clearly introduced to
+|   the reader. Also, AGN should be introduced as an acronym l. 42., p1.
+| 
+| * In addition to Abolmasov and Shakura 2012, a reference to the work
+|   of Mediavilla et al. 2015 (ApJ, 814, L26), that studies microlensing
+|   of an accretion disc down to the event horizon, is needed. X-ray
+|   microlensing studies of AGN and chromatic microlensing studies of
+|   the AD may also be worth to quote to give an overview of the
+|   insights provided by microlensing on the regions in the direct
+|   vicinity of the central supermassive black hole.
+| 
+| * The motivation for resolving the inner structure of quasar may be
+|   expanded.
+| 
+| * The introduction should also make clear, for the reader unfamiliar
+|   with quasar microlensing, that the microlensing events considered
+|   here happen in systems that are already multiply imaged and that
+|   microlensing affects one of those "macro images". This may avoid
+|   confusion is galactic-like microlensing / microlensing by single
+|   isolated star.
+| 
+| 
+| 2) I am rather unhappy with Section 5: I do not understand the
+| methodology that consists in fitting (exclusively) "wrong models" to
+| the data to assess for systematic errors. On the other hand, this
+| section, that mimics an observational approach, is totally odd
+| regarding the units used as everything is carried out in pixels while
+| natural units of microlensing is Einstein radius. The size ratio
+| between the Einstein radius and the source size is necessary to figure
+| out if the considered source have realistic sizes (i.e. are not
+| smaller than e.g. the event horizon of a quasar !). There is other
+| unsatisfactory aspects with that section, such as the comparison of
+| models using R_p instead of half-light radii (that are, according to
+| Mortonson 2005, the most relevant quantity for comparing microlensing
+| lightcurves produced for different luminosity profiles and is also
+| adequately used in Fig. 4), and the rejection of models based on
+| $\Delta \chi^2$ without quoting the latter (i.e. $\Delta \chi^2$). My
+| suggestion is to scale the simulations to physical quantities (units
+| of Einstein radii are fine provided equivalence to parsecs/Schwarchild
+| radii/light-years are provided) and simply compare the same track
+| using the various source profiles. It may then be straightforward to
+| estimate based on which signal to noise ratio (assuming some sampling
+| and number of data points) tracks can be distinguished. This would
+| make, I think, a reasonable proof of concepts that such models can
+| realistically be probed with good data sets. Ideally, the authors
+| could provide their simulated map and image of their source profile
+| such that other scientists can match those simulations to various
+| observational conditions. These are only suggestions and the authors
+| should feel free to implement an alternative scheme when "fitting mock
+| data".
+| 
+| Other comments/remarks regarding Sect. 5: 
+| 
+| - It is pretty difficult to visualize what are the "\alpha, and \beta"
+|   parameters. Either those can be transformed into parameters
+|   introduced earlier by rotating the magnification map, either, a
+|   figure should clarify their meaning.
+| 
+| - What is the size of the pattern used ? Is the smooth matter fraction
+|   different from 0 ?
+| 
+| - How is carried out the convolution ? Using FFT ?
+| 
+| - Is the procedure described in the one but last paragraph of
+|   Sect. 5.1. equivalent to convolving the magnification map with an
+|   image of the source and extracting a track along direction "A-C-B"
+|   (using possibly some interpolation scheme) ?
+| 
+| - How are the 2\sigma contours in Fig. 12 estimated ? It would not be
+|   too difficult to add 1 and 3 sigma contours to the figure.
+| 
+| - Fitted lightcurves are shorter than the number of observational
+|   points. How is this possible ?
+| 
+| 3) Various remarks:
+| 
+| - p3, col2: "due to other reasons" is too vague. The authors could say
+|   that $\mu_0$ is a magnification zeorpoint and explain in a separate
+|   sentence what this means.
+| 
+| - Figure 9: What is h_w ?
+| 
+| - p6, l60, second column: The second paragraph of Sect. 4.3 (There are
+|   ...) should start by referring to Figure 8 before explaining the
+|   content of the figure.
+| 
+| - The figure ordering does not always follow the reference in the
+|   text. The authors should carefully check that figures appear in
+|   logical order and are adequately referenced in the text.
+| 
+| - Sect. 4.3 introduce a time dependence of the parameter a (i.e. a(t))
+|   but this possibility has not been mentioned before. In addition, a
+|   is considered to be fixed afterwards. The authors should explain,
+|   when introducing a(t) that this quantity is in principle variable if
+|   the black hole rotates (I guess) but is assumed to be constant over
+|   time in the remaining of the paper.
+| 
+| - $v_p (t-t_0)$ is a bit misleading notation as v_p could be
+|   understood as the velocity being a function of time. The authors
+|   should use $v_p \times (t-t_0)$
+| 
+| - Sect. 6: "in particular, in case ... times": I do not understand
+|   from which part of the paper those statements are deduced (links to
+|   figures/section should appear explicitly). Overall, the first
+|   paragraph of Sect. 6 is not easy to follow.
+| 
+| - p12, l59-60+: "as magnification maps, we have used a complex ...":
+|   This is a misleading as the analysis of Sect. 5 is still for a
+|   rather simple of caustics produced by 2 stars of equal mass, and for
+|   a lightcurve at a very specific location of the caustic pattern.
+| 
+| - p12, l45, col2: "This would ... lens": This sentence is wrong
+|   because the net transverse velocity associated to a microlensing
+|   event has two components: one is indeed associated to the stellar
+|   dynamics within the galaxy, but the other one (which can contribute
+|   similarly) is the net bulk motion of the lens with respect to the
+|   CMB dipole.
+| 
+| - The discussion (sect 6) may need substantial changes (and be
+|   shortened / structured) once Sect 5 is modified according to my
+|   suggestions.
+| 
+| 4) There is a relatively large number of typos left. The authors
+| should carefully check for typos prior to submission !
+| 
+| Non exhaustive list:
+| * p2, L60: Figures ??-9
+| * p3, L31: mages (instead of images)
+| * p4, L46 (col2): is th total -> is the total
+| * p5, Eq. 21 and Eq. 22: $dp$ : d should be in roman font
+| * Eq. 27: $p_sm$ and $p_sp$ were used and now the equation uses
+|   $p_s$. This is misleading.
+| * p7: $S_{1D}$ instead of $S_1D$
+| * p8: figure 5 (a-var) : remove (a-var)
+| * p9, l37: lens lens 
+| * p13: Shrdinger -> Schroedinger. 
+| 
+| 5) General cosmetic remarks:
+| 
+| - The font used for legends is too small.
+| 
+| - References to figures should be performed early in the text, prior
+|   to discussing them ... not after.
+| 
+| - Figure 3: The indices of the various quantities are too small. The
+|   figure should also show the axis system p \& q.
+| 
+| - Lightcurves should show "magnitudes" in ordinate (not "ordonata", cf
+|   caption of Fig. 9) with "arbitrary zeropoint".
+| 
+| - The source profile used in Sect. 4.4 should be reproduced in the
+|   paper if possible.
