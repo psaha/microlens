@@ -1,0 +1,11 @@
+nohup ./cc.o > log_cc &
+nohup ./cd.o > log_cd &
+nohup ./cg.o > log_cg &
+
+nohup ./dc.o > log_dc &
+nohup ./dd.o > log_dd &
+nohup ./dg.o > log_dg &
+
+nohup ./gc.o > log_gc &
+nohup ./gd.o > log_gd &
+nohup ./gg.o > log_gg &

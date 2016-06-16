@@ -1,0 +1,11 @@
+cp fort.78611 CC.chain;
+cp fort.78612 CD.chain;
+cp fort.78613 CG.chain;
+
+cp fort.78621 DC.chain;
+cp fort.78622 DD.chain;
+cp fort.78623 DG.chain;
+
+cp fort.78631 GC.chain;
+cp fort.78632 GD.chain;
+cp fort.78633 GG.chain;
