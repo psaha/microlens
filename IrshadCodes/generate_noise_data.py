@@ -2,7 +2,7 @@ import numpy
 import pylab
 
 sigma = 0.1
-filename = 'data_crescent_reverse_corr.txt'
+filename = 'data_crescent_corr.txt'
 x = numpy.genfromtxt(filename)
 noise = numpy.random.normal(0,sigma,len(x[:,1])) * x[:,1]
 
