@@ -1,13 +1,13 @@
 program main
   implicit none
-  real parameters(7)
-  parameters(1) = 150.0
-  parameters(2) = 0.25
-  parameters(3) = 0.2
-  parameters(4) = -0.1
-  parameters(5) = 0.0
-  parameters(6) = 0.0
-  parameters(7) = 1.0
+  real parameters(10)
+  parameters(1) = 0.0
+  parameters(2) = 0.0
+  parameters(3) = 1.0
+  parameters(4) = 15.0
+  parameters(5) = 0.7
+  parameters(6) = 0.4
+  parameters(7) = 0.1
   call mockdata(parameters)
 end
 
@@ -33,9 +33,9 @@ subroutine lnprob(parameters,likelihood)
   integer n,nsim,nobs,nlo,nhi
   real parameters(7),simul(1000),observ(1000),error,norm,chis,likelihood
   common /data/ observ,nobs,error
-  nlo = nint(parameters(5))
-  nhi = nint(parameters(6))
-  norm = parameters(7)
+  nlo = nint(parameters(1))
+  nhi = nint(parameters(2))
+  norm = parameters(3)
   call lightcurve(parameters,simul,nsim)
   chis = 0
   do n=1,nobs
@@ -61,13 +61,12 @@ subroutine lightcurve(parameters,simul,nsim)
   character*80 fileread
   parameter(ipoints = 505)
   real  x(ipoints),y(ipoints), xx(ipoints),yy(ipoints)
-  real sigma,Rp,Rn,a,b,norm,parameters(7),likelihood
+  real Rp,Rn,a,b,norm,parameters(7),likelihood
   
-  Rp = parameters(1)
-  Rn = parameters(2)*Rp
-  a = parameters(3)*Rp
-  b = parameters(4)*Rp
-  sigma = Rp/3
+  Rp = parameters(4)
+  Rn = parameters(5)*Rp
+  a = parameters(6)*Rp
+  b = parameters(7)*Rp
 !*
 !* name of magnification pattern to be read:
 !*
@@ -141,8 +140,8 @@ subroutine lightcurve(parameters,simul,nsim)
 	    yyy = y_start + i0*sinalpha
 	    ixxx = nint(xxx)
 	    iyyy = nint(yyy)
-	    if(ixxx.ge.1+3*sigma.and.ixxx.le.ipix-3*sigma.and.iyyy.ge.1+3*sigma.and.iyyy.le.ipix-3*sigma)then
-                call source(sigma,Rn,a,b,xxx,yyy,value,pix_real,ipix)
+	    if(ixxx.ge.1+2*Rp.and.ixxx.le.ipix-2*Rp.and.iyyy.ge.1+2*Rp.and.iyyy.le.ipix-2*Rp)then
+                call source(Rp,Rn,a,b,xxx,yyy,value,pix_real,ipix)
 		nsim = nsim+1
                 simul(nsim) = value
             endif
@@ -159,11 +158,7 @@ subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
 	iy    =  nint(yyy)
 	delx  =  xxx - dble(ix)
 	dely  =  yyy - dble(iy)
-!*
-!*
-!* 030711: isig3 = RADIUS  for source!!!
-!*
-!*
+!        write(*,*) ix,iy
 	isig3 = 3*isig 
 	isig3sq = isig3**2
  	sigsq2  = 2.0*dble(isig)**2
@@ -174,8 +169,8 @@ subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
 
 	      normfac = 0.0
 	      do i1 = -isig3,isig3
-		if(ix.eq.test)then
-!		write(*,*)
+		if(iy.eq.test)then
+		write(*,*)
 		endif 
 	         do i2 = -isig3,isig3
 !*
@@ -210,15 +205,15 @@ subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
 	              value = value + dum*factorex
 	              normfac = normfac + factorex
 		    endif
-		if(ix.eq.test)then
-!		write(*,"(i1)",advance="no")  int(factorex)
+		if(iy.eq.test)then
+		write(*,"(i1)",advance="no")  int(factorex)
 		endif
 	         enddo
 	      enddo
-	if(ix.eq.test)then
-!		write(*,*)
-!		write(*,*)
-!		write(*,*) 'Area in pixels =', pixarea
+	if(iy.eq.test)then
+		write(*,*)
+		write(*,*)
+		write(*,*) 'Area in pixels =', pixarea
 	endif 
 	
 !*
