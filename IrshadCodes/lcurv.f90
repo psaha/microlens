@@ -1,13 +1,13 @@
 program main
   implicit none
   real parameters(7)
-  parameters(2) = 10.0
-  parameters(3) = 15.0
-  parameters(4) = -10.0
+  parameters(1) = 150.0
+  parameters(2) = 0.25
+  parameters(3) = 0.2
+  parameters(4) = -0.1
   parameters(5) = 0.0
   parameters(6) = 0.0
   parameters(7) = 1.0
-  parameters(1) = 30.0
   call mockdata(parameters)
 end
 
@@ -25,13 +25,16 @@ subroutine mockdata(parameters)
   end do
   close(26)
   write(*,*) 'Done',nobs
-end
+  return
+end subroutine
 
 subroutine lnprob(parameters,likelihood)
   implicit none
-  integer n,nsim,nobs
+  integer n,nsim,nobs,nlo,nhi
   real parameters(7),simul(1000),observ(1000),error,norm,chis,likelihood
   common /data/ observ,nobs,error
+  nlo = nint(parameters(5))
+  nhi = nint(parameters(6))
   norm = parameters(7)
   call lightcurve(parameters,simul,nsim)
   chis = 0
@@ -39,64 +42,42 @@ subroutine lnprob(parameters,likelihood)
      chis = chis + ((norm*simul(n)/observ(n)-1)/error)**2
   end do
   likelihood = -chis/2
-end
+  return
+end subroutine
 
 
 subroutine lightcurve(parameters,simul,nsim)
-      implicit none
-      integer nsim
-      real simul(1000)
-      integer ipix,ipix1,pixlow,i1,i2,iii,ix1,ix2,iy1,iy2,i0,ixxx,iyyy, &
-	pixmax,ilines,iamp,ipoints,ix,iy,i,fit,ending
-      parameter(ipix=1000,ipix1=500)
-      integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
-      double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha,x0, &
-	y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
-      real  pix_real(ipix,ipix)
-      real data_crescent1(4*ipix),data_crescent2(4*ipix)
-      character*3 string3
-      character*1 string1
-      character*80 fileread
-      parameter(ipoints = 505)
-      real  x(ipoints),y(ipoints), xx(ipoints),yy(ipoints)
-      real error, chi2,sigma,Rn,a,b,norm,parameters(7),likelihood
-
-sigma = parameters(1)
-Rn = parameters(2)
-a = parameters(3)
-b = parameters(4)
-fit = parameters(5)
-ending = parameters(6)
-norm = parameters(7)
-error = 0.1
-
+  implicit none
+  integer nsim
+  real simul(1000)
+  integer ipix,ipix1,pixlow,i1,i2,iii,i0,ixxx,iyyy, &
+       pixmax,ilines,iamp,ipoints,ix,iy,i
+  parameter(ipix=1000,ipix1=500)
+  integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
+  double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha,x0, &
+       y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
+  real  pix_real(ipix,ipix)
+  real data_crescent1(4*ipix),data_crescent2(4*ipix)
+  character*80 fileread
+  parameter(ipoints = 505)
+  real  x(ipoints),y(ipoints), xx(ipoints),yy(ipoints)
+  real sigma,Rp,Rn,a,b,norm,parameters(7),likelihood
+  
+  Rp = parameters(1)
+  Rn = parameters(2)*Rp
+  a = parameters(3)*Rp
+  b = parameters(4)*Rp
+  sigma = Rp/3
 !*
 !* name of magnification pattern to be read:
 !*
       fileread  = 'IRIS567'
 !*
-	ix1 = 490
-	iy1 = 900
-	ix2 = 550
-	iy2 = 10
+      x1 = 490.
+      y1 = 900.
+      x2 = 550.
+      y2 = 10.
 
-!*
-!* source size in pixels (Gaussian width)
-!*
-!       sigma = 20.
-!       Rn=15.
-!       a=5.
-!       b=0.
-!       error = 0.05
-!*
-         x1 = dble(ix1)
-         x2 = dble(ix2)
-         y1 = dble(iy1)
-         y2 = dble(iy2)
-!*
-!*
-!*
-!*
       write(*,*)' reading from file ',fileread
       open(3,file=fileread ,status='old',form='unformatted')
       read(3) pix,pix1
@@ -124,7 +105,6 @@ error = 0.1
 !*
          y0  =   y1 + (1.0d0-x1)*slope
          x0  =   x1 + (1.0d0-y1)/slope
-!*
 !*
 !*
          if(x0.ge.1.0d0.and.x0.le.dble(ipix))then
@@ -155,8 +135,6 @@ error = 0.1
 !*
 !* AND   determine light curve:
 !*
-
-
 	nsim=0
         do i0 = -2*ipix,2*ipix
 	    xxx = x_start + i0*cosalpha
@@ -164,28 +142,18 @@ error = 0.1
 	    ixxx = nint(xxx)
 	    iyyy = nint(yyy)
 	    if(ixxx.ge.1+3*sigma.and.ixxx.le.ipix-3*sigma.and.iyyy.ge.1+3*sigma.and.iyyy.le.ipix-3*sigma)then
-!*
-!*
-                call gaussCr(sigma,Rn,a,b,xxx,yyy,value,pix_real,ipix)
+                call source(sigma,Rn,a,b,xxx,yyy,value,pix_real,ipix)
 		nsim = nsim+1
                 simul(nsim) = value
             endif
 	 enddo
 !	write(*,*) 'chi2',chi2
-      end subroutine
-!******
-!***********************************************************************
-!******
-      subroutine gaussCr(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
-!*
-!* modified: disk of constant brightness 
-!*
-!*
-!*
-      integer i1,i2,isig3sq,ix,iy,ipix,test,pixarea	
-      real      pix(ipix,ipix),isig,iRn,ia,ib
-      double precision normfac,factorex,sigsq2,value,dum,xxx,yyy,delx,dely,dist2,dist3
-!*
+end subroutine
+
+subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
+  integer i1,i2,isig3sq,ix,iy,ipix,test,pixarea	
+  real      pix(ipix,ipix),isig,iRn,ia,ib
+  double precision normfac,factorex,sigsq2,value,dum,xxx,yyy,delx,dely,dist2,dist3
 	
 	ix    =  nint(xxx)
 	iy    =  nint(yyy)
@@ -197,19 +165,13 @@ error = 0.1
 !*
 !*
 	isig3 = 3*isig 
-!c	isig3 =   isig 
 	isig3sq = isig3**2
  	sigsq2  = 2.0*dble(isig)**2
 	value = 0.0
 	
 	test=300
 	pixarea=0	
-!c	 write(*,*)' in GAUSS'
-!cwrite(*,*)' isig,ix,iy,value = ',isig,ix,iy,value 
-!c	pause
-!*
-!* Gaussian source profiles with width  isig:
-!*
+
 	      normfac = 0.0
 	      do i1 = -isig3,isig3
 		if(ix.eq.test)then
@@ -222,8 +184,6 @@ error = 0.1
 !*
 	            dist2 = (i1-delx)**2  + (i2-dely)**2
 		    dist3 = (i1-delx-ia)**2  + (i2-dely-ib)**2	
-!*
-!*
 !*
 	            if(isig.ne.0)then
   	               if(dist2.le.dble(isig*isig))then	
@@ -259,12 +219,12 @@ error = 0.1
 !		write(*,*)
 !		write(*,*)
 !		write(*,*) 'Area in pixels =', pixarea
-		endif 
+	endif 
 	
 !*
- 	      value = value/normfac 
+ 	value = value/normfac 
 		
 	return
-	end subroutine
+end subroutine
 
 
