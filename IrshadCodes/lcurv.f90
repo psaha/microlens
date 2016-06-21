@@ -1,6 +1,20 @@
 program main
   implicit none
-  real parameters(10)
+  integer ipix,ipix1
+  parameter(ipix=1000,ipix1=500)
+  integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
+  common /magmap/ pix,pix1
+  character*80 fileread
+  real parameters(7)
+
+
+      fileread  = 'IRIS567'
+      write(*,*)' reading from file ',fileread
+      open(3,file=fileread ,status='old',form='unformatted')
+      read(3) pix,pix1
+      close(3)
+      write(*,*) '                    ...  done'
+
   parameters(1) = 0.0
   parameters(2) = 0.0
   parameters(3) = 1.0
@@ -9,6 +23,7 @@ program main
   parameters(6) = 0.4
   parameters(7) = 0.1
   call mockdata(parameters)
+
 end
 
 subroutine mockdata(parameters)
@@ -48,12 +63,14 @@ end subroutine
 
 subroutine lightcurve(parameters,simul,nsim)
   implicit none
-  integer nsim
-  real simul(1000)
-  integer ipix,ipix1,pixlow,i1,i2,iii,i0,ixxx,iyyy, &
-       pixmax,ilines,iamp,ipoints,ix,iy,i
+  integer ipix,ipix1
   parameter(ipix=1000,ipix1=500)
   integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
+  common /magmap/ pix,pix1
+  integer nsim
+  real simul(1000)
+  integer pixlow,i1,i2,iii,i0,ixxx,iyyy, &
+       pixmax,ilines,iamp,ipoints,ix,iy,i
   double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha,x0, &
        y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
   real  pix_real(ipix,ipix)
@@ -77,18 +94,18 @@ subroutine lightcurve(parameters,simul,nsim)
       x2 = 550.
       y2 = 10.
 
-      write(*,*)' reading from file ',fileread
-      open(3,file=fileread ,status='old',form='unformatted')
-      read(3) pix,pix1
-      close(3)
-      write(*,*) '                    ...  done'
+!      write(*,*)' reading from file ',fileread
+!      open(3,file=fileread ,status='old',form='unformatted')
+!      read(3) pix,pix1
+!      close(3)
+!      write(*,*) '                    ...  done'
 !*
 !* determine maximum of magnification pattern:
 !*
        pixmax = 0
        do i1 = 1,ipix
           do i2 = 1,ipix
-	      pixmax = max(pixmax,pix(i2,i1))
+	     pixmax = max(pixmax,pix(i2,i1))
 	     pix_real(i2,i1) = 10**(0.4*(float(pix(i2,i1)-1024)/256.0))
           enddo
        enddo
