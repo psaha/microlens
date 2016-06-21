@@ -1,9 +1,10 @@
 program main
   implicit none
-  integer ipix,ipix1
+  integer ipix,ipix1,pixmax,i1,i2
   parameter(ipix=1000,ipix1=500)
   integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
-  common /magmap/ pix,pix1
+  real pix_real(ipix,ipix)
+  common /magmap/ pix_real
   character*80 fileread
   real parameters(7)
 
@@ -14,6 +15,14 @@ program main
       read(3) pix,pix1
       close(3)
       write(*,*) '                    ...  done'
+       pixmax = 0
+       do i1 = 1,ipix
+          do i2 = 1,ipix
+	     pixmax = max(pixmax,pix(i2,i1))
+	     pix_real(i2,i1) = 10**(0.4*(float(pix(i2,i1)-1024)/256.0))
+          enddo
+       enddo
+
 
   parameters(1) = 0.0
   parameters(2) = 0.0
@@ -63,17 +72,17 @@ end subroutine
 
 subroutine lightcurve(parameters,simul,nsim)
   implicit none
-  integer ipix,ipix1
-  parameter(ipix=1000,ipix1=500)
-  integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
-  common /magmap/ pix,pix1
+  integer ipix
+  parameter(ipix=1000)
+!  integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
+  real  pix_real(ipix,ipix)
+  common /magmap/ pix_real
   integer nsim
   real simul(1000)
   integer pixlow,i1,i2,iii,i0,ixxx,iyyy, &
-       pixmax,ilines,iamp,ipoints,ix,iy,i
+       ilines,iamp,ipoints,ix,iy,i
   double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha,x0, &
        y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
-  real  pix_real(ipix,ipix)
   real data_crescent1(4*ipix),data_crescent2(4*ipix)
   character*80 fileread
   parameter(ipoints = 505)
@@ -100,15 +109,7 @@ subroutine lightcurve(parameters,simul,nsim)
 !      close(3)
 !      write(*,*) '                    ...  done'
 !*
-!* determine maximum of magnification pattern:
-!*
-       pixmax = 0
-       do i1 = 1,ipix
-          do i2 = 1,ipix
-	     pixmax = max(pixmax,pix(i2,i1))
-	     pix_real(i2,i1) = 10**(0.4*(float(pix(i2,i1)-1024)/256.0))
-          enddo
-       enddo
+
 !*
 !* determine points of line:
 !*
@@ -157,7 +158,7 @@ subroutine lightcurve(parameters,simul,nsim)
 	    yyy = y_start + i0*sinalpha
 	    ixxx = nint(xxx)
 	    iyyy = nint(yyy)
-	    if(ixxx.ge.1+2*Rp.and.ixxx.le.ipix-2*Rp.and.iyyy.ge.1+2*Rp.and.iyyy.le.ipix-2*Rp)then
+	    if(ixxx.ge.1+3*Rp.and.ixxx.le.ipix-3*Rp.and.iyyy.ge.1+3*Rp.and.iyyy.le.ipix-3*Rp)then
                 call source(Rp,Rn,a,b,xxx,yyy,value,pix_real,ipix)
 		nsim = nsim+1
                 simul(nsim) = value
