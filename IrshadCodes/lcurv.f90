@@ -1,39 +1,43 @@
 program main
   implicit none
+  real parameters(7)
+
+  call readmap
+  parameters(1) = 0.0
+  parameters(2) = 0.0
+  parameters(3) = 1.0
+  parameters(4) = 20.0
+  parameters(5) = 0.7
+  parameters(6) = 0.5
+  parameters(7) = 0.5
+  call mockdata(parameters)
+
+end
+
+subroutine readmap
+  implicit none
+  character*80 fileread
   integer ipix,ipix1,pixmax,i1,i2
   parameter(ipix=1000,ipix1=500)
   integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
   real pix_real(ipix,ipix)
   common /magmap/ pix_real
-  character*80 fileread
-  real parameters(7)
+  fileread = 'IRIS567'
+  write(*,*) ' reading from file ',fileread
+  open(3,file=fileread ,status='old',form='unformatted')
+  read(3) pix,pix1
+  close(3)
+  write(*,*) '                    ...  done'
+  pixmax = 0
+  do i1 = 1,ipix
+     do i2 = 1,ipix
+        pixmax = max(pixmax,pix(i2,i1))
+        pix_real(i2,i1) = 10**(0.4*(float(pix(i2,i1)-1024)/256.0))
+     enddo
+  enddo
+return
+end subroutine
 
-
-      fileread  = 'IRIS567'
-      write(*,*)' reading from file ',fileread
-      open(3,file=fileread ,status='old',form='unformatted')
-      read(3) pix,pix1
-      close(3)
-      write(*,*) '                    ...  done'
-       pixmax = 0
-       do i1 = 1,ipix
-          do i2 = 1,ipix
-	     pixmax = max(pixmax,pix(i2,i1))
-	     pix_real(i2,i1) = 10**(0.4*(float(pix(i2,i1)-1024)/256.0))
-          enddo
-       enddo
-
-
-  parameters(1) = 0.0
-  parameters(2) = 0.0
-  parameters(3) = 1.0
-  parameters(4) = 15.0
-  parameters(5) = 0.7
-  parameters(6) = 0.4
-  parameters(7) = 0.1
-  call mockdata(parameters)
-
-end
 
 subroutine mockdata(parameters)
   implicit none
@@ -42,7 +46,7 @@ subroutine mockdata(parameters)
   common /data/ observ,nobs,error
   call lightcurve(parameters,simul,nsim)
   nobs = nsim
-  open(26,file='data_simul.txt')
+  open(26,file='data_simul.txt',status='unknown')
   do n=1,nobs
     observ(n) = simul(n)
     write(26,*) n,observ(n)
@@ -74,8 +78,7 @@ subroutine lightcurve(parameters,simul,nsim)
   implicit none
   integer ipix
   parameter(ipix=1000)
-!  integer*2 pix(ipix,ipix),pix1(ipix1,ipix1)
-  real  pix_real(ipix,ipix)
+  real pix_real(ipix,ipix)
   common /magmap/ pix_real
   integer nsim
   real simul(1000)
@@ -84,7 +87,6 @@ subroutine lightcurve(parameters,simul,nsim)
   double precision aaa,x1,x2,y1,y2,slope, alpha,sinalpha,cosalpha,x0, &
        y0,x_end,y_end,x_start,y_start,x_diff,y_diff,xxx,yyy,value
   real data_crescent1(4*ipix),data_crescent2(4*ipix)
-  character*80 fileread
   parameter(ipoints = 505)
   real  x(ipoints),y(ipoints), xx(ipoints),yy(ipoints)
   real Rp,Rn,a,b,norm,parameters(7),likelihood
@@ -93,24 +95,12 @@ subroutine lightcurve(parameters,simul,nsim)
   Rn = parameters(5)*Rp
   a = parameters(6)*Rp
   b = parameters(7)*Rp
-!*
-!* name of magnification pattern to be read:
-!*
-      fileread  = 'IRIS567'
-!*
+
       x1 = 490.
       y1 = 900.
       x2 = 550.
       y2 = 10.
 
-!      write(*,*)' reading from file ',fileread
-!      open(3,file=fileread ,status='old',form='unformatted')
-!      read(3) pix,pix1
-!      close(3)
-!      write(*,*) '                    ...  done'
-!*
-
-!*
 !* determine points of line:
 !*
          slope = (y2-y1)/(x2-x1)
