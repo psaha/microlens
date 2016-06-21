@@ -1,16 +1,18 @@
 program main
   implicit none
   real parameters(7)
+  real likelihood
 
   call readmap
-  parameters(1) = 0.0
-  parameters(2) = 0.0
+  parameters(1) = 100.0
+  parameters(2) = 400.0
   parameters(3) = 1.0
   parameters(4) = 20.0
   parameters(5) = 0.7
   parameters(6) = 0.5
   parameters(7) = 0.5
   call mockdata(parameters)
+  call lnprob(parameters,likelihood)
 
 end
 
@@ -41,34 +43,43 @@ end subroutine
 
 subroutine mockdata(parameters)
   implicit none
-  integer n,nsim,nobs
+  integer n,nsim,nobs,nlo,nhi
   real parameters(7),simul(1000),observ(1000),error
   common /data/ observ,nobs,error
   call lightcurve(parameters,simul,nsim)
-  nobs = nsim
+  nlo = nint(parameters(1))
+  nhi = nint(parameters(2))
+  error = 0.1
+  nobs = 0
   open(26,file='data_simul.txt',status='unknown')
-  do n=1,nobs
-    observ(n) = simul(n)
-    write(26,*) n,observ(n)
+  do n=1,nsim
+    if (n.ge.nlo.and.n.le.nhi) then
+       nobs = nobs + 1
+       observ(nobs) = simul(n)
+    end if
+    write(26,*) nobs,observ(nobs)
   end do
   close(26)
-  write(*,*) 'Done',nobs
+  write(*,*) 'Generated mock data',nobs
   return
 end subroutine
 
 subroutine lnprob(parameters,likelihood)
   implicit none
-  integer n,nsim,nobs,nlo,nhi
+  integer n,m,nsim,nobs,nlo,nhi
   real parameters(7),simul(1000),observ(1000),error,norm,chis,likelihood
   common /data/ observ,nobs,error
-  nlo = nint(parameters(1))
-  nhi = nint(parameters(2))
+  nlo = nint(parameters(1)) + 30
+  nhi = nint(parameters(2)) - 20
   norm = parameters(3)
   call lightcurve(parameters,simul,nsim)
   chis = 0
   do n=1,nobs
-     chis = chis + ((norm*simul(n)/observ(n)-1)/error)**2
+     m = nint(nlo + (n-1.)/(nobs-1)*(nhi-nlo))
+!     write(*,*) n,m
+     chis = chis + ((norm*simul(m)/observ(n)-1)/error)**2
   end do
+  write(*,*) 'chis ',chis
   likelihood = -chis/2
   return
 end subroutine
@@ -172,7 +183,7 @@ subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
  	sigsq2  = 2.0*dble(isig)**2
 	value = 0.0
 	
-	test=300
+	test=-300
 	pixarea=0	
 
 	      normfac = 0.0
