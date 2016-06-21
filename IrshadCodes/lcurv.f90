@@ -12,8 +12,10 @@ program main
   parameters(6) = 0.5
   parameters(7) = 0.5
   call mockdata(parameters)
-  call lnprob(parameters,likelihood)
-
+  parameters(1) = 190.
+  parameters(2) = 260.
+  call runmodel(parameters)
+  call writecurves
 end
 
 subroutine readmap
@@ -44,46 +46,56 @@ end subroutine
 subroutine mockdata(parameters)
   implicit none
   integer n,nsim,nobs,nlo,nhi
-  real parameters(7),simul(1000),observ(1000),error
-  common /data/ observ,nobs,error
+  real parameters(7),simul(1000)
+  real observ(1000),error,predic(1000)
+  common /data/ nobs,observ,error,predic
   call lightcurve(parameters,simul,nsim)
   nlo = nint(parameters(1))
   nhi = nint(parameters(2))
   error = 0.1
   nobs = 0
-  open(26,file='data_simul.txt',status='unknown')
+  open(26,file='fullcurve.txt',status='unknown')
   do n=1,nsim
     if (n.ge.nlo.and.n.le.nhi) then
        nobs = nobs + 1
        observ(nobs) = simul(n)
     end if
-    write(26,*) nobs,observ(nobs)
+    write(26,*) n,simul(n)
   end do
   close(26)
   write(*,*) 'Generated mock data',nobs
   return
 end subroutine
 
-subroutine lnprob(parameters,likelihood)
+subroutine runmodel(parameters)
   implicit none
   integer n,m,nsim,nobs,nlo,nhi
-  real parameters(7),simul(1000),observ(1000),error,norm,chis,likelihood
-  common /data/ observ,nobs,error
-  nlo = nint(parameters(1)) + 30
-  nhi = nint(parameters(2)) - 20
+  real parameters(7),simul(1000),norm
+  real observ(1000),error,predic(1000)
+  common /data/ nobs,observ,error,predic
+  nlo = nint(parameters(1))
+  nhi = nint(parameters(2))
   norm = parameters(3)
   call lightcurve(parameters,simul,nsim)
-  chis = 0
   do n=1,nobs
      m = nint(nlo + (n-1.)/(nobs-1)*(nhi-nlo))
-!     write(*,*) n,m
-     chis = chis + ((norm*simul(m)/observ(n)-1)/error)**2
+     predic(n) = norm*simul(m)
   end do
-  write(*,*) 'chis ',chis
-  likelihood = -chis/2
   return
 end subroutine
 
+subroutine writecurves
+  implicit none
+  integer nobs,n
+  real observ(1000),error,predic(1000)
+  common /data/ nobs,observ,error,predic
+  open(26,file='curves.txt',status='unknown')
+  do n=1,nobs
+    write(26,*) n,predic(n),observ(n),error*observ(n)
+  end do
+  close(26)
+  return
+end subroutine
 
 subroutine lightcurve(parameters,simul,nsim)
   implicit none
