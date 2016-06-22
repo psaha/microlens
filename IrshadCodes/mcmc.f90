@@ -75,7 +75,7 @@ parametersold(6) = 0.0
 parametersold(7) = 1.0
 
 !	call for likelihood with parametersold as posteriorold
-	call lightcurveCrescent(parametersold,posteriorold)
+	call prob(parametersold,posteriorold)
 !	posteriorold = (posteriorold)
 !===============================================================================
 !===============================================================================
@@ -101,7 +101,7 @@ do i=1,numberofsteps
 		posteriornew = -1d35
 	else
 !	call for likelihood with parametersnew as posteriornew
-	call lightcurveCrescent(parametersnew,posteriornew)
+	call prob(parametersnew,posteriornew)
 !	posteriornew = exp(posteriornew)
 	end if
 

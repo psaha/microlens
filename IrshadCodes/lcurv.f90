@@ -12,8 +12,8 @@ program main
   parameters(6) = 0.5
   parameters(7) = 0.5
   call mockdata(parameters)
-  parameters(1) = 190.
-  parameters(2) = 260.
+  parameters(1) = 800.
+  parameters(2) = 500.
   call runmodel(parameters)
   call writecurves
 end
@@ -94,6 +94,23 @@ subroutine writecurves
     write(26,*) n,predic(n),observ(n),error*observ(n)
   end do
   close(26)
+  return
+end subroutine
+
+subroutine prob(parameters,likelihood)
+  implicit none
+  integer nobs,n
+  real parameters(7),likelihood,chis
+  real observ(1000),error,predic(1000)
+  common /data/ nobs,observ,error,predic
+  open(26,file='curves.txt',status='unknown')
+  call runmodel(parameters)
+  chis = 0.
+  do n=1,nobs
+    chis = chis + ((observ(n)/predic(n)-1)/error)**2
+  end do
+  close(26)
+  likelihood = -chis/2
   return
 end subroutine
 

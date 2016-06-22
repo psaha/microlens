@@ -4,25 +4,44 @@ import metrop
 
 lcurv.readmap()
 
-p = [100,400,1,20,.7,.5,.5]
+t1 = (1,100,200)
+t2 = (300,400,500)
+norm = (0.5,1,2.5)
+rp = (10,20,30)
+rn = (0,0.7,1)
+a = (-1,.5,1)
+b = (-1,.5,1)
+
+p = []
+lo = []
+hi = []
+for f in (t1,t2,norm,rp,rn,a,b):
+    p.append(f[1])
+    lo.append(f[0])
+    hi.append(f[2])
 p = numpy.array(p)
-errlev = 0.05
-
-lcurv.mockdata(p,errlev)
-
-lo = [0,300,0.5,10,0,-1,-1]
-hi = [200,500,2.5,30,1,1,1]
 lo = numpy.array(lo)
 hi = numpy.array(hi)
+
+errlev = 0.05
 
 print(lo)
 print(p)
 print(hi)
 
+lcurv.mockdata(p,errlev)
+
 def lnprob(p):
     return -lcurv.chis(p)/2
 
-rawlnp,ans = metrop.samp(lnprob, lo, hi, 100)
+
+lo[0],hi[0] = 750,850
+lo[1],hi[1] = 450,550
+p[0] = 780
+p[1] = 480
+
+
+rawlnp,ans = metrop.samp(lnprob, lo, hi, 200)
 
 q = 0*p
 for k in range(7):
@@ -30,6 +49,7 @@ for k in range(7):
     q[k] = numpy.median(ans[:,k])
 print(q)
 print('chi^2 = ',lcurv.chis(q))
+
 
 lcurv.writecurves(p)
 
