@@ -1,6 +1,7 @@
 import numpy
 import lcurv
 import metrop
+from scipy.optimize import leastsq
 
 lcurv.readmap()
 
@@ -31,16 +32,19 @@ print(hi)
 
 lcurv.mockdata(p,errlev)
 
-def lnprob(p):
-    return -lcurv.chis(p)/2
-
+def resid(p):
+    nobs,x = lcurv.residuals(p)
+    x = x[:nobs] 
+    return x
 
 lo[0],hi[0] = 750,850
 lo[1],hi[1] = 450,550
 p[0] = 780
 p[1] = 480
 
+q = leastsq(resid,p)[0]
 
+"""
 rawlnp,ans = metrop.samp(lnprob, lo, hi, 200)
 
 q = 0*p
@@ -49,9 +53,10 @@ for k in range(7):
     q[k] = numpy.median(ans[:,k])
 print(q)
 print('chi^2 = ',lcurv.chis(q))
-
-
-lcurv.writecurves(p)
+"""
+print(q)
+print(lcurv.chis(q))
+lcurv.writecurves(q)
 
 
 

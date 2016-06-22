@@ -95,6 +95,22 @@ function chis(parameters)
   return
 end function
 
+function residuals(parameters,resid)
+  implicit none
+  integer residuals
+  real parameters(7),resid(1000)
+!f2py intent(out) resid
+  integer nobs,n
+  real observ(1000),error,predic(1000)
+  common /data/ nobs,observ,error,predic
+  call runmodel(parameters)
+  do n=1,nobs
+     resid(n) = (predic(n)/observ(n)-1)/error
+  end do
+  residuals = nobs
+  return
+end function
+
 subroutine lightcurve(parameters,simul,nsim)
   implicit none
   integer ipix
