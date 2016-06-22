@@ -55,7 +55,10 @@ print(q)
 print('chi^2 = ',lcurv.chis(q))
 """
 print(q)
-print(lcurv.chis(q))
+# print(lcurv.chis(q))
+q=p
+p[0]=700
+p[1]=600
 lcurv.writecurves(q)
 
 
