@@ -218,41 +218,30 @@ subroutine source(isig,iRn,ia,ib,xxx,yyy,value,pix,ipix)
 		write(*,*)
 		endif 
 	         do i2 = -isig3,isig3
-!*
-!c	            dist2 = i2*i2 + i1*i1
-!c		    dist3 = (i2-ib)*(i2-ib) + (i1-ia)*(i1-ia)		
-!*
+                    factorex = 0.0
+
 	            dist2 = (i1-delx)**2  + (i2-dely)**2
-		    dist3 = (i1-delx-ia)**2  + (i2-dely-ib)**2	
-!*
-	            if(isig.ne.0)then
-  	               if(dist2.le.dble(isig*isig))then	
-!c 	                   factorex = exp(-dist2/sigsq2)
-	                   factorex = 1.0
-			  if(dist3.le.dble(iRn**2))then
-			   factorex = 0.0
-			  endif
-			  if(factorex.eq.1.0)then
-			   pixarea=pixarea+1
-			  endif	 		
-			   dum = pix(ix+i1,iy+i2)
-	                   value = value + dum*factorex
-	                   normfac = normfac + factorex	
-			elseif(dist2.ge.dble(isig**2))then 	
-			   factorex = 0.0		
-                           dum = pix(ix+i1,iy+i2)
-	                   value = value + dum*factorex
-	                   normfac = normfac + factorex
-	               endif
-	            elseif(isig.eq.0)then
-                      factorex = 1.0
-                      dum = pix(ix+i1,iy+i2)
-	              value = value + dum*factorex
-	              normfac = normfac + factorex
+		    dist3 = (i1-delx-ia)**2  + (i2-dely-ib)**2
+
+                    if (iRn.lt.0) then
+                       factorex = exp(-dist2/sigsq2)
+                    else
+         	       if(dist2.le.dble(isig*isig))then	
+	                  factorex = 1.0
+		          if(dist3.le.dble(iRn**2))then
+			      factorex = 0.0
+		          endif
+                       endif
+                    endif
+          	    if (factorex.gt.0.0)then
+		       pixarea=pixarea+1
+		    endif	 		
+                    dum = pix(ix+i1,iy+i2)
+	            value = value + dum*factorex
+	            normfac = normfac + factorex
+		    if(iy.eq.test)then
+		      write(*,"(i1)",advance="no")  int(9.9*factorex)
 		    endif
-		if(iy.eq.test)then
-		write(*,"(i1)",advance="no")  int(factorex)
-		endif
 	         enddo
 	      enddo
 	if(iy.eq.test)then
