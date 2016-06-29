@@ -20,45 +20,34 @@ class run(MCMC):
 
 if __name__=="__main__":
 
-	# Crescent
-	means = np.array([100.0, 400.0, 1.0, 20.0, 0.7, 0.5, 0.5])
-	mins = np.array([750.0, 450.0, 0.5, 1.0, 0.0, -1.0, -1.0])
-	maxs = np.array([850.0, 550.0, 2.5, 100.0, 1.0, 1.0, 1.0])
-	sds = np.array([5, 5, 0.01, 1.4, 2.35, 0.55, 0.55])
-	obj = run(7, means, mins, maxs, sds, 'cc.chain', goodchi2=350.0)
-	obj.MainChain()
+	Rp = 26.25
+	sig = 20/(numpy.log(4))**.5
+	Rn,a,b = 0.4, 0, 0.3
+	t1min,t1,t1max = 100,150,200
+	t2min,t2,t2max = 300,350,400
+	t3min,t3max = 700,800
+	t4min,t4max = 500,600
 
+	fname = 'gg_forward'
 
-	# Crescent forward
-	means = np.array([100.0, 400.0, 1.0, 20.0, 0.7, 0.5, 0.5])
-	mins = np.array([50.0, 350.0, 0.5, 1.0, 0.0, -1.0, -1.0])
-	maxs = np.array([150.0, 450.0, 2.5, 100.0, 1.0, 1.0, 1.0])
-	sds = np.array([5, 5, 0.01, 1.4, 2.35, 0.55, 0.55])
-	obj = run(7, means, mins, maxs, sds, 'cc_forward.chain', goodchi2=350.0)
-	obj.MainChain()
+	if fname[1] == 'c':
+		pars = [t1, t2, 1.0, Rp,  Rn, a, b ]
+	if fname[1] == 'g':
+		pars = [t1, t2, 1.0, sig, -2, 0, 0 ]
+	if fname[0] == 'c':
+		mins = [ t1min, t2min, 0.5,   1,  0, -1, -1]
+		maxs = [ t1max, t2max, 2.5, 100,  1,  1,  1]
+	if fname[0] == 'g':
+		mins = [ t1min, t2min, 0.5,   1, -3, -1, -1]
+		maxs = [ t1max, t2max, 2.5, 100, -1,  1,  1]
+	if fname[-7:] == 'backward':
+		mins[0], mins[1] = t3min, t4min
+		maxs[0], maxs[1] = t3max, t4max
 
-	# Gaussian
-	means = np.array([100.0, 400.0, 1.0, 20.0, -10.0, 0.5, 0.5])
-	mins = np.array([750.0, 450.0, 0.5, 1.0, -20.0, -1.0, -1.0])
-	maxs = np.array([850.0, 550.0, 2.5, 100.0, -5.0, 1.0, 1.0])
-	sds = np.array([5, 5, 0.01, 1.4, 2.35, 0.55, 0.55])
-	obj = run(7, means, mins, maxs, sds, 'gg.chain', goodchi2=350.0)
+	pars = np.array(pars)
+	mins = np.array(mins)
+	maxs = np.array(maxs)
+	sds = np.array([5, 5, 0.01, 1, 0.1, 0.5, 0.5])
+	obj = run(7, means, mins, maxs, sds, fname, goodchi2=250.0)
 	obj.MainChain()
-	
-	# Crescent to Gaussian Data
-	means = np.array([100.0, 400.0, 1.0, 20.0, -10.0, 0.5, 0.5])
-	mins = np.array([750.0, 450.0, 0.5, 1.0, 0.0, -1.0, -1.0])
-	maxs = np.array([850.0, 550.0, 2.5, 100.0, 1.0, 1.0, 1.0])
-	sds = np.array([5, 5, 0.01, 1.4, 2.35, 0.55, 0.55])
-	obj = run(7, means, mins, maxs, sds, 'cg.chain', goodchi2=400.0)
-	obj.MainChain()
-
-	# Gaussian to Crescent Data
-	means = np.array([100.0, 400.0, 1.0, 20.0, 0.7, 0.5, 0.5])
-	mins = np.array([750.0, 450.0, 0.5, 1.0, -20.0, -1.0, -1.0])
-	maxs = np.array([850.0, 550.0, 2.5, 100.0, -5.0, 1.0, 1.0])
-	sds = np.array([5, 5, 0.01, 1.4, 2.35, 0.55, 0.55])
-	obj = run(7, means, mins, maxs, sds, 'gc.chain', goodchi2=400.0)
-	obj.MainChain()
-
 
