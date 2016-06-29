@@ -23,9 +23,9 @@ def Rhalf(Rp,Rn,a,b):
 			return r[i]
 
 Rp = float(argv[1])
-Rn = 0.7*Rp*0
-a = 0.5*Rp
-b = 0.5*Rp
+Rn = 0.4*Rp
+a = 0
+b = 0.3*Rp
 
 print Rhalf(Rp,Rn,a,b)
 
