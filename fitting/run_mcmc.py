@@ -9,7 +9,7 @@ class run(MCMC):
 		"""
 		Instantiates the class by synthetically generating data.
 		"""
-		MCMC.__init__(self, TargetAcceptedPoints=6301, NumberOfParams=NP, Mins=mins, Maxs=maxs, SDs=sds, \
+		MCMC.__init__(self, TargetAcceptedPoints=1000, NumberOfParams=NP, Mins=mins, Maxs=maxs, SDs=sds, \
 			write2file=True, outputfilename=outfile, alpha=0.1, debug=False,\
                                 EstimateCovariance=True, CovNum=100, goodchi2=goodchi2)
 		lcurv.readmap()
@@ -24,17 +24,17 @@ if __name__=="__main__":
 
 	fname = sys.argv[1]
 
-	Rp = 26.25
+	Rp = 39.4
 	sig = 20/(np.log(4))**.5
 	Rn,a,b = 0.4, 0, 0.3
 
-	pars = [150,350]
+	pars = [51,290]
 	if fname[-7:] == 'forward':
-		mins = [100,300]
-		maxs = [200,400]
+		mins = [1,250]
+		maxs = [100,350]
 	elif fname[-8:] == 'backward':
-		mins = [700,500]
-		maxs = [800,600]
+		mins = [700,450]
+		maxs = [800,550]
 	else:
 		print('Filename error')
 		sys.exit()
@@ -58,10 +58,10 @@ if __name__=="__main__":
 	pars = np.array(pars)
 	mins = np.array(mins)
 	maxs = np.array(maxs)
-	sds = np.array([5, 5, 0.01, 1, 0.1, 0.5, 0.5])
+	sds = np.array([5, 5, 0.01, 0.5, 0.1, 0.5, 0.5])
 	print(pars)
 	print(mins)
 	print(maxs)
-	obj = run(7, pars, mins, maxs, sds, fname, goodchi2=250.0)
+	obj = run(7, pars, mins, maxs, sds, fname+'.chain',
+                  errlev=0.04,goodchi2=300.0)
 	obj.MainChain()
-
