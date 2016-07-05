@@ -22,12 +22,12 @@ def Rhalf(Rp,Rn,a,b):
 		if area[i-1] < 0.5*area[-1] and area[i] > 0.5*area[-1]:
 			return r[i]
 
-Rp = float(argv[1])
-Rn = 0.4*Rp
-a = 0
-b = 0.3*Rp
-
-print Rhalf(Rp,Rn,a,b)
+if __name__=="__main__":
+	Rp = float(argv[1])
+	Rn = 0.4*Rp
+	a = 0
+	b = 0.3*Rp
+	print(Rhalf(Rp,Rn,a,b))
 
 
 
