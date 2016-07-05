@@ -61,31 +61,34 @@ def plotcurves(p):
         m.append(float(s[1]))
         b.append(float(s[2]))
         db.append(float(s[3]))
-    p.plot(t,m)
     p.axis([0,6,0,7])
     p.errorbar(t,b,yerr=db,linestyle='none',color='gray')
+    p.plot(t,m,color='black')
     p.set_yticks(np.arange(0,7,2))
     p.set_xlabel('$t [r_{1/2}/v]$')
     p.set_ylabel('magnification')
 
 def plothist(p):
-    p.hist(rh,np.linspace(0.75,1.25,26),weights=wt)
+    p.hist(rh,np.linspace(0.75,1.25,26),weights=wt,
+           histtype='step',lw=2,color='black')
+    p.axis([0.75,1.25,0,0.6])
     p.set_xlabel('inferred:actual $r_{1/2}$')
 
-fig = pl.figure()
 
 mockdata()
 
-#gencurves('cc_forward')
-#gencurves('cc_backward')
-gencurves('gc_forward')
+for fname in ['gc_forward','cc_forward','cc_backward']:
+    gencurves(fname)
 
-p = fig.add_subplot(211)
-plotcurves(p)
+    fig = pl.figure()
+    fig.subplots_adjust(hspace=0.3)
 
-p = fig.add_subplot(212)
-plothist(p)
-p.get_yaxis().set_visible(False)
+    p = fig.add_subplot(211)
+    plotcurves(p)
 
-pl.show()
+    p = fig.add_subplot(212)
+    plothist(p)
+    p.get_yaxis().set_visible(False)
+
+    pl.show()
 
