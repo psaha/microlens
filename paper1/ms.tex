@@ -341,7 +341,7 @@ variant \citep{2013MNRAS.434..765K}.
 
 
 
-\subsection{Rotationally symmetric source with a bivariate gaussian surface brightness distribution}
+\subsection{Rotationally symmetric source with a bivariate gaussian surface brightness distribution}\label{subsec:gaussian}
 
 A symmetric 2D gaussian can be described mathematically as:
 
@@ -637,17 +637,97 @@ surrounding the luminous parts of the image have non-zero flux and thus are more
 \section{Fitting mock data}\label{sec:numerics}
 
 Having used the simple model of an ideal fold to gain insight, we now
-move to the numerical computation of microlensing light curves with
-realistic mass distributions, and then fit source models to
-lightcurves in the presence of random and systematic errors.
+consider the question of whether the characteristics of a crescent
+source could be discerned in real data having noise and systematic
+error as well.  Our method is to generate microlensing lightcurves
+\citep[using the code from][with a small extension to provide the
+  option of crescent sources]
+      {1990PhDT.......180W,1999A&A...346L...5W,1999JCoAM.109..353W}
+      and then fitting these mock lightcurves to source models using
+      Markov-chain Monte Carlo (MCMC).
 
-First we generate microlensing magnification maps using the
-microlensing code created by Joachim Wambsgans (\citep{1999A&A...346L...5W, 1990PhDT.......180W, 1999JCoAM.109..353W}, 
-\cite{1990PhDT.......180W}, \cite{1999JCoAM.109..353W}). We then generate
-mock light curves for three source models --- a crescent, a uniform
-disc and a Gaussian disc --- and then fit each mock light curve to all
-three source models. Parameter fitting and marginalising was done by
-Markov-chain Monte Carlo (MCMC).
+\subsection{Numerical microlensing lightcurves}
+
+The microlensing code uses a ray-shooting technique to compute the
+gravitational lensing effect of a mass distribution consisting of
+(a)~a smooth component and (b)~a random distribution of point masses
+representing stars.  The ray shooting maps a grid of $\vec\theta$ to
+$\vec\beta$ using the lens equation (\ref{eqn:lens}).  That is, the
+rays are shot from the observer back to the source.  For the
+computation of the individual deflection angles
+$\vec\alpha(\vec\theta)$ a hierarchical or tree method is used.  The
+positions of all lensing masses are put into a grid of $\vec\theta$.
+Each grid cell is subdivided into four smaller squares recursively
+until every cell contains only one mass.  Nearby masses are added
+individually while distance masses are clumped into larger grid cells
+whose net contribution is approximated by its first few multipole
+moments.  Scaled units are used, with the constant pre-factor in the
+deflection angle (\ref{eqn:alpha}) separated out.  The result of ray
+shooting is a pixel map on the $\vec\beta$ plane of the number of
+lightrays which arrive at the source plane from a particular observer.
+This intermediate result is effectively a magnification map on the
+source plane.
+
+When generating the magnification map depicted in
+Figure~\ref{fig:magnification_map}, which is used in our analysis
+below, only two point masses were included.  This was done in order to
+have clean fold caustics.  There was no smooth component.
+
+Once the map is created, the lightcurve can be obtained by specifying
+the transit path of the source across the map.  The source is moved
+along the transit line, one pixel at a time, and at each step the
+brightness distribution of the source is convolved
+(equation~\ref{eqn:ft2d}) with the magnification map to give the
+brightness.  In real life, not only are both lens and source moving
+but the lens lens configuration, and with it the magnification
+pattern, is also changing with time.  While the first subtlety is
+taken care of by a coordinate transformation in this analysis, for the
+second one the lens configuration is assumed to be constant in time.
+
+For the purpose of this analysis, it was desirable to mimic the
+analytical behaviour of a simple fold as much as possible, for
+comparing the numerical result with the analytical one, therefore, the
+path of the source was chosen, so that it intersects the border of the
+caustic perpendicularly, and on a point where the border is a fold
+caustic.  We choose the line AC in Figure~\ref{fig:magnification_map}
+and consider its two caustic-crossing segments separately:
+\begin{itemize}
+\item ``path~I'' runs from C to B;
+\item ``path II'' runs from A to B.
+\end{itemize}
+The magnification along paths I and II are very similar, but not
+identical.
+
+We considered two sources, as follows.
+\begin{itemize}
+\item The crescent source (as explained in \S\ref{subsec:crescent})
+  with parameters
+\begin{equation}
+   (R_p, R_n/Rp, a/Rp, b/Rp) = (1.31, 0.4, 0, 0.3)
+\label{eqn:cp}
+\end{equation}
+corresponding to $r_{1/2}=1$.
+\item A Gaussian source (as explained in \S\ref{subsec:crescent}),
+  also with $r_{1/2}=1$.
+\end{itemize}
+Unit length has 30 pixels on the magnification map and 30 points on a
+light curve.
+
+Each lightcurve has 251 points regularly spaced in time, with Gaussian
+noise at the level of 4\% of the current brightness.
+
+Mock data were generated by taking path-I lightcurves for 
+
+Each mock light curve also has three nuisance parameters, namely the
+beginning and end of the event and the brightness normalisation.
+These are to be marginalised out by the MCMC.
+
+
+
+This mimics the unavoidable systematic error of not knowing the
+caustic exactly.
+
+
 
 
 \begin{figure}
@@ -668,119 +748,7 @@ Markov-chain Monte Carlo (MCMC).
 \caption{\label{fig:gc_forward} $\chi^2=344, P=3\times10^{-6}$.}
 \end{figure}
 
-\subsection{Numerical microlensing magnification maps}
-
-The code uses a ray-shooting technique to compute the gravitational
-lensing effect of a mass distribution consisting of (a)~a smooth
-component and (b)~a random distribution of point masses representing
-stars.  The ray shooting maps a grid of $\vec\theta$ to $\vec\beta$
-using the lens equation (\ref{eqn:lens}).  That is, the rays are shot
-from the observer back to the source.
-
-For the computation of the individual deflection angles
-$\vec\alpha(\vec\theta)$ a hierarchical or tree method is used.  The
-positions of all lensing masses are put into a grid of $\vec\theta$.
-Each grid cell is subdivided into four smaller squares recursively
-until every cell contains only one mass.  Nearby masses are added
-individually while distance masses are clumped into larger grid cells
-whose net contribution is approximated by its first few multipole
-moments.  Scaled units are used, with the constant pre-factor in the
-deflection angle (\ref{eqn:alpha}) separated out.
-
-The result of ray shooting is a pixel map on the $\vec\beta$ plane of
-the number of lightrays which arrive at the source plane from a
-particular observer.  This intermediate result is effectively a
-magnification map on the source plane.  Once the map is created, the
-lightcurve can be obtained by specifying the transit path of the
-source across the map.  At each point on this transit line, the code
-computes equation (\ref{eqn:ft2d}) convolving the brightness
-distribution of the source with the magnification pattern of the map.
-In real life, not only are both lens and source moving but the lens
-lens configuration, and with it the magnification pattern, is also
-changing with time.  While the first subtlety is taken care of by a
-coordinate transformation in this analysis, for the second one the
-lens configuration is assumed to be constant in time.
-
-When generating the magnification map depicted in
-Figure~\ref{fig:magnification_map}, which is used in our analysis
-below, only two point masses were included.  This was done in order to
-have clean fold caustics.  For the computation of the actual
-lightcurve, the code was modified to also allow for crescent shaped
-images specified through the parameter set $R_p,R_n,a,b$. Here $R_p$
-denotes the outer radius of the crescent and $R_n$ the inner one. The
-orientation of the source image with respect to the magnification map
-is specified by the parameters $a$ and $b$ as the shift of the center
-of the inner disk from the center of the outer disk in $x$- and
-$y$-direction respectively. In the original version of the code,
-gaussian and disk-shaped images were already implemented. Those are
-completely characterised by the single parameter $R_p$. The values of
-the parameters are specified in pixel units corresponding to the
-magnification map. Further, one needs to specify the start and end
-point coordinates of the path, which the center of the source image
-follows through the magnification map (see the depiction in figure
-\ref{fig:magnification_map}). Hence, the points along this path are
-specified through the number of time steps for which the computation of
-the brightness is to be carried out. Those points correspond to the
-actual measurement of the brightness of an object in the observational
-case. For each timestep the two-dimensional convolution of equation
-\ref{eqn:ft2d} is carried out numerically for the position of the
-source on the magnification map.
-
-For the purpose of this analysis, it was desirable to mimic the
-analytical behaviour of a simple fold as much as possible, for
-comparing the numerical result with the analytical one, therefore, the
-path of the source was chosen, so that it intersects the border of the
-caustic perpendicularly, and on a point where the border is a fold
-caustic.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\hsize]{figures/data_cc.eps}
-\includegraphics[width=0.9\hsize]{figures/data_dd.eps}
-\includegraphics[width=0.9\hsize]{figures/data_gg.eps}
-\caption{\label{fig:mockdata} Three different mock datasets with
-  three different parametrizations fitted to each --- crescent (red),
-  uniform-disk (blue) and Gaussian disk (green).}
-\end{figure}
-
-\subsection{Mock light curves}
-
-Mock light curves were generated by running a source across a
-caustic, specifically along the line from point C to point B in
-Figure~\ref{fig:magnification_map}.  The model light curves, to which
-these are fitted, are made by running a source across a different
-caustic, along the line from point A to point B in the same figure.
-That is, the mock data are generated with a clean but not ideal fold
-caustic and then fitted with another such caustic.  This mimics the
-unavoidable systematic error of not knowing the caustic exactly.
-
-The crescent source had parameters (as explained in
-\S\ref{subsec:crescent}) $R_p$ and $R_n$ being the radii of the outer
-and inner circles and $(\alpha,\beta)$ being the coordinates of the
-inner circle with respect to the centre of the outer circle in the
-coordinate system associated with the image in Figure 1 and not
-associated with the caustic surface as defined in the previous
-sections.  The parameter values were
-\begin{equation}
-   (R_p, R_n, \alpha, \beta) = (50.0, 30.0, 15.0, 10.0).
-\label{eqn:cp}
-\end{equation}
-The uniform disc had the same (outer) radius as the crescent.  In the
-Gaussian source, we set $3\sigma=50$.  For convenience, below we will
-refer to $R_p$ of the Gaussian source, by which we actually mean
-$3\sigma$.
-
-Each mock light curve also has three nuisance parameters, namely the
-beginning and end of the event and the brightness normalisation.
-These are to be marginalised out by the MCMC.
-
-Figure~\ref{fig:mockdata} shows the three light curves.  Each has 250
-points regularly spaced in time, with Gaussian noise at the level of
-10\% of the current brightness.  This amounts formally to a single
-summary data point with a signal to noise of
-$10\times\sqrt{250}\simeq160$.
-
-\subsection{Model fitting and likelihood analysis}
+\subsection{Model-fitting results}
 
 Each of the three mock light curves was fitted to all three models.
 We denote the nine possible cases with letter pairs, with the first

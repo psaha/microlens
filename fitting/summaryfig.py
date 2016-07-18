@@ -19,10 +19,11 @@ def mockdata():
 
 
 def gencurves(fname):
-    global rh,wt
+    global rh,rns,wt
     chain = np.genfromtxt(fname+'.chain', skip_header=0, skip_footer=1)
     print(chain.shape)
     rh = []
+    rns = []
     wt = []
     minchis=1e30
     for i in range(chain.shape[0]):
@@ -40,9 +41,14 @@ def gencurves(fname):
                 b *= rp
                 v = Rhalf(rp,rn,a,b)
             rh.append(v/30)
+            rns.append(rn/rp)
             w = chain[i,0] - chain[i-1,0]
-            w /= chain[-1,0]
+            w /= chain[-1,0] - 100
             wt.append(w)
+    rh = np.array(rh)
+    rns = np.array(rns)
+    wt = np.array(wt)
+    print(np.sum(wt))
     print(q)
     print(minchis,lcurv.chis(q),1-st.chi2.cdf(minchis,pars[1]-pars[0]+1-7))
     lcurv.writecurves(q)
@@ -65,14 +71,22 @@ def plotcurves(p):
     p.errorbar(t,b,yerr=db,linestyle='none',color='gray')
     p.plot(t,m,color='black')
     p.set_yticks(np.arange(0,7,2))
-    p.set_xlabel('$t [r_{1/2}/v]$')
+    p.set_xlabel('$t [r_{1/2}/v]$',labelpad=10)
     p.set_ylabel('magnification')
 
 def plothist(p):
-    p.hist(rh,np.linspace(0.75,1.25,26),weights=wt,
+    rmin,rmax,nr = 0,1.2,61
+    p.hist(rh,np.linspace(rmin,rmax,nr),weights=wt,
            histtype='step',lw=2,color='black')
-    p.axis([0.75,1.25,0,0.6])
-    p.set_xlabel('inferred:actual $r_{1/2}$')
+    fl = max(rns)
+    if fl > 0:
+        p.hist(rns,np.linspace(rmin,rmax,nr),weights=wt,
+               histtype='step',lw=2,color='black',linestyle='dashed')
+        p.set_xlabel('inferred $R_n/R_p$ and $r_{1/2}$',labelpad=10)
+    else:
+        p.set_xlabel('inferred $r_{1/2}$',labelpad=10)
+    p.axis([rmin,rmax,0,0.5])
+
 
 
 mockdata()
