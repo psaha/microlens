@@ -122,19 +122,36 @@
 | observational conditions. These are only suggestions and the authors
 | should feel free to implement an alternative scheme when "fitting mock
 | data".
-| 
+
+This section has been completely rewritten.  We now show a single mock
+lightcurve and fits to three different templates: same source form,
+same caustic [good fit]; same source form, different caustic
+[marginally acceptable fit]; different source form, same caustic
+[rejected fit].
+
 | Other comments/remarks regarding Sect. 5: 
 | 
 | - It is pretty difficult to visualize what are the "\alpha, and \beta"
 |   parameters. Either those can be transformed into parameters
 |   introduced earlier by rotating the magnification map, either, a
 |   figure should clarify their meaning.
-| 
+
+We now state values relative to R_p, as done upstream in Section 4.
+
 | - What is the size of the pattern used ? Is the smooth matter fraction
 |   different from 0 ?
-| 
+
+The half-light radius of the source (30 pixels on the magnification
+map, amounting to 24 light-min under reasonable assumption) is now
+discussed.
+
+No smooth matter is included.
+
 | - How is carried out the convolution ? Using FFT ?
-| 
+
+Since the source is much smaller than the magnification pattern, the
+code does not optimise the convolution using and FFT.
+
 | - Is the procedure described in the one but last paragraph of
 |   Sect. 5.1. equivalent to convolving the magnification map with an
 |   image of the source and extracting a track along direction "A-C-B"
@@ -142,10 +159,16 @@
 | 
 | - How are the 2\sigma contours in Fig. 12 estimated ? It would not be
 |   too difficult to add 1 and 3 sigma contours to the figure.
-| 
+
+Only histograms are shown now.  (The earlier version used
+quasi-Gaussian estimates. [Irshad, is that correct?])
+
 | - Fitted lightcurves are shorter than the number of observational
 |   points. How is this possible ?
-| 
+
+The earlier fitting code allowed itself to fit only part of the data.
+Fixed in the revised version.
+
 | 3) Various remarks:
 | 
 | - p3, col2: "due to other reasons" is too vague. The authors could say

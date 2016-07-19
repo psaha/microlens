@@ -709,14 +709,14 @@ corresponding to $r_{1/2}=1$.  Unit length has 30 pixels on the
 magnification map.  The source was carried for 250 pixels along part
 of path~I, giving 251 brightness values.  Gaussian noise at the level
 of 4\% of the current brightness was then added to give the mock
-lightcurve.
+lightcurve.  If we assume the brightness measurements are nightly, and
+the transverse speed is 600~km/s, $r_{1/2}$ comes to 24~light-minutes,
+which is plausible for a quasar.
 
-\subsection{Model-fitting old results}
+\subsection{Model-fitting results}
 
-Note that the mock lightcurve has three nuisance parameters, namely
-the brightness normalisation and the start- and endpoints on path~I.
-The two latter can also be thought of as the location of the caustic
-with respect to the starting point and the speed of the source.
+We now proceed to fit the mock lightcurve using MCMC, to recover the
+source parameters.
 
 \begin{figure}
 \centering
@@ -725,10 +725,13 @@ with respect to the starting point and the speed of the source.
   correct source type and caustic.  The upper panel shows the mock
   data points, and running through them is a seven-parameter best fit:
   these being the crescent parameters $(R_p,R_n,a,b)$ and additionally
-  the start and end times and the overall normalisation. The curve has
-  $\chi^2=243, P=0.32$ indicating a good fit.  The lower panel shows
-  the posterior distributions for $r_{1/2}$ (solid histogram) and
-  $R_n/R_p$ (dashed histogram).}
+  the start and end times and the overall normalisation.  (Ideal
+  lightcurves for the same crescent parameters appear above in
+  Figures~\ref{fig:lightcurve_gauss}, \ref{fig:lightcurve_disk},
+  \ref{fig:lightcurve_crescent} and \ref{fig:char_points}.)  The curve
+  has $\chi^2=243, P=0.32$ indicating a good fit.  The lower panel
+  shows the posterior distributions for $r_{1/2}$ (solid histogram)
+  and $R_n/R_p$ (dashed histogram).}
 \end{figure}
 
 \begin{figure}
@@ -737,7 +740,7 @@ with respect to the starting point and the speed of the source.
 \caption{\label{fig:cc_backward} Like Figure~\ref{fig:cc_backward},
   except that the fit uses path~II whereas the mock data still come
   from path~I. The curve has $\chi^2=284, P=0.01$ indicating a
-  tolerable fit.}
+  marginally acceptable fit.}
 \end{figure}
 
 \begin{figure}
@@ -745,14 +748,35 @@ with respect to the starting point and the speed of the source.
   \includegraphics[width=0.9\hsize]{figures/gc_forward.eps}
 \caption{\label{fig:gc_forward} Like Figure~\ref{fig:cc_backward}, but
   showing the best fit to a Gaussian source.  The histogram shows the
-  posterior distribution of $r_{1/2}$ (there is no $R_n$).  The curve
-  has $\chi^2=344, P=3\times10^{-6}$ indicating rejection of the
-  Gaussian source.}
+  posterior distribution of $r_{1/2}$ (there is no $R_n$).  It appears
+  to show $r_{1/2}$ as accurately recovered, but is not to be trusted,
+  because the fit has $\chi^2=344, P=3\times10^{-6}$ indicating
+  rejection of the Gaussian source.  Looking closely, the curve is a
+  little too shallow near $t=3$, and it is unable to fit the second
+  sub-peak near $t=5$.}
 \end{figure}
 
-This mimics the unavoidable systematic error of not knowing the
-caustic exactly.
+Note that fitting involves three nuisance parameters, namely the
+brightness normalisation and the start- and endpoints on the path.
+The latter two are equivalent to considering the location of the
+caustic with respect to the starting point and the speed of the
+source.  The fitting method automatically marginalises over all the
+nuisance parameters.
 
+Figure \ref{fig:cc_forward} shows a fit to the mock lightcurve and
+recovery of $r_{1/2}$ and $R_n/R_p$.
+
+Figure \ref{fig:cc_backward} shows the result when a different caustic
+is used to fit, than was used to generate the mock lightcurve.  This
+mimics the unavoidable systematic error of not knowing the caustic
+exactly.  The fit is slightly degraded, but still acceptable.
+
+Figure \ref{fig:gc_forward} shows the result of attempting to a
+Gaussian source.  There is a small but statistically very significant
+misfit because a Gaussian curve cannot reproduce the part of the
+lightcurve with the slight flattening and then a second sub-peak
+(cf.~Figure~\ref{fig:char_points}) as the dark part of the crescent
+crosses the caustic.
 
 \section{Discussion}\label{sec:discussion}
 
