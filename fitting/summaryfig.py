@@ -71,8 +71,8 @@ def plotcurves(p):
     p.errorbar(t,b,yerr=db,linestyle='none',color='gray')
     p.plot(t,m,color='black')
     p.set_yticks(np.arange(0,7,2))
-    p.set_xlabel('$t [r_{1/2}/v]$',labelpad=10)
-    p.set_ylabel('magnification')
+    p.set_xlabel('$t [r_{1/2}/v]$',labelpad=10, fontsize=16)
+    p.set_ylabel('magnification', fontsize=16)
 
 def plothist(p):
     rmin,rmax,nr = 0,1.2,61
@@ -84,7 +84,7 @@ def plothist(p):
                histtype='step',lw=2,color='black',linestyle='dashed')
         p.set_xlabel('inferred $R_n/R_p$ and $r_{1/2}$',labelpad=10)
     else:
-        p.set_xlabel('inferred $r_{1/2}$',labelpad=10)
+        p.set_xlabel('inferred $r_{1/2}$',labelpad=10, fontsize=16)
     p.axis([rmin,rmax,0,0.5])
 
 
@@ -94,8 +94,8 @@ mockdata()
 for fname in ['gc_forward','cc_forward','cc_backward']:
     gencurves(fname)
 
-    fig = pl.figure()
-    fig.subplots_adjust(hspace=0.3)
+    fig = pl.figure(figsize=(5,10))
+    fig.subplots_adjust(hspace=0.2)
 
     p = fig.add_subplot(211)
     plotcurves(p)
@@ -104,5 +104,6 @@ for fname in ['gc_forward','cc_forward','cc_backward']:
     plothist(p)
     p.get_yaxis().set_visible(False)
 
-    pl.show()
+    fig.savefig('../paper1/figures/%s.eps'%fname)
 
+    pl.show()
