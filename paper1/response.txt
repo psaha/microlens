@@ -47,7 +47,14 @@
 | those requirements. In my opinion, the introduction needs to be
 | completely re-written with these requirements in mind. This would
 | broaden the potential audience of the paper.
-| 
+
+Some papers have a long introduction giving the conceptual content of
+the later sections without the technical details.  Classic examples
+are Shakura & Sunyaev 1973A&A....24..337S on black-hole accretion, and
+Braginsky et al 2003PhRvD..67h2001B on the uncertainty principle in
+gravitational-wave detectors.  We have tried to follow such a style,
+which we find more helpful to readers.
+ 
 | In addition, the introduction suffers from imprecision that make
 | several sentences a bit misleading.
 |
@@ -71,7 +78,9 @@
 | * p1: l47 (col 2): A sentence like "This motivated K & D to use a
 |   simple geometric crescent model to fit the data" lacks a bit of
 |   specificity. "data" is a too generic word.
-| 
+
+Added that it was sub-mm interferometry.
+
 | * magnification maps is a concept that is not clearly introduced to
 |   the reader. Also, AGN should be introduced as an acronym l. 42., p1.
 | 
