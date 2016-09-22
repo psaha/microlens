@@ -53,7 +53,8 @@ the later sections without the technical details.  Classic examples
 are Shakura & Sunyaev 1973A&A....24..337S on black-hole accretion, and
 Braginsky et al 2003PhRvD..67h2001B on the uncertainty principle in
 gravitational-wave detectors.  We have tried to follow such a style,
-which we find more helpful to readers.
+which we find more helpful to readers. 
+The title has been changed from "Introduction" to "The General Picture". 
  
 | In addition, the introduction suffers from imprecision that make
 | several sentences a bit misleading.
@@ -74,15 +75,25 @@ which we find more helpful to readers.
 |   the domain of usability of the profiles proposed in this work (and
 |   in particular crescent profiles, which is also qualitatively similar
 |   to relativistic Accretion disc at UV-wavelengths).
-| 
+
+We have corrected the first point.
+Gravitational lensing is not dependent on the wavelength of the radiation.
+There is no reason for us to not expect microlensing events at these
+frequencies.  
+Our work describes properties that are independent of the frequency of the
+observed radiation. We can address these points in the following papers.
+
+
 | * p1: l47 (col 2): A sentence like "This motivated K & D to use a
 |   simple geometric crescent model to fit the data" lacks a bit of
 |   specificity. "data" is a too generic word.
 
-Added that it was sub-mm interferometry.
+Added that it was sub-mm interferometry. 
 
 | * magnification maps is a concept that is not clearly introduced to
 |   the reader. Also, AGN should be introduced as an acronym l. 42., p1.
+
+The acronym has been added.
 | 
 | * In addition to Abolmasov and Shakura 2012, a reference to the work
 |   of Mediavilla et al. 2015 (ApJ, 814, L26), that studies microlensing
