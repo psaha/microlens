@@ -102,6 +102,10 @@ The acronym has been added.
 |   the AD may also be worth to quote to give an overview of the
 |   insights provided by microlensing on the regions in the direct
 |   vicinity of the central supermassive black hole.
+
+We have added to the citations.
+
+
 | 
 | * The motivation for resolving the inner structure of quasar may be
 |   expanded.
@@ -112,6 +116,9 @@ The acronym has been added.
 |   microlensing affects one of those "macro images". This may avoid
 |   confusion is galactic-like microlensing / microlensing by single
 |   isolated star.
+
+There is probably a missunderstanding here. We consider the microlensing
+events created by single stars. We do not consider strong lensing.
 | 
 | 
 | 2) I am rather unhappy with Section 5: I do not understand the
@@ -194,32 +201,50 @@ Fixed in the revised version.
 | - p3, col2: "due to other reasons" is too vague. The authors could say
 |   that $\mu_0$ is a magnification zeorpoint and explain in a separate
 |   sentence what this means.
+
+We have expanded..
+
 | 
 | - Figure 9: What is h_w ?
+
+We have defined the quantity in the caption of figure 9.
 | 
 | - p6, l60, second column: The second paragraph of Sect. 4.3 (There are
 |   ...) should start by referring to Figure 8 before explaining the
 |   content of the figure.
+
+Figure reference included.
+
 | 
 | - The figure ordering does not always follow the reference in the
 |   text. The authors should carefully check that figures appear in
 |   logical order and are adequately referenced in the text.
 | 
+
+.
+
 | - Sect. 4.3 introduce a time dependence of the parameter a (i.e. a(t))
 |   but this possibility has not been mentioned before. In addition, a
 |   is considered to be fixed afterwards. The authors should explain,
 |   when introducing a(t) that this quantity is in principle variable if
 |   the black hole rotates (I guess) but is assumed to be constant over
 |   time in the remaining of the paper.
+
+The time dependece has been removed.
+
 | 
 | - $v_p (t-t_0)$ is a bit misleading notation as v_p could be
 |   understood as the velocity being a function of time. The authors
 |   should use $v_p \times (t-t_0)$
+
+The equation have been changed accordingly.
+
 | 
 | - Sect. 6: "in particular, in case ... times": I do not understand
 |   from which part of the paper those statements are deduced (links to
 |   figures/section should appear explicitly). Overall, the first
 |   paragraph of Sect. 6 is not easy to follow.
+
 | 
 | - p12, l59-60+: "as magnification maps, we have used a complex ...":
 |   This is a misleading as the analysis of Sect. 5 is still for a
