@@ -280,6 +280,9 @@ The equation have been changed accordingly.
 | 5) General cosmetic remarks:
 | 
 | - The font used for legends is too small.
+
+We are reluctant to make them bigger as they will force the legend to overlap
+with the curves of the plotted functions.
 | 
 | - References to figures should be performed early in the text, prior
 |   to discussing them ... not after.
