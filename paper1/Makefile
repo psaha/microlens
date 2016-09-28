@@ -1,9 +1,10 @@
 all:
-	latex ms
-	bibtex ms
-	latex ms
-	latex ms
-	dvipdfm ms
+	latexdiff msold.tex ms.tex > msdiff.tex
+	latex msdiff
+	bibtex msdiff
+	latex msdiff
+	latex msdiff
+	dvipdfm msdiff
 
 clean:
 	rm -f *.log *.aux *.dvi *.blg *~
