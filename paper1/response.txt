@@ -117,8 +117,7 @@ We have added to the citations.
 |   confusion is galactic-like microlensing / microlensing by single
 |   isolated star.
 
-There is probably a missunderstanding here. We consider the microlensing
-events created by single stars. We do not consider strong lensing.
+---------TO FIX AT THE END-------------------
 | 
 | 
 | 2) I am rather unhappy with Section 5: I do not understand the
