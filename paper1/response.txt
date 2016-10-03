@@ -221,8 +221,6 @@ Figure reference included.
 |   logical order and are adequately referenced in the text.
 | 
 
-.
-
 | - Sect. 4.3 introduce a time dependence of the parameter a (i.e. a(t))
 |   but this possibility has not been mentioned before. In addition, a
 |   is considered to be fixed afterwards. The authors should explain,
@@ -230,7 +228,7 @@ Figure reference included.
 |   the black hole rotates (I guess) but is assumed to be constant over
 |   time in the remaining of the paper.
 
-The time dependece has been removed.
+The time dependence has been removed.
 
 | 
 | - $v_p (t-t_0)$ is a bit misleading notation as v_p could be
@@ -292,6 +290,10 @@ with the curves of the plotted functions.
 | 
 | - Lightcurves should show "magnitudes" in ordinate (not "ordonata", cf
 |   caption of Fig. 9) with "arbitrary zeropoint".
+
 | 
 | - The source profile used in Sect. 4.4 should be reproduced in the
 |   paper if possible.
+
+We have referenced both in the caption of figure 9 and in the section the
+paper and place where it can be found.
