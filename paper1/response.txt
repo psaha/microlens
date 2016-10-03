@@ -296,4 +296,5 @@ with the curves of the plotted functions.
 |   paper if possible.
 
 We have referenced both in the caption of figure 9 and in the section the
-paper and place where it can be found.
+paper and place where it can be found. Adding the actual figure would raise copyright issues and we believe that directing to the respective papers is more 
+appropriate. 
