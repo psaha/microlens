@@ -201,7 +201,7 @@ Fixed in the revised version.
 |   that $\mu_0$ is a magnification zeorpoint and explain in a separate
 |   sentence what this means.
 
-We have expanded..
+We have expanded.
 
 | 
 | - Figure 9: What is h_w ?
@@ -234,7 +234,7 @@ The time dependence has been removed.
 |   understood as the velocity being a function of time. The authors
 |   should use $v_p \times (t-t_0)$
 
-The equation have been changed accordingly.
+The equations have been changed accordingly.
 
 | 
 | - Sect. 6: "in particular, in case ... times": I do not understand
@@ -258,7 +258,10 @@ The equation have been changed accordingly.
 | - The discussion (sect 6) may need substantial changes (and be
 |   shortened / structured) once Sect 5 is modified according to my
 |   suggestions.
-| 
+
+The discussion part has been modified.
+
+
 | 4) There is a relatively large number of typos left. The authors
 | should carefully check for typos prior to submission !
 | 
