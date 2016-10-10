@@ -233,9 +233,11 @@ is known as the magnification matrix, and its determinant
 is the brightness amplification of an image of a point source.  In
 other words, the source will brighten or dim according to whether
 $\mu(\vec\theta)$ is more or less than unity.  If there are multiple
-mages at distinct but not observationally resolved $\vec\theta_i$ from
+images at distinct but not observationally resolved $\vec\theta_i$ from
 the same $\vec\beta$, a total brightness amplification
-of\begin{equation} \mu_{\rm total} = \sum_{i} \mu(\vec\theta_i)
+of
+
+\begin{equation} \mu_{\rm total} = \sum_{i} \mu(\vec\theta_i)
 \end{equation}
 applies. It is possible for the magnification to become formally
 infinite, as a result of an eigenvalues of the magnification matrix
@@ -407,7 +409,7 @@ and
 \end{equation}
 \\
 The following notations were used: $R_p, (p_{sp}, q_{sp}), R_n, (p_{sn},q_{sn})$ are the radii and coordinate of the center for the larger positive disk and smaller negative disk respectively.  $S_0^{Dp},S_0^{Dn}$ represent the total flux of radiation received from the large and small disk. From this point forward we will not use the total flux from each source. Instead we will 
-use the difference which in this case is th total flux from the crescent-shaped source $S_0^C$. \\
+use the difference which in this case is the total flux from the crescent-shaped source $S_0^C$. \\
 Equation \ref{eqn:s2d} can be written as:\\
 
 \begin{align}
@@ -558,7 +560,7 @@ In addition there are two other obvious relations the characteristic points whic
 \begin{equation}
         p_3 -p_2 = 2 R_n.
 \end{equation}
-All four points mark the positions where derivative $\frac{dS_{1D}}{dp}$ is discontinuous. The points can be used to define three regions: $p_1 - p_2$ where $S_1D$ is convex, $p_2 - p_3$ where $S_1D$ is concave, and $p_3 - p_4$ where $S_1D$ is convex again. \\
+All four points mark the positions where derivative $\frac{dS_{1D}}{dp}$ is discontinuous. The points can be used to define three regions: $p_1 - p_2$ where $S_{1D}$ is convex, $p_2 - p_3$ where $S_{1D}$ is concave, and $p_3 - p_4$ where $S_{1D}$ is convex again. \\
 
 Due to the nature of the caustic and the monotonic behaviour of the magnification map on both sides of the caustic. The previously mentioned characteristic points are inherited by the microlensing lightcurve. The points on the temporal dimension $t_1, t_2, t_3$ and $t_4$ correspond to instances in time when the fold is aligned with $p_1, p_2, p_3$ and $p_4$, respectively. For a constant relative velocity $v_p$ between the source and the caustic there is a simple relation between the points $p_i$ and instances $t_i$:
 
@@ -763,7 +765,7 @@ along the transit line, one pixel at a time, and at each step the
 brightness distribution of the source is convolved
 (equation~\ref{eqn:ft2d}) with the magnification map to give the
 brightness.  In real life, not only are both lens and source moving
-but the lens lens configuration, and with it the magnification
+but the lens configuration, and with it the magnification
 pattern, is also changing with time.  While the first subtlety is
 taken care of by a coordinate transformation in this analysis, for the
 second one the lens configuration is assumed to be constant in time.
@@ -846,20 +848,30 @@ two source, are completely determined, since no free parameter remains.
 
 The previous statement does not hold for a crescent source.
 In the case of the crescent source there are in total five parameters: the integrated flux of the source $S_0$,
- the radii of the bright/dark disk $R_p$/$R_n$ and the displacement of the centers of the two disks on the axes perpendicular and parallel to the caustic $a$ and $b$. 
+ the radii of the bright and dark disks and the displacement of the centers of the two disks on the axes perpendicular and parallel to the caustic. 
 
-Two of the parameters can be reduced by expressing the results in terms of $S_0$ and $r_{1/2}$. 
-The later being determinable for any set of parameters $R_p, R_n$ and $a^2+b^2$. Moreover, one of the displacement 
-parameters $b$ has no impact on the one-dimensional profile of the source that results from the projection of the source image on an axis perpendicular to the caustic. 
+%Two of the parameters can be reduced by expressing the results in 
+%terms of $S_0$ and $r_{1/2}$. 
+%The later being determinable for any set of parameters 
+%$R_p, R_n$ and $a^2+b^2$. Moreover, one of the displacement 
+%parameters $b$ has no impact on the one-dimensional profile 
+%of the source that results from the projection of the source
+% image on an axis perpendicular to the caustic. 
 
-Since the one-dimensional source profile that corresponds to an axis perpendicular to the caustic contains exhaustively all the information regarding the source that can be revealed by the lightcurve, 
-the value of the parameter $b$ does not have an effect on the shape of the lightcurve. 
+Since the one-dimensional source profile that corresponds to an 
+axis perpendicular to the caustic contains exhaustively all the 
+information regarding the source that can be revealed by the lightcurve, 
+the value of the crescent's disks centers displacement parallel to the caustic 
+does not have an effect on the shape of the lightcurve. 
 
-Nevertheless, the $b$ parameter is relevant for the calculation of
-$r_{1/2}$.  It's qualitative effect is to decrease the value of the
+Nevertheless, the respective displacement is relevant for the calculation of
+of the half-light radius.  It's qualitative effect is to 
+decrease the value of the
 half-light radius when the absolute value of the parameter is
-increased.  With two parameters constrained and another irrelevant to
-the shape of the lightcurve, two free parameters remain $R_n$ and $a$.
+increased.  In contrast to the simpler source shapes discussed before the
+crescent has two additional relevant parameters: the radius of the dark 
+disk ($R_n$) and the center displacement in the direction
+ perpendicular to the caustic $a$.
 Figure 4 reveals that the lightcurve of a crescent source has more
 visible features than the other two light-curves corresponding to the
 disc and Gaussian shape. The parameters $R_n$ and $a$ have strong
@@ -876,25 +888,45 @@ caustic and the dark disk, the end of the overlap between the caustic
 and dark disk and finally the end of the overlap between the caustic
 and the bright disk.
 
-With the different source profiles and their corresponding lightcurves studied we can change our point of view of the system to that of an observer. 
-The observer would basically detect only the lightcurve of such a source. As described in section 4.3 the timing of the onset and offset of the previously 
-described periods can be used to estimate the values of the radii and one of the displacement parameters when assuming a geometric crescent. 
-All quantities can be estimated in terms of the relative velocity of the source in a direction perpendicular to the caustic.
+With the different source profiles and their corresponding lightcurves 
+studied we can change our point of view of the system to that of an observer. 
+The observer would basically detect only the lightcurve of such a source.
+ As described in section 4.3 the timing of the onset and 
+offset of the previously 
+described periods can be used to estimate the values of the radii 
+and one of the displacement parameters when assuming a geometric crescent. 
+All quantities can be estimated in terms of the relative velocity 
+of the source in a direction perpendicular to the caustic.
 
 
-Furthermore, a simulated image of M87 presented in \citep{2012MNRAS.421.1517D} has been microlensed (figure 9). On the resulting lightcurve the instances 
-corresponding to the start and end of the black hole shadow and caustic overlap were distinguishable.
+Furthermore, a simulated image of M87 presented in
+ \citep{2012MNRAS.421.1517D} has been microlensed (figure 9). 
+On the resulting lightcurve the instances 
+corresponding to the start and end of the black hole 
+shadow and caustic overlap were distinguishable.
     
 
-In the case of a high-quality lightcurve with insignificant noise and measurement errors, the parameters can be obtained 
-by simply identifying the characteristic instances of time without making use of the actual values of the magnification
- map. If the effect of the errors and the noise distorts the magnification time function enough so that the 
-characteristic epochs are not identifiable with the characteristic periods still visible, the boundaries of the periods 
-can be roughly estimated. Furthermore, if direct estimates of the parameters cannot be obtained we propose the use of a strong
-statistical tool such as Markov-Chain Monte Carlo. In Section 6  we have studied the possibility of identifying a crescent 
-source and  the possibility of recovering the respective parameters. As magnification map, we have used a complex numerical 
-one generated with the microlensing code by \cite{1999A&A...346L...5W}. In addition, we have added to the signal a Gaussian 
-noise with an SNR of 1.6.  In the experiment, we have considered all nine combinations of original source profiles and assumed fitting source models.
+In the case of a high-quality lightcurve with 
+insignificant noise and measurement errors, 
+the parameters can be obtained 
+by simply identifying the characteristic 
+instances of time without making use of 
+the actual values of the magnification
+ map. If the effect of the errors and the 
+noise distorts the magnification time function enough so that the 
+characteristic epochs are not identifiable with the characteristic 
+periods still visible, the boundaries of the periods 
+can be roughly estimated. Furthermore, if direct estimates of 
+the parameters cannot be obtained we propose the use of a strong
+statistical tool such as Markov-Chain Monte Carlo.
+ In Section 6  we have studied the possibility of identifying a crescent 
+source and the possibility of recovering the 
+respective parameters. As magnification map, we have used a complex numerical 
+one generated with the microlensing code by \cite{1999A&A...346L...5W}. 
+In addition, we have added to the signal a Gaussian 
+noise with an SNR of 1.6.  In the experiment,
+ we have considered all nine combinations of
+ original source profiles and assumed fitting source models.
 Effectively we have fitted using MCMC all three sources with all three assumed fitting models. The results of the experiment allowed us to build a 
 procedure for distinguishing the shape of the source assuming that one of the three models we have considered is a good approximation.  
 The procedure would be useful for observers that endeavour to gain more information about an unresolved source for which they can study 
@@ -931,10 +963,15 @@ estimate of the effective non-rotating black hole mass associated with
 the black hole shadow.
 
     
-The parameters whose values cannot be determined due to the loss of information from the directions parallel to the 
-caustic could be obtained in the eventuality in which the same source crosses multiple caustics that are not parallel. 
-Multiple crossing of caustics can reveal details of the one-dimensional flux profile corresponding to multiple distinct 
-directions which would allow the reconstruction of the two-dimensional profile analogous to the process through which an image of a CT scan is obtained.  
+The parameters whose values cannot be determined due to the 
+loss of information from the directions parallel to the 
+caustic could be obtained in the eventuality in which 
+the same source crosses multiple caustics that are not parallel. 
+Multiple crossing of caustics can reveal details of 
+the one-dimensional flux profile corresponding to multiple distinct 
+directions which would allow the reconstruction of the 
+two-dimensional profile analogous to the process through 
+which an image of a CT scan is obtained.  
 
 \textit{Author contributions}\\
 Prasenjit Saha provided the original idea and plan for the research project as well as multiple contributions to the analysis 
