@@ -109,13 +109,18 @@ We have added to the citations.
 | 
 | * The motivation for resolving the inner structure of quasar may be
 |   expanded.
-| 
+
+We do not think that the motivation needs to be expanded as the quasars
+are already heavely studied for diverse reasons.
+
 | * The introduction should also make clear, for the reader unfamiliar
 |   with quasar microlensing, that the microlensing events considered
 |   here happen in systems that are already multiply imaged and that
 |   microlensing affects one of those "macro images". This may avoid
 |   confusion is galactic-like microlensing / microlensing by single
 |   isolated star.
+
+We have fixed this part.
 
 ---------TO FIX AT THE END-------------------
 | 
@@ -182,6 +187,9 @@ code does not optimise the convolution using and FFT.
 |   Sect. 5.1. equivalent to convolving the magnification map with an
 |   image of the source and extracting a track along direction "A-C-B"
 |   (using possibly some interpolation scheme) ?
+
+Prasenjit -- Convolving and integrating over the image again.
+
 | 
 | - How are the 2\sigma contours in Fig. 12 estimated ? It would not be
 |   too difficult to add 1 and 3 sigma contours to the figure.
@@ -220,6 +228,8 @@ Figure reference included.
 |   logical order and are adequately referenced in the text.
 | 
 
+
+
 | - Sect. 4.3 introduce a time dependence of the parameter a (i.e. a(t))
 |   but this possibility has not been mentioned before. In addition, a
 |   is considered to be fixed afterwards. The authors should explain,
@@ -242,11 +252,16 @@ The equations have been changed accordingly.
 |   figures/section should appear explicitly). Overall, the first
 |   paragraph of Sect. 6 is not easy to follow.
 
+This part has been replaced in the new discussion.
+
 | 
 | - p12, l59-60+: "as magnification maps, we have used a complex ...":
 |   This is a misleading as the analysis of Sect. 5 is still for a
 |   rather simple of caustics produced by 2 stars of equal mass, and for
 |   a lightcurve at a very specific location of the caustic pattern.
+
+This part has been replaced in the new discussion.
+
 | 
 | - p12, l45, col2: "This would ... lens": This sentence is wrong
 |   because the net transverse velocity associated to a microlensing
