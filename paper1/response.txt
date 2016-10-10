@@ -254,6 +254,10 @@ The equations have been changed accordingly.
 |   dynamics within the galaxy, but the other one (which can contribute
 |   similarly) is the net bulk motion of the lens with respect to the
 |   CMB dipole.
+
+We have added "the transverse velocity of the galaxy with respect to the 
+observer. 
+
 | 
 | - The discussion (sect 6) may need substantial changes (and be
 |   shortened / structured) once Sect 5 is modified according to my
