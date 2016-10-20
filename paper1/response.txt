@@ -122,7 +122,6 @@ are already heavely studied for diverse reasons.
 
 We have fixed this part.
 
----------TO FIX AT THE END-------------------
 | 
 | 
 | 2) I am rather unhappy with Section 5: I do not understand the
@@ -188,7 +187,7 @@ code does not optimise the convolution using and FFT.
 |   image of the source and extracting a track along direction "A-C-B"
 |   (using possibly some interpolation scheme) ?
 
-Prasenjit -- Convolving and integrating over the image again.
+Convolving and integrating over the image again.
 
 | 
 | - How are the 2\sigma contours in Fig. 12 estimated ? It would not be
@@ -310,10 +309,13 @@ with the curves of the plotted functions.
 | 
 | - Figure 3: The indices of the various quantities are too small. The
 |   figure should also show the axis system p \& q.
-| 
+
+The size of the indices have been increased. The axis system p and q are defined according to the fold caustic orientation and not to the source geometry. 
+
 | - Lightcurves should show "magnitudes" in ordinate (not "ordonata", cf
 |   caption of Fig. 9) with "arbitrary zeropoint".
 
+Those figures have been replaced.
 | 
 | - The source profile used in Sect. 4.4 should be reproduced in the
 |   paper if possible.
