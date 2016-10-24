@@ -76,13 +76,7 @@ The title has been changed from "Introduction" to "The General Picture".
 |   in particular crescent profiles, which is also qualitatively similar
 |   to relativistic Accretion disc at UV-wavelengths).
 
-We have corrected the first point.
-Gravitational lensing is not dependent on the wavelength of the radiation.
-There is no reason for us to not expect microlensing events at these
-frequencies.  
-Our work describes properties that are independent of the frequency of the
-observed radiation. We can address these points in the following papers.
-
+We have clarified these points.
 
 | * p1: l47 (col 2): A sentence like "This motivated K & D to use a
 |   simple geometric crescent model to fit the data" lacks a bit of
@@ -103,10 +97,10 @@ The acronym has been added.
 |   insights provided by microlensing on the regions in the direct
 |   vicinity of the central supermassive black hole.
 
-We have added to the citations.
+We have added a reference to this paper, and specifically to their
+Figure 3 which hints at the kind of lightcurve features a crescent
+source would produce.
 
-
-| 
 | * The motivation for resolving the inner structure of quasar may be
 |   expanded.
 
