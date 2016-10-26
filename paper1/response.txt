@@ -53,8 +53,8 @@ the later sections without the technical details.  Classic examples
 are Shakura & Sunyaev 1973A&A....24..337S on black-hole accretion, and
 Braginsky et al 2003PhRvD..67h2001B on the uncertainty principle in
 gravitational-wave detectors.  We have tried to follow such a style,
-which we find more helpful to readers. 
-The title has been changed from "Introduction" to "The General Picture". 
+which we find more helpful to readers.  The section title has been
+changed from "Introduction" to "The General Picture".
  
 | In addition, the introduction suffers from imprecision that make
 | several sentences a bit misleading.
@@ -76,7 +76,7 @@ The title has been changed from "Introduction" to "The General Picture".
 |   in particular crescent profiles, which is also qualitatively similar
 |   to relativistic Accretion disc at UV-wavelengths).
 
-We have clarified these points.
+We have clarified these wo points.
 
 | * p1: l47 (col 2): A sentence like "This motivated K & D to use a
 |   simple geometric crescent model to fit the data" lacks a bit of
@@ -88,7 +88,7 @@ Added that it was sub-mm interferometry.
 |   the reader. Also, AGN should be introduced as an acronym l. 42., p1.
 
 The acronym has been added.
-| 
+
 | * In addition to Abolmasov and Shakura 2012, a reference to the work
 |   of Mediavilla et al. 2015 (ApJ, 814, L26), that studies microlensing
 |   of an accretion disc down to the event horizon, is needed. X-ray
@@ -104,8 +104,8 @@ source would produce.
 | * The motivation for resolving the inner structure of quasar may be
 |   expanded.
 
-We do not think that the motivation needs to be expanded as the quasars
-are already heavely studied for diverse reasons.
+Since the is specific to the event-horizon scale, rather than the
+structure of quasars in general, we have kept this part brief.
 
 | * The introduction should also make clear, for the reader unfamiliar
 |   with quasar microlensing, that the microlensing events considered
@@ -114,10 +114,9 @@ are already heavely studied for diverse reasons.
 |   confusion is galactic-like microlensing / microlensing by single
 |   isolated star.
 
-We have fixed this part.
+We have now clarified that we are considering micro-images in one of
+multiple macro-images.
 
-| 
-| 
 | 2) I am rather unhappy with Section 5: I do not understand the
 | methodology that consists in fitting (exclusively) "wrong models" to
 | the data to assess for systematic errors. On the other hand, this
@@ -181,14 +180,14 @@ code does not optimise the convolution using and FFT.
 |   image of the source and extracting a track along direction "A-C-B"
 |   (using possibly some interpolation scheme) ?
 
-Convolving and integrating over the image again.
+At each point on the track, we convolve image and magnification map --
+and then we must integrate over the image.
 
-| 
 | - How are the 2\sigma contours in Fig. 12 estimated ? It would not be
 |   too difficult to add 1 and 3 sigma contours to the figure.
 
 Only histograms are shown now.  (The earlier version used
-quasi-Gaussian estimates. [Irshad, is that correct?])
+quasi-Gaussian estimates.)
 
 | - Fitted lightcurves are shorter than the number of observational
 |   points. How is this possible ?
@@ -202,26 +201,24 @@ Fixed in the revised version.
 |   that $\mu_0$ is a magnification zeorpoint and explain in a separate
 |   sentence what this means.
 
-We have expanded.
-
-| 
+We have expanded the explanation.
+ 
 | - Figure 9: What is h_w ?
 
 We have defined the quantity in the caption of figure 9.
-| 
+ 
 | - p6, l60, second column: The second paragraph of Sect. 4.3 (There are
 |   ...) should start by referring to Figure 8 before explaining the
 |   content of the figure.
 
 Figure reference included.
-
-| 
+ 
 | - The figure ordering does not always follow the reference in the
 |   text. The authors should carefully check that figures appear in
-|   logical order and are adequately referenced in the text.
-| 
+|   logical order and are adequately referenced in the text. 
 
-
+We have fixed the ordering of figures.  (The problem was mainly that
+Figure 4 was previously too far downstream.)
 
 | - Sect. 4.3 introduce a time dependence of the parameter a (i.e. a(t))
 |   but this possibility has not been mentioned before. In addition, a
@@ -232,14 +229,14 @@ Figure reference included.
 
 The time dependence has been removed.
 
-| 
+
 | - $v_p (t-t_0)$ is a bit misleading notation as v_p could be
 |   understood as the velocity being a function of time. The authors
 |   should use $v_p \times (t-t_0)$
 
 The equations have been changed accordingly.
 
-| 
+ 
 | - Sect. 6: "in particular, in case ... times": I do not understand
 |   from which part of the paper those statements are deduced (links to
 |   figures/section should appear explicitly). Overall, the first
@@ -254,8 +251,7 @@ This part has been replaced in the new discussion.
 |   a lightcurve at a very specific location of the caustic pattern.
 
 This part has been replaced in the new discussion.
-
-| 
+ 
 | - p12, l45, col2: "This would ... lens": This sentence is wrong
 |   because the net transverse velocity associated to a microlensing
 |   event has two components: one is indeed associated to the stellar
@@ -272,7 +268,6 @@ observer.
 |   suggestions.
 
 The discussion part has been modified.
-
 
 | 4) There is a relatively large number of typos left. The authors
 | should carefully check for typos prior to submission !
@@ -295,25 +290,32 @@ Corrections have been made.
 | 
 | - The font used for legends is too small.
 
-We are reluctant to make them bigger as they will force the legend to overlap
-with the curves of the plotted functions.
-| 
+We are reluctant to make them bigger as they will force the legend to
+overlap with the curves of the plotted functions.  They appear workable
+at the current size.
+
 | - References to figures should be performed early in the text, prior
 |   to discussing them ... not after.
-| 
+
+Fixed (as noted above).
+ 
 | - Figure 3: The indices of the various quantities are too small. The
 |   figure should also show the axis system p \& q.
 
-The size of the indices have been increased. The axis system p and q are defined according to the fold caustic orientation and not to the source geometry. 
+The size of the indices have been increased. The axis system p and q
+are defined according to the fold caustic orientation and not to the
+source geometry, so they could have any orientation.
 
 | - Lightcurves should show "magnitudes" in ordinate (not "ordonata", cf
 |   caption of Fig. 9) with "arbitrary zeropoint".
 
 Those figures have been replaced.
-| 
+
 | - The source profile used in Sect. 4.4 should be reproduced in the
 |   paper if possible.
 
-We have referenced both in the caption of figure 9 and in the section the
-paper and place where it can be found. Adding the actual figure would raise copyright issues and we believe that directing to the respective papers is more 
-appropriate. 
+We have referenced both in the caption of figure 9 and in the section
+the paper and place where it can be found. Adding the actual figure
+would raise copyright issues and we believe that directing to the
+respective papers is more appropriate.
+
