@@ -1,0 +1,96 @@
+| - General picture (aka Introduction): Although I do not find the
+|   author's choice of writing their introduction as a long paper
+|   summary very enlightening, I respect their choice. Unfortunately,
+|   the new version is even less clear than the previous one. In
+|   particular, line 33 p2, 1st column (i.e. In Sect. 5 we carry ...) is
+|   now (almost) a duplicate of l13, p2, 2nd column (in Sect 5 ...) and
+|   comes before description of Sect. 4 (while description of sect. 3
+|   has disappeared).
+| 
+| A few additional minor comments regarding this section are listed hereafter.
+| 
+| - Sect. 5.1: a half-light size of 24 light-minutes is given for the
+|   quasar. In terms of Schwarshild radius (R_s), this is about a few
+|   R_s for a black hole of 10^8 Msun. This quite small for optical
+|   emission, but may be plausible for X-ray emission. The authors
+|   should expand the discussion regarding the source size considered
+|   (which is a key parameter: even if microlensing is achromatic, the
+|   projected source size varies with wavelength and is the key
+|   governing appearance of microlensing) and explain at which
+|   wavelength range such source sizes are expected (a bit as I did
+|   here). It would then also be nice to provide estimate of
+|   time-lengths of the described microlensing event explicitly.
+| 
+| - I am still puzzled by the methodology followed in Sect. 5.2 as it
+|   focuses on very specific tracks along the patterns. The domain of
+|   validity of the conclusions drawn from this sections remains
+|   limited, and in my opinion of little interest. The proposed test
+|   demonstrates that for a very specific situation, the difference
+|   between a gaussian and a crescent disc is observable under
+|   reasonable signal-to-noise assumption (for X-ray data this is not so
+|   reasonable, nor the sampling is really achievable). However, for a
+|   real situation, the caustic orientation will be unknown as well as
+|   the track length (maybe the latter is varied during the MCMC, I
+|   missed the information in the text). It would then be necessary to
+|   probe any random track direction, derive likelihood for each tracks
+|   and hopefully, following a bayesian scheme, derive parameter
+|   distributions after marginalizing over all the track orientations
+|   (and in principle length/transverse velocity). This approach,
+|   followed by e.g. Kochanek 2004, Eigenbrod et al. 2008, Poindexter
+|   and Kochanek 2010a,b and others, would allow one to properly probe
+|   degeneracies between models and broaden the validity range of the
+|   conclusions. A potential alternative (less computationally
+|   expensive) procedure would be to fit the mock lightcurve with an
+|   ideal fold model and see how well such a modeling performs. Unless
+|   one of these two options is followed, I consider sect. 5 as useless
+|   (except maybe regarding correspondence between arbitrary units of
+|   previous sections and "physical units", but this could be reported
+|   in Sect. 4).
+| 
+| Minor comments: 
+| 
+| - General picture: grammar of the text may still need some more
+|   polishing.
+| 
+| - General picture: "the outflow tend to be collimated to jet": this is
+|   an inaccurate statement as there is likely outflowing material that
+|   is not collimated. Maybe replace "the outflow" with "outflowing
+|   material".
+| 
+| - General Picture: "Quasar microlensing is mostly observed in the
+|   optical continuum" is a bit misleading as ML is more pronounced in
+|   X-ray. Also, the authors should remove "continuum" such that optical
+|   refers to the wavelength range (as later X-ray and cm refers also to
+|   the wavelength range) -> "Quasar microlensing has been first
+|   observed in the optical range" .
+| 
+| - General Picture: "mass distribution and kinematics of stars in the
+|   lensing galaxy": I do not know any sensible constraint on the
+|   kinematics of lensing galaxies from microlensing. The authors should
+|   clarify the sentence.
+| 
+| - Sect 4.3: Last sentence (in the opposite case ... smoother) is
+|   unclear.
+| 
+| - Sect. 5: I find the sentence "our method is to generate ... MCMC"
+|   too imprecise. A structure (to many respect similar to the first
+|   version I received of this paper) like: "First we generate
+|   microlensing map. Second the lightcurves for the various source
+|   profiles. Third we fit the various mocks lightcurves with
+|   lightcurves obtained for different sources" would be more
+|   precise. (avoid sentence like "fitting mock lightcurves to source
+|   models" which looks like mixing apples and pears; "fitting of
+|   lightcurves to recover source parameters" is another possible
+|   locution).
+| 
+| - p9, l8, column 2: "... the brightness distribution of the source is
+|   convolved with the magnification map to give the **brightness**" :
+|   replace the second brightness in the sentence.
+| 
+| - Sect. 5.1: Noise of 4% of the observed flux was added. Why 4% ? The
+|   authors should link this to observational signal to noise ratio for
+|   photometry.
+| 
+| - Figure 10 and 11 would benefit from having, as vertical lines, the
+|   "true"/input source parameters. The caption should also indicate,
+|   together with the chi^2, the number of degrees of freedom.
