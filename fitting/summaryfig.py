@@ -9,8 +9,9 @@ from rhalf import Rhalf
 def mockdata():
     global pars
     lcurv.readmap()
-    Rp = 39.4
+    Rp = 39.4              # scaled by 30
     Rn,a,b = 0.4, 0, 0.3
+    print('r_half = ',Rhalf(1,Rn,a,b)*Rp/30)
     pars = [ 51, 290, 1.0, Rp,  Rn, a, b ]
     pars = np.array(pars)
     print(pars)
@@ -78,10 +79,12 @@ def plothist(p):
     rmin,rmax,nr = 0,1.2,61
     p.hist(rh,np.linspace(rmin,rmax,nr),weights=wt,
            histtype='step',lw=2,color='black')
+    p.plot([1,1],[.43,.48],lw=2,color='black')
     fl = max(rns)
     if fl > 0:
         p.hist(rns,np.linspace(rmin,rmax,nr),weights=wt,
                histtype='step',lw=2,color='black',linestyle='dashed')
+        p.plot([.4,.4],[.43,.48],lw=2,color='black',linestyle='dashed')
         p.set_xlabel('inferred $R_n/R_p$ and $r_{1/2}$',labelpad=10)
     else:
         p.set_xlabel('inferred $r_{1/2}$',labelpad=10, fontsize=16)

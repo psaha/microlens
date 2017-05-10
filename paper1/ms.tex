@@ -761,9 +761,11 @@ using Markov-chain Monte Carlo (MCMC).
   lightcurves for the same crescent parameters appear above in
   Figures~\ref{fig:lightcurve_gauss}, \ref{fig:a_var},
   \ref{fig:lightcurve_crescent} and \ref{fig:char_points}.)  The curve
-  has $\chi^2=243, P=0.32$ indicating a good fit.  The lower panel
-  shows the posterior distributions for $r_{1/2}$ (solid histogram)
-  and $R_n/R_p$ (dashed histogram).}
+  has $\chi^2_{(244)}=243, P=0.32$ indicating a good fit.  (The
+  subscript 244 refers to degrees of freedom: 251~points less
+  7~parameters.)  The lower panel shows the posterior distributions
+  for $r_{1/2}$ (solid histogram) and $R_n/R_p$ (dashed histogram).
+  Vertical dashes mark the correct values.}
 \end{figure}
 
 \begin{figure}
@@ -771,7 +773,7 @@ using Markov-chain Monte Carlo (MCMC).
   \includegraphics[width=0.5\textwidth]{figures/cc_backward.eps}
 \caption{\label{fig:cc_backward} Like Figure~\ref{fig:cc_backward},
   except that the fit uses path~II whereas the mock data still come
-  from path~I. The curve has $\chi^2=284, P=0.01$ indicating a
+  from path~I. The curve has $\chi^2_{(244)}=284, P=0.01$ indicating a
   marginally acceptable fit.}
 \end{figure}
 
@@ -782,7 +784,7 @@ using Markov-chain Monte Carlo (MCMC).
   showing the best fit to a Gaussian source.  The histogram shows the
   posterior distribution of $r_{1/2}$ (there is no $R_n$).  It appears
   to show $r_{1/2}$ as accurately recovered, but is not to be trusted,
-  because the fit has $\chi^2=344, P=3\times10^{-6}$ indicating
+  because the fit has $\chi^2_{(247)}=344, P=3\times10^{-6}$ indicating
   rejection of the Gaussian source.  Looking closely, the curve is a
   little too shallow near $t=3$, and it is unable to fit the second
   sub-peak near $t=5$.}
@@ -1054,7 +1056,7 @@ and manuscript preparation. Mihai Tomozeiu simulated and studied the ideal behav
 different source profiles discussed and prepared the manuscript.
 Joachim Wambsganss contributed to the research planning and provided the numerical code used by Manuel Rabold to create 
 the magnification map and corresponding lightcurves used in the MCMC analysis performed by Irshad Mohammed in the last 
-part of the presented work. Both Manuel Rabold and Irshad Mohammed had large contributions in writing the "Fitting Mock Data" section.
+part of the presented work. Both Manuel Rabold and Irshad Mohammed had large contributions in writing the ``Fitting Mock Data'' section.
 
 \section{Acknowledgement}
 IM is supported by Fermi Research Alliance, LLC under Contract No. De-AC02-07CH11359 with the United States Department of Energy.

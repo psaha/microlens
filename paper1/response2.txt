@@ -90,7 +90,9 @@
 | - Sect. 5.1: Noise of 4% of the observed flux was added. Why 4% ? The
 |   authors should link this to observational signal to noise ratio for
 |   photometry.
-| 
+ 
 | - Figure 10 and 11 would benefit from having, as vertical lines, the
 |   "true"/input source parameters. The caption should also indicate,
 |   together with the chi^2, the number of degrees of freedom.
+
+Figures and captions modified accordingly.
