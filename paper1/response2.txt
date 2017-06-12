@@ -6,6 +6,11 @@
 |   now (almost) a duplicate of l13, p2, 2nd column (in Sect 5 ...) and
 |   comes before description of Sect. 4 (while description of sect. 3
 |   has disappeared).
+  = [I think this should be merged with the first paragraph 
+    on the second column of the same page - if you agree Prasenjit]
+
+  
+
 | 
 | A few additional minor comments regarding this section are listed hereafter.
 | 
@@ -51,11 +56,15 @@
 | 
 | - General picture: grammar of the text may still need some more
 |   polishing.
+  = [We can do this at the end]
+
 | 
 | - General picture: "the outflow tend to be collimated to jet": this is
 |   an inaccurate statement as there is likely outflowing material that
 |   is not collimated. Maybe replace "the outflow" with "outflowing
 |   material".
+   = We have made the suggested changes
+
 | 
 | - General Picture: "Quasar microlensing is mostly observed in the
 |   optical continuum" is a bit misleading as ML is more pronounced in
@@ -63,14 +72,17 @@
 |   refers to the wavelength range (as later X-ray and cm refers also to
 |   the wavelength range) -> "Quasar microlensing has been first
 |   observed in the optical range" .
+   = We have replaced the sentence with the one suggested by the reviewer.
 | 
 | - General Picture: "mass distribution and kinematics of stars in the
 |   lensing galaxy": I do not know any sensible constraint on the
 |   kinematics of lensing galaxies from microlensing. The authors should
 |   clarify the sentence.
-| 
+   = We have removed kinematics 
+
 | - Sect 4.3: Last sentence (in the opposite case ... smoother) is
 |   unclear.
+   = We have added "the shape of the lightcurve is smoother"
 | 
 | - Sect. 5: I find the sentence "our method is to generate ... MCMC"
 |   too imprecise. A structure (to many respect similar to the first
@@ -86,6 +98,7 @@
 | - p9, l8, column 2: "... the brightness distribution of the source is
 |   convolved with the magnification map to give the **brightness**" :
 |   replace the second brightness in the sentence.
+   = [ To Prasenjit: I suggest to use light flux instead - this is in section 5]
 | 
 | - Sect. 5.1: Noise of 4% of the observed flux was added. Why 4% ? The
 |   authors should link this to observational signal to noise ratio for
