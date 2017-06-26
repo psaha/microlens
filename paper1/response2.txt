@@ -6,14 +6,13 @@
 |   now (almost) a duplicate of l13, p2, 2nd column (in Sect 5 ...) and
 |   comes before description of Sect. 4 (while description of sect. 3
 |   has disappeared).
-  = [I think this should be merged with the first paragraph 
-    on the second column of the same page - if you agree Prasenjit]
-
-  
-
 | 
 | A few additional minor comments regarding this section are listed hereafter.
-| 
+
+The problem with the paragraphs about Sections 3 and 5 has been fixed.
+(It appears we goofed while merging edits just before submitting the
+manuscript.)
+
 | - Sect. 5.1: a half-light size of 24 light-minutes is given for the
 |   quasar. In terms of Schwarshild radius (R_s), this is about a few
 |   R_s for a black hole of 10^8 Msun. This quite small for optical
@@ -25,7 +24,12 @@
 |   wavelength range such source sizes are expected (a bit as I did
 |   here). It would then also be nice to provide estimate of
 |   time-lengths of the described microlensing event explicitly.
-| 
+
+The time unit (half-light-size/velocity) has now been put into
+context, with reference the length of observed events and the inferred
+r_{1/2}.  The cited Figure by Mosquera et al. (2013) connects r_{1/2}
+and black-hole masses.
+
 | - I am still puzzled by the methodology followed in Sect. 5.2 as it
 |   focuses on very specific tracks along the patterns. The domain of
 |   validity of the conclusions drawn from this sections remains
@@ -51,39 +55,55 @@
 |   (except maybe regarding correspondence between arbitrary units of
 |   previous sections and "physical units", but this could be reported
 |   in Sect. 4).
-| 
+
+The start and end points (which are included as nuisance parameters
+and then marginalized out) allow for the unknown track length.  
+
+The track direction is not varied.  For fold caustics, however, the
+effect of the track direction is nearly degenerate with a, b, and the
+velocity [exactly degenerate for an ideal fold].  It is the track
+velocity perpendicular to the fold that matters.  Since this work only
+considers folds, omitting the track direction seems reasonable.
+
+We have revised the text to explain the parameter-fitting better, and
+also noted that we are using a typical Bayesian MCMC method, similar
+to previous microlensing papers.
+ 
 | Minor comments: 
 | 
 | - General picture: grammar of the text may still need some more
 |   polishing.
-  = [We can do this at the end]
 
-| 
+
+
 | - General picture: "the outflow tend to be collimated to jet": this is
 |   an inaccurate statement as there is likely outflowing material that
 |   is not collimated. Maybe replace "the outflow" with "outflowing
 |   material".
-   = We have made the suggested changes
 
-| 
+We have made the suggested changes.
+
 | - General Picture: "Quasar microlensing is mostly observed in the
 |   optical continuum" is a bit misleading as ML is more pronounced in
 |   X-ray. Also, the authors should remove "continuum" such that optical
 |   refers to the wavelength range (as later X-ray and cm refers also to
 |   the wavelength range) -> "Quasar microlensing has been first
 |   observed in the optical range" .
-   = We have replaced the sentence with the one suggested by the reviewer.
-| 
+
+We have replaced the sentence with the one suggested by the reviewer.
+
 | - General Picture: "mass distribution and kinematics of stars in the
 |   lensing galaxy": I do not know any sensible constraint on the
 |   kinematics of lensing galaxies from microlensing. The authors should
 |   clarify the sentence.
-   = We have removed kinematics 
+
+We have removed kinematics.
 
 | - Sect 4.3: Last sentence (in the opposite case ... smoother) is
 |   unclear.
-   = We have added "the shape of the lightcurve is smoother"
-| 
+
+We have added "the shape of the lightcurve is smoother".
+ 
 | - Sect. 5: I find the sentence "our method is to generate ... MCMC"
 |   too imprecise. A structure (to many respect similar to the first
 |   version I received of this paper) like: "First we generate
@@ -98,8 +118,9 @@
 | - p9, l8, column 2: "... the brightness distribution of the source is
 |   convolved with the magnification map to give the **brightness**" :
 |   replace the second brightness in the sentence.
-   = [ To Prasenjit: I suggest to use light flux instead - this is in section 5]
-| 
+
+Clarified as "observable total brightness".
+
 | - Sect. 5.1: Noise of 4% of the observed flux was added. Why 4% ? The
 |   authors should link this to observational signal to noise ratio for
 |   photometry.
@@ -108,4 +129,4 @@
 |   "true"/input source parameters. The caption should also indicate,
 |   together with the chi^2, the number of degrees of freedom.
 
-Figures and captions modified accordingly.
+Figures and captions modified as suggested.

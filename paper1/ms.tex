@@ -127,27 +127,14 @@ folds), the magnification is approximately constant on one side and
 $\propto1/\sqrt p$ where $p$ is the transverse distance of the source
 from the caustic.  This property will be exploited later.
 
-%In Section~\ref{sec:source-models} we introduce the three source
-%profiles used in our subsequent models and simulations: a
-%constant-brightness disc, a circular Gaussian, and the crescent source
-%introduced by \citep{2013MNRAS.434..765K}.  The latter is simply a
-%constant-brightness disc with a smaller, non-concentric disc cut out
-%of it.  We also derive the half-light radius for a crescent.  The
-%half-light radius can characterise the source size for all three types
-%of source.
-
-In Section~\ref{sec:numerics} we carry out source fitting to
-lightcurves, with both noise and systematic errors are present.  We
-generate a mock lightcurves by taking a crescent source across the
-path AB in figure~\ref{fig:magnification_map}, and then adding noise.
-The path simulates crossing a clean but not ideal fold.  We then fit
-this lightcurve to templates from both crescent and circular-Gaussian
-sources across the path CB.  That is, the templates come from a
-similar but not identical caustic, thus deliberately generating a
-systematic error.  Despite this systematic error, a crescent source
-fits the data, while a Gaussian source is rejected from the $\chi^2$
-value.
-
+In Section~\ref{sec:source-models} we introduce the three source
+profiles used in our subsequent models and simulations: a
+constant-brightness disc, a circular Gaussian, and the crescent source
+introduced by \citep{2013MNRAS.434..765K}.  The latter is simply a
+constant-brightness disc with a smaller, non-concentric disc cut out
+of it.  We also derive the half-light radius for a crescent.  The
+half-light radius can characterise the source size for all three types
+of source.
 
 Section~\ref{sec:fold-crossing} shows the light curves that result
 when each of the model sources crosses an ideal fold.  This would
@@ -179,22 +166,17 @@ dip.  These features are still present, albeit faintly, if the simple
 crescent is replaced by a source based on an accretion-disc simulation
 of a black-hole environment (Figure~\ref{fig:M87_plots}).
 
-
 In Section~\ref{sec:numerics} we carry out source fitting to
 lightcurves, with both noise and systematic errors are present.  We
-generate three lightcurves by taking a uniform disc, a circular
-Gaussian, and a crescent across the path AB in
-Figure~\ref{fig:magnification_map}, and then adding noise.  The path
-simulates crossing a clean but not ideal fold.  In addition, we
-generate templates lightcurves by running the three source types, with
-various parameter values, across the path CB.  That is, the templates
-come from a similar but not identical caustic, thus deliberately
-generating a systematic error.  We then fit the noisy lightcurves to
-the templates using Markov chain Monte-Carlo.  We find that the
-correct source type can be inferred from the $\chi^2$ values.  The
-parameter values can also be inferred. The fitting errors are larger
-than the formal uncertainties, which is expected in the presence of
-systematic errors, but still appear acceptable.
+generate a mock lightcurves by taking a crescent source across the
+path AB in figure~\ref{fig:magnification_map}, and then adding noise.
+The path simulates crossing a clean but not ideal fold.  We then fit
+this lightcurve to templates from both crescent and circular-Gaussian
+sources across the path CB.  That is, the templates come from a
+similar but not identical caustics, thus deliberately generating a
+systematic error.  Despite this systematic error, a crescent source
+fits the data, while a Gaussian source is rejected from the $\chi^2$
+value.
 
 Finally in Section~\ref{sec:discussion} we discuss in more depth the
 implications of the results presented in the previously mentioned
@@ -822,40 +804,47 @@ the transit path of the source across the map.  The source is moved
 along the transit line, one pixel at a time, and at each step the
 brightness distribution of the source is convolved
 (equation~\ref{eqn:ft2d}) with the magnification map to give the
-brightness.  In real life, not only are both lens and source moving
-but the lens configuration, and with it the magnification
-pattern, is also changing with time.  While the first subtlety is
-taken care of by a coordinate transformation in this analysis, for the
-second one the lens configuration is assumed to be constant in time.
+observable total brightness.  In real life, not only are both lens and
+source moving but the lens configuration, and with it the
+magnification pattern, is also changing with time.  The first subtlety
+is taken care of by a coordinate transformation in this analysis; the
+second one is not considered, and the lens configuration is assumed to
+be constant in time.
 
-For the purpose of this analysis, it was desirable to mimic the
-analytical behaviour of a simple fold as much as possible. For
-comparing the numerical result with the analytical one, therefore, the
-path of the source was chosen, so that it intersects the border of the
-caustic perpendicularly, and on a point where the border is a fold
-caustic.  We choose the line AC in Figure~\ref{fig:magnification_map}
-and consider its two caustic-crossing segments separately:
-\begin{itemize}
-\item ``path~I'' runs from C to B;
-\item ``path II'' runs from A to B.
-\end{itemize}
-The magnification along paths I and II are very similar, but not
-identical.
-
-The mock lightcurve used a crescent source (as explained in
-\S\ref{subsec:crescent}) with parameters
+For the purpose of this analysis, it is desirable to mimic the
+analytical behaviour of a simple fold as much as possible.
+Accordingly, we generated a mock lightcurve by taking a crescent
+source along the path CB in Figure~\ref{fig:magnification_map}.  The
+crescent parameters (as defined in \S\ref{subsec:crescent}) were
 \begin{equation}
    \left(R_p, \frac{R_n}{R_p}, \frac{a}{R_p}, \frac{b}{R_p}\right) =
    (1.31, 0.4, 0, 0.3)
 \label{eqn:cp}
 \end{equation}
 corresponding to $r_{1/2}=1$.  Unit length has 30 pixels on the
-magnification map.  The source was carried for 250 pixels along part
-of path~I, giving 251 brightness values.  Gaussian noise at the level
-of 4\% of the current brightness was then added to give the mock
-lightcurve.  If we assume the brightness measurements are nightly, and
-the transverse speed is 600~km/s, $r_{1/2}$ comes to 24~light-minutes,
-which is plausible for a quasar.
+magnification map.  The source was carried for 250 pixels along the
+path CB, giving 251 brightness values.  Gaussian noise at 4\% of the
+current brightness was then added to give the mock data.
+
+The time unit for the light curve is taken to be $r_{1/2}/v_{\!\perp}$
+where $v_{\!\perp}$ is the velocity transverse to the caustic.  If we
+assume the brightness measurements are nightly, and
+$v_{\!\perp}=\rm200\,km/s$, the length of the microlensing event (250
+days) is comparable to typical observed events \cite[see
+  e.g.,][]{2015ApJ...814L..26M}. The implied $r_{1/2}$ is
+$\sim10^{14}\rm\,cm$, which is at the lower end of values inferred for
+microlensed X-ray sources, whereas for optical sources, the inferred
+$r_{1/2}$ is one to two order of magnitude larger \citep[see, e.g.,
+  Figure~8 of][]{0004-637X-769-1-53}.  
+
+The mock data appear in Figures
+\ref{fig:cc_forward}--\ref{fig:gc_forward} below.  The example values
+abovr for $r_{1/2}$, $v_{\!\perp}$ and the observing frequency are not
+important.  What is important is that the observations have enough
+sampling and signal-to-noise that the characteristic features of a
+crescent source (see e.g., Figure~\ref{fig:char_points}) are not
+washed out.
+
 
 \subsection{Model-fitting results}
 
@@ -868,6 +857,8 @@ The latter two are equivalent to considering the location of the
 caustic with respect to the starting point and the speed of the
 source.  The fitting method automatically marginalises over all the
 nuisance parameters.
+
+Widely used \citep[e.g.,][]{2010ApJ...712..658P}.
 
 Figure \ref{fig:cc_forward} shows a fit to the mock lightcurve and
 recovery of $r_{1/2}$ and $R_n/R_p$.
@@ -969,37 +960,6 @@ On the resulting lightcurve the instances
 corresponding to the start and end of the black hole 
 shadow and caustic overlap were distinguishable.
     
-
-%In the case of a high-quality lightcurve with 
-%insignificant noise and measurement errors, 
-%the parameters can be obtained 
-%by simply identifying the characteristic 
-%instances of time without making use of 
-%the actual values of the magnification
-% map. If the effect of the errors and the 
-%noise distorts the magnification time function enough so that the 
-%characteristic epochs are not identifiable with the characteristic 
-%periods still visible, the boundaries of the periods 
-%can be roughly estimated. Furthermore, if direct estimates of 
-%the parameters cannot be obtained we propose the use of a strong
-%statistical tool such as Markov-Chain Monte Carlo.
-% In Section 6  we have studied the possibility of identifying a crescent 
-%source and the possibility of recovering the 
-%respective parameters. As magnification map, we have used a complex numerical 
-%one generated with the microlensing code by \cite{1999A&A...346L...5W}. 
-%In addition, we have added to the signal a Gaussian 
-%noise with an SNR of 1.6.  In the experiment,
-% we have considered all nine combinations of
-% original source profiles and assumed fitting source models.
-%Effectively we have fitted using MCMC all three sources with all three assumed fitting models. The results of the experiment allowed us to build a 
-%procedure for distinguishing the shape of the source assuming that one of the three models we have considered is a good approximation.  
-%The procedure would be useful for observers that endeavour to gain more information about an unresolved source for which they can study 
-%the microlensing lightcurve.  As a first step in the procedure, one should first attempt to use MCMC with a Gaussian model assumption. 
-%If either the value of the $\chi^2$ or the number of rejected datapoints is large then the next step is to change the assumed source model to 
-%a uniform disc and redo the fitting. Finally, if the uniform disc assumption is rejected as well then the fitting should be done with a 
-%crescent source model assumption. If at each of the three steps the data rejects the model then the source cannot be approximated by any of the three models. 
-%Otherwise, if at one of the steps the data does not reject the model then the respective model is a good approximation.   
-
 In the case of a high-quality lightcurve, the parameters of a crescent
 source can be estimated by simply identifying signatures on the
 lightcurve corresponding to transits of the particular source features
