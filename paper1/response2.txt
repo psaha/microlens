@@ -81,7 +81,7 @@ to previous microlensing papers.
 |   is not collimated. Maybe replace "the outflow" with "outflowing
 |   material".
 
-We have made the suggested changes.
+We have made the suggested change.
 
 | - General Picture: "Quasar microlensing is mostly observed in the
 |   optical continuum" is a bit misleading as ML is more pronounced in
@@ -90,7 +90,7 @@ We have made the suggested changes.
 |   the wavelength range) -> "Quasar microlensing has been first
 |   observed in the optical range" .
 
-We have replaced the sentence with the one suggested by the reviewer.
+We have revised the sentence.
 
 | - General Picture: "mass distribution and kinematics of stars in the
 |   lensing galaxy": I do not know any sensible constraint on the

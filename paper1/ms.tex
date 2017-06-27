@@ -110,8 +110,8 @@ straddle several caustics, and hence, their net brightness varies
 smoothly with location.  The central engine of quasars, however, is
 smaller than the typical spacing between caustics.  As a result, the
 lensed brightness undergoes sudden changes as a quasar crosses a
-caustic.  Quasar microlensing has been first observed in the optical
-range \citep[e.g.,][]{2012A&A...544A..62S} but is also known in
+caustic.  Quasar microlensing is observable at optical
+wavelengths \citep[e.g.,][]{2012A&A...544A..62S} and in
 X-rays \citep[e.g.,][]{2016arXiv160207601N}.  In principle, it exists
 at all wavelengths \citep[and has been argued for at cm wavelengths
   by][]{2000A&A...358..793K} but will be washed out if the light is
@@ -730,7 +730,9 @@ using a widely-used microlensing code
 \citep{1990PhDT.......180W,1999A&A...346L...5W,1999JCoAM.109..353W} to
 which we have added a small extension to provide the option of
 crescent sources, and then fit these mock lightcurves to source models
-using Markov-chain Monte Carlo (MCMC).
+using Markov-chain Monte Carlo (MCMC).  The general strategy is the same
+as in previous studies \citep[e.g.,][]{2010ApJ...712..658P} though
+the details are different.
 
 \begin{figure}
 \centering
@@ -849,8 +851,7 @@ washed out.
 \subsection{Model-fitting results}
 
 We now proceed to fit the mock lightcurve.  The basic fitting
-technique is the same as used in several previous studies
-\citep[e.g.,][]{2010ApJ...712..658P}.  Markov-Chain Monte-Carlo is
+technique is the same as used in   Markov-Chain Monte-Carlo is
 used to fit source parameters and additional nuisance parameters (see
 below) jointly, and then marginalise out all uninteresting parameters,
 leaving posterior distributions for any chosen parameter.
@@ -861,32 +862,48 @@ start and end points on the path.  The latter two are equivalent to
 considering the location of the caustic with respect to the starting
 point and the velocity component of the source transverse to the
 caustic (that is, $v_{\!\perp}$).  The orientation of the source track
-is another nuisance parameter, which we do not include it separately.
-This is because, for a pure fold, changing the orientation of the
-source track is equivalent to changing $v_{\!\perp}$ and the
-orientation of the source (see Figure~\ref{fig:infinite_fold}), all
-parameters that are included.  In the present case, the caustic is a
-clean but non-ideal fold, hence disregarding the orientation of the
-source track is expected to introduce some systematic error.
+is another nuisance parameter, which we do not include it, because for
+a pure fold, changing the orientation of the source track is
+equivalent to changing $v_{\!\perp}$ and the orientation of the source
+(see Figure~\ref{fig:infinite_fold}), all parameters that are
+included.  Since the caustic is not a perfect fold, disregarding the
+orientation of the source track can be expected to introduce some
+systematic error.
 
-Figure \ref{fig:cc_forward} shows a fit to the mock lightcurve and
-recovery of $r_{1/2}$ and $R_n/R_p$.
+Figures \ref{fig:cc_forward}--\ref{fig:gc_forward} show the numerical
+results.  Each of these figures shows the mock data (the same in all
+three cases) along with best fits and the fitted values and
+uncertainties on $r_{1/2}$ and (if applicable) $R_n/R_p$.
 
-Figure \ref{fig:cc_backward} shows the result when a different caustic
-is used to fit, than was used to generate the mock lightcurve.  This
-mimics the unavoidable systematic error of not knowing the caustic
-exactly.  The fit is slightly degraded, but still acceptable.
+Figure \ref{fig:cc_forward} shows a test of the fitting procedure.
+The computer compares the mock data to different templates
+lightcurves.  All the templates come from taking a crescent source
+along the path CB in Figure~\ref{fig:magnification_map}, but with
+varied crescent parameters and varied start and finish points.  As the
+figure shows, the lightcurve can be fitted to within the noise, and
+the parameters $r_{1/2}$ and $R_n/R_p$ can be recovered.
 
-Figure \ref{fig:gc_forward} shows the result of attempting to fit a
-Gaussian source.  There is a small but statistically very significant
-misfit because a Gaussian curve cannot reproduce the part of the
-lightcurve with the slight flattening and then a second sub-peak
-(cf.~Figure~\ref{fig:char_points}) as the dark part of the crescent crosses the caustic.  
-A hint of
-such a feature is present in recent caustic-crossing observations of
-the well-known system Q2237+0305 \citep[see Figure~3
-in][]{2015ApJ...814L..26M} though interpretation as a crescent source
-is speculation at present.
+Figure \ref{fig:cc_backward} attempts a somewhat more realistic
+situation.  The mock lightcurve is the same as before, but the
+templates come from taking a crescent source along the path AB in
+Figure~\ref{fig:magnification_map}.  That is, the mock data and the
+templates come from crossings of different caustics.  This mimics the
+unavoidable systematic error of not knowing the caustic exactly.  The
+fit is slightly degraded, but still acceptable.  The parameters
+$r_{1/2}$ and $R_n/R_p$ are still recovered.  The parameters $a/R_p$
+and $b/R_p$ were not correctly recovered, which is understandable from
+the track change.
+
+Figure \ref{fig:gc_forward} shows the result of attempting to fit
+templates from a Gaussian source to the same mock data.  There is a
+small but statistically very significant misfit because a Gaussian
+source cannot reproduce the part of the lightcurve with the slight
+flattening and then a second sub-peak
+(cf.~Figure~\ref{fig:char_points}) as the dark part of the crescent
+crosses the caustic.  A hint of such a feature is present in recent
+caustic-crossing observations of the well-known system Q2237+0305
+\citep[see Figure~3 in][]{2015ApJ...814L..26M} though interpretation
+as a crescent source is speculation at present.
 
 \section{Discussion}\label{sec:discussion}
 
