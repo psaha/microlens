@@ -130,7 +130,7 @@ from the caustic.  This property will be exploited later.
 In Section~\ref{sec:source-models} we introduce the three source
 profiles used in our subsequent models and simulations: a
 constant-brightness disc, a circular Gaussian, and the crescent source
-introduced by \citep{2013MNRAS.434..765K}.  The latter is simply a
+introduced by \cite{2013MNRAS.434..765K}.  The latter is simply a
 constant-brightness disc with a smaller, non-concentric disc cut out
 of it.  We also derive the half-light radius for a crescent.  The
 half-light radius can characterise the source size for all three types
@@ -848,17 +848,26 @@ washed out.
 
 \subsection{Model-fitting results}
 
-We now proceed to fit the mock lightcurve using MCMC, to recover the
-source parameters.
+We now proceed to fit the mock lightcurve.  The basic fitting
+technique is the same as used in several previous studies
+\citep[e.g.,][]{2010ApJ...712..658P}.  Markov-Chain Monte-Carlo is
+used to fit source parameters and additional nuisance parameters (see
+below) jointly, and then marginalise out all uninteresting parameters,
+leaving posterior distributions for any chosen parameter.
 
-Note that fitting involves three nuisance parameters, namely the
-brightness normalisation and the start and end points on the path.
-The latter two are equivalent to considering the location of the
-caustic with respect to the starting point and the speed of the
-source.  The fitting method automatically marginalises over all the
-nuisance parameters.
-
-Widely used \citep[e.g.,][]{2010ApJ...712..658P}.
+In addition to the source parameters, the fitting procedure includes
+three nuisance parameters, namely the brightness normalisation and the
+start and end points on the path.  The latter two are equivalent to
+considering the location of the caustic with respect to the starting
+point and the velocity component of the source transverse to the
+caustic (that is, $v_{\!\perp}$).  The orientation of the source track
+is another nuisance parameter, which we do not include it separately.
+This is because, for a pure fold, changing the orientation of the
+source track is equivalent to changing $v_{\!\perp}$ and the
+orientation of the source (see Figure~\ref{fig:infinite_fold}), all
+parameters that are included.  In the present case, the caustic is a
+clean but non-ideal fold, hence disregarding the orientation of the
+source track is expected to introduce some systematic error.
 
 Figure \ref{fig:cc_forward} shows a fit to the mock lightcurve and
 recovery of $r_{1/2}$ and $R_n/R_p$.
