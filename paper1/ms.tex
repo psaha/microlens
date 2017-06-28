@@ -127,8 +127,8 @@ folds), the magnification is approximately constant on one side and
 $\propto1/\sqrt p$ where $p$ is the transverse distance of the source
 from the caustic.  This property will be exploited later.
 
-In Section~\ref{sec:source-models} we introduce the three source
-profiles used in our subsequent models and simulations: a
+In Section~\ref{sec:source-models} we introduce three source profiles
+which are used in our subsequent models and simulations: a
 constant-brightness disc, a circular Gaussian, and the crescent source
 introduced by \cite{2013MNRAS.434..765K}.  The latter is simply a
 constant-brightness disc with a smaller, non-concentric disc cut out
@@ -168,20 +168,20 @@ of a black-hole environment (Figure~\ref{fig:M87_plots}).
 
 In Section~\ref{sec:numerics} we carry out source fitting to
 lightcurves, with both noise and systematic errors are present.  We
-generate a mock lightcurves by taking a crescent source across the
-path AB in figure~\ref{fig:magnification_map}, and then adding noise.
-The path simulates crossing a clean but not ideal fold.  We then fit
-this lightcurve to templates from both crescent and circular-Gaussian
-sources across the path CB.  That is, the templates come from a
-similar but not identical caustics, thus deliberately generating a
-systematic error.  Despite this systematic error, a crescent source
-fits the data, while a Gaussian source is rejected from the $\chi^2$
-value.
+generate a mock lightcurve by taking a crescent source across the path
+CB in Figure~\ref{fig:magnification_map}, and then adding noise.  The
+path simulates crossing a clean but not ideal fold.  We then fit this
+lightcurve to templates from both crescent and circular-Gaussian
+sources along the paths AB as well as CB.  That is, the templates from
+a similar but not identical caustic are also used, thus deliberately
+generating a systematic error.  Despite this systematic error, a
+crescent source fits the data, while a Gaussian source is rejected
+from the $\chi^2$ value.
 
 Finally in Section~\ref{sec:discussion} we discuss in more depth the
 implications of the results presented in the previously mentioned
-sections.  One of the most interesting implication is the possibility
-to estimate the black hole mass from the reconstructed
+sections.  One of the most interesting implications is the possibility
+of estimating the black hole mass from the reconstructed
 parameters. This further requires good approximations of the relative
 transversal velocity between the quasar and the lens. Proper
 constraints can be set with independent observations of the stellar
@@ -260,8 +260,8 @@ distribution $\Sigma(\vec\theta)$ due to individual stars produces a
 caustic network on the scale of $\sqrt{GM_\odot D_L/c^2}$ or $10^{-6}
 \sqrt{M/M_\odot}\rm\,arcsec$ for typical lens and source redshift
 \citep{2001PASA...18..207W}.  Extended sources wash out this
-micro-caustic structure, but the optical-continuum source of quasars
-is even smaller.
+micro-caustic structure, but the optical-continuum and X-ray sources
+of quasars are even smaller.
 
 \begin{figure}
 \centering
@@ -309,19 +309,18 @@ sources relative to the caustic.}
 \end{figure}
 
 For a microlensing event the lightcurve can be written for an
-undefined source shape as:
+arbitrary source shape as:
 \begin{equation}
- F(t) = \int_{-\infty}^\infty \int_{-\infty}^\infty S_{2D}(p-p_s(t), q-q_s(t)) \mu_t(p) \mathrm{d}q \mathrm{d}p
+ F(t) = \int_{-\infty}^\infty \int_{-\infty}^\infty S_{2D}(p-p_s(t), q-q_s(t)) \mu_t(p) \mathrm{d}q \mathrm{d}p.
  \label{eqn:ft2d}
 \end{equation}
 In order to build the previous equation we have considered that the
 time dependency of the flux $F$ is given only by the motion of the
 source with respect to a fixed caustic. Therefore the only time
 dependent quantities in the right hand side of the equation are the
-coordinates of the center of the source $p_s,q_s$ and by construct
-$S_{2D}$.
+coordinates of the center of the source $p_s(t),q_s(t)$.
 
-Due to the choice of the coordinate system the amplification factor 
+Due to the choice of coordinate system the amplification factor 
 has no dependence on the $q$ coordinate. The previous equation can be rewritten as:
 
 \begin{equation}
@@ -342,7 +341,7 @@ In other words, if two sources with different $S_{2D}$ have the same $S_{1D}$ th
  
 \section{Models for extended sources}\label{sec:source-models}
 
-In the present study we are analysing three types of sources with different surface brightness: 
+In the present study we analyse three types of sources with different surface brightness: 
 \begin{enumerate}
  \renewcommand{\theenumi}{(\arabic{enumi})}
   \item a rotationally symmetric source with a bivariate gaussian surface brightness distribution,
@@ -374,12 +373,12 @@ Other parameters of the model are the total flux $S_0^G$ and $\sigma$.
 Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disk centered at $p_s, q_s$ 
 would be insignificant. For a gaussian distributed surface brightness source the half-light radius is directly proportional to the parameter $\sigma$ according to the equation:
 \begin{equation}
-r_{1/2} = \sqrt{ln(4)} \sigma.
+r_{1/2} = \sqrt{\ln4}\,\sigma.
 \end{equation}
 
 \subsection{Disk source with constant surface brightness distribution}
 
-One can construct mathematically a disk source with constant surface brightness and radius $R$ using a stepfunction:
+One can construct mathematically a disk source with constant surface-brightness and radius $R$ using a stepfunction:
 \begin{equation}
  S_{2D}^D(p-p_s, q-q_s) = \frac{S_0^D}{\pi R^2} \Theta \left( R^2 - \left( p-p_s \right)^2 - \left( q-q_s \right)^2 \right).
 \end{equation}
@@ -389,7 +388,6 @@ By integrating over $q$ coordinate the linear brightness function is obtained:
 \begin{equation}
  S_{1D}^D(p-p_s) = \frac{2 S_0^D}{\pi R}  \sqrt{1 - \frac{(p-p_s)^2}{R^2} }    \Theta \left( R^2 - \left( p-p_s \right)^2 \right).
 \end{equation}
-\\
 The half-light radius of a uniform disk source is $R/\sqrt{2}$.
 
 \subsection{Crescent source with constant surface brightness distribution}\label{subsec:crescent}
@@ -413,9 +411,9 @@ and
 \begin{equation}
  S_{2D}^{Dn}(p-p_{sn}, q-q_{sn}) = \frac{S_0^{Dn}}{\pi R_n^2} \Theta \left( R_n^2 - \left( p-p_{sn} \right)^2 - \left( q-q_{sn} \right)^2 \right).
 \end{equation}
-\\
-The following notations were used: $R_p, (p_{sp}, q_{sp}), R_n, (p_{sn},q_{sn})$ are the radii 
-and coordinate of the center for the larger positive disk and smaller negative disk respectively. 
+The following notations were used: $R_p$ and $(p_{sp}, q_{sp})$ are
+the radii and coordinate of the center for the larger positive disk, 
+while $R_n$ $(p_{sn},q_{sn})$ correspond to the smaller negative disk. 
 $S_0^{Dp},S_0^{Dn}$ represent the total flux of radiation received from the large and small disk. 
 From this point forward we will not use the total flux from each source. Instead we will 
 use the difference which in this case is the total flux from the crescent-shaped source $S_0^C$. \\
@@ -426,7 +424,7 @@ Equation \ref{eqn:s2d} can be written as:\\
  &\qquad \left. {} -  \Theta \left[ R_n^2 - \left( p-p_{sn} \right)^2 - \left( q-q_{sn} \right)^2 \right] \right\}.
 \end{align}
 \\
-Analogous for the linear brightness function:
+Analogously for the linear brightness function:
 
 \begin{align}
  S_{1D}^C &= \frac{2 S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \left\{ \sqrt{R_p^2 - (p-p_{sp})^2}  \Theta \left[ R_p^2 - \left( p-p_{sp} \right)^2 \right] \right.\nonumber\\
@@ -435,22 +433,24 @@ Analogous for the linear brightness function:
 \end{align}
 
 
-There are some constraints on the parameters used to define a crescent in the previously 
-presented manner that need to be stated. First, we must impose the obvious $R_p > R_n$ relation. Secondly, 
-the small disk must always be interior to the large disk:
+There are some constraints on the parameters used to define a crescent
+in the previously presented manner that need to be stated. First, we
+must impose the obvious $R_p \geq R_n$ relation. Secondly, the small disk
+must always be interior to the large disk:
 \begin{equation}
  R_p \ge R_n + \sqrt{\left(p_{sp} - p_{sn} \right)^2 + \left(q_{sp} - q_{sn} \right)^2}
 \end{equation}
-
 For the distances between the centers of the two disks we will use the same 
 notations as the one found in the paper \citep{2013MNRAS.434..765K}, $a \equiv p_{sn} - p_{sp}$ and $b \equiv q_{sn} - q_{sp}$.
 
-The half-light radius of any source is invariant to any rotational transformation. 
-In the present case of a crescent source the effective radius is dependent on the 
-parameters $R_p$, $R_n$ and $\sqrt{a^2+b^2}\equiv c $ exclusively. From symmetry
-considerations the centroid of the source is collinear with the centers of the two disks 
-and it is situated at a distance $d_c$ from the center of the bright disk. $d_c$ can be 
-computed numerically with the use of a variation of equation \ref{eqn:s1_d}:
+The half-light radius of any source is invariant under any rotational
+transformation.  In the present case of a crescent source the
+effective radius is dependent on the parameters $R_p$, $R_n$ and
+$\sqrt{a^2+b^2}\equiv c $ exclusively. From symmetry considerations
+the centroid of the source is collinear with the centers of the two
+disks and it is situated at a distance $d_c$ from the center of the
+bright disk. $d_c$ can be computed numerically with the use of a
+variation of equation \ref{eqn:s1_d}:
 
 \begin{equation}
 \begin{aligned}
@@ -459,7 +459,8 @@ computed numerically with the use of a variation of equation \ref{eqn:s1_d}:
 \end{aligned}
 \end{equation}   
 
-With the position of the centroid determined, the half-light radius can be also be computed numerically:
+With the position of the centroid determined, the half-light radius
+can be also be computed through a numerical integral:
  
 \begin{equation}
 \begin{aligned}
@@ -485,7 +486,7 @@ centroid and from the dark disk to the centroid.  }
 \section{Lightcurves of the extended sources during fold crossing}\label{sec:fold-crossing}
 
 Using equation \ref{eqn:ft} and the one-dimensional flux function
-presented in the previous section one can compute numerically the
+presented in the previous section one can numerically compute the
 lightcurves of the three extended sources for the simplified
 infinite-wall-caustics model.
 
@@ -496,7 +497,6 @@ with a gaussian distributed brightness with $\sigma$ and total flux $S_0^G$ in t
 \begin{equation}
  F^G(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{S_0^G}{\sqrt{2 \pi} \sigma} e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}} \right) \mathrm{d}p.
 \end{equation}
-
 which can be simplified to:
 \begin{equation}
  F^G(t) = \mu_0 S_0^G + \frac{C_0 S_0^G}{\sqrt{2\pi} \sigma} \int_{0}^\infty \frac{e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}}}{\sqrt{p}} \mathrm{d}p.
@@ -545,7 +545,6 @@ unmagnified flux $S_0^D$ has a lightcurve described by the equation:
     & \bigg[ \frac{2 S_0^D}{ \pi R} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}}  \Theta \left(R^2 - \left(p-p_s(t) \right)^2 \right) \bigg] \mathrm{d}p.
 \end{aligned}
 \end{equation}
-
 which is equivalent to:
 \begin{equation}
  F^D(t) = \mu_0 S_0^D + \frac{2 C_0 S_0^D}{\pi R} \int_{max(0, p_s(t) - R)}^{max(0, p_s(t) + R)} \frac{1}{\sqrt{p}} \sqrt{1 - \frac{\left( p-p_s(t) \right)^2}{R^2}} \mathrm{d}p.
@@ -581,9 +580,9 @@ The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii 
 \caption{\label{fig:lightcurve_crescent_back} 1D profiles (top panel) and simulated lightcurves (bottom) of backwards crescent sources with identical $R_p$ and $a$ ($a$ = 0.3 $R_p$) and different dark disk radii ($R_n$).}
 \end{figure}
 
-The function $p_s(t)$ can be chosen to be equal to $v_p(t-t_0) + p_{s0}$. Where $p_{s0}$ is the coordinate $p$ 
+The function $p_s(t)$ can be chosen to be equal to $v_p(t-t_0) + p_{s0}$ where $p_{s0}$ is the coordinate $p$ 
 of the source at the initial time, and $v_p$ is the component of the velocity
-along the $p$ axis. Such a modelling of the motion of the object in the source 
+along the $p$ axis. Such a model of the motion of the object in the source 
 plane describes a linear motion with constant velocity. Furthermore, we reduce the complexity of the model by 
 choosing the function $a$ to be constant in time.  
 
@@ -595,7 +594,7 @@ choosing the function $a$ to be constant in time.
 of forwards crescent sources with identical $R_p$ and $a$ ($a$ = - 0.3 $R_p$) and different dark disk radii ($R_n$). }
 \end{figure}
 
-In figure \ref{fig:char_points} there are four characteristic points visible on the resulting one-dimensional 
+In Figure \ref{fig:char_points} there are four characteristic points visible on the resulting one-dimensional 
 light profile of the crescent shaped source. Two of the points, p1 and p4, mark the outer boundaries of the
  luminous disc component. The other two, p2 and p3, mark the boundaries of the dark disc component. 
 Since $S_{1D}$ is a projection of $S_{2D}$ on a line perpendicular to the caustic, the following relation holds:
@@ -610,7 +609,7 @@ In addition there are two other obvious relations the characteristic points whic
 \begin{equation}
         p_3 -p_2 = 2 R_n.
 \end{equation}
-All four points mark the positions where derivative $\frac{dS_{1D}}{dp}$ is discontinuous. The points can be used 
+All four points mark the positions where the derivative $\frac{dS_{1D}}{dp}$ is discontinuous. The points can be used 
 to define three regions: $p_1 - p_2$ where $S_{1D}$ is convex, $p_2 - p_3$ where $S_{1D}$ is concave, 
 and $p_3 - p_4$ where $S_{1D}$ is convex again. \\
 
@@ -679,8 +678,8 @@ In the case of the latter the instance when the dark disc reaches the
 caustic corresponds to larger and larger magnifications until it
 becomes a local and even global peak. The effect of the $R_n$
 parameter on the light curve is presented in
-Figures~\ref{fig:lightcurve_crescent} and
-\ref{fig:lightcurve_crescent_back}. For the particular set of
+Figures~\ref{fig:lightcurve_crescent_back} and
+\ref{fig:lightcurve_crescent}. For the particular set of
 parameters where $R_p = R_n +a$ the third period of time discussed
 previously does not exist. Particularizing further, if the value of
 the radius of the dark disc is comparable to the value of the radius
@@ -714,9 +713,9 @@ presented in McKinney \& Blandford 2009. The corresponding
 
 \cite{2012MNRAS.421.1517D} have created a radiative image of M87 based on the GRMHD simulations presented in \citep{2009MNRAS.394L.126M}. 
 The top right-most image in figure 5 of \cite{2012MNRAS.421.1517D} has been projected to a 1D profile associated to the perpendicular 
-direction to a fold caustic approaching the image from the right. The projection is presented in the upper panel of figure \ref{fig:M87_plots}. 
+direction to a fold caustic approaching the image from the right. The projection is presented in the upper panel of Figure \ref{fig:M87_plots}. 
 The amplification values of the flux of light corresponding to a 
-microlensing event are presented in the lower panel of figure \ref{fig:M87_plots}. 
+microlensing event are presented in the lower panel of Figure \ref{fig:M87_plots}. 
 In general, the behaviour of the lightcurve is similar to the geometric crescent source with the caveat that the outer regions 
 surrounding the luminous parts of the image have non-zero flux and thus are more extended than the simplified source model.
 
@@ -730,7 +729,7 @@ using a widely-used microlensing code
 \citep{1990PhDT.......180W,1999A&A...346L...5W,1999JCoAM.109..353W} to
 which we have added a small extension to provide the option of
 crescent sources, and then fit these mock lightcurves to source models
-using Markov-chain Monte Carlo (MCMC).  The general strategy is the same
+using Markov-chain Monte Carlo (MCMC).  The basic technique is the same
 as in previous studies \citep[e.g.,][]{2010ApJ...712..658P} though
 the details are different.
 
@@ -828,10 +827,10 @@ magnification map.  The source was carried for 250 pixels along the
 path CB, giving 251 brightness values.  Gaussian noise at 4\% of the
 current brightness was then added to give the mock data.
 
-The time unit for the light curve is taken to be $r_{1/2}/v_{\!\perp}$
-where $v_{\!\perp}$ is the velocity transverse to the caustic.  If we
+The time unit for the light curve is taken to be $r_{1/2}/v_p$
+where $v_p$ is the velocity transverse to the caustic.  If we
 assume the brightness measurements are nightly, and
-$v_{\!\perp}=\rm200\,km/s$, the length of the microlensing event (250
+$v_p=\rm200\,km/s$, the length of the microlensing event (250
 days) is comparable to typical observed events \cite[see
   e.g.,][]{2015ApJ...814L..26M}. The implied $r_{1/2}$ is
 $\sim10^{14}\rm\,cm$, which is at the lower end of values inferred for
@@ -840,8 +839,8 @@ $r_{1/2}$ is one to two order of magnitude larger \citep[see, e.g.,
   Figure~8 of][]{0004-637X-769-1-53}.  
 
 The mock data appear in Figures
-\ref{fig:cc_forward}--\ref{fig:gc_forward} below.  The example values
-abovr for $r_{1/2}$, $v_{\!\perp}$ and the observing frequency are not
+\ref{fig:cc_forward}--\ref{fig:gc_forward}.  The example values
+above for $r_{1/2}$, $v_p$ and the observing frequency are not
 important.  What is important is that the observations have enough
 sampling and signal-to-noise that the characteristic features of a
 crescent source (see e.g., Figure~\ref{fig:char_points}) are not
@@ -850,25 +849,24 @@ washed out.
 
 \subsection{Model-fitting results}
 
-We now proceed to fit the mock lightcurve.  The basic fitting
-technique is the same as used in   Markov-Chain Monte-Carlo is
-used to fit source parameters and additional nuisance parameters (see
-below) jointly, and then marginalise out all uninteresting parameters,
-leaving posterior distributions for any chosen parameter.
+We now proceed to fit the mock lightcurve.  MCMC is used to fit source
+parameters and additional nuisance parameters (see below) jointly, and
+then marginalise out all uninteresting parameters, leaving posterior
+distributions for any chosen parameter.
 
 In addition to the source parameters, the fitting procedure includes
 three nuisance parameters, namely the brightness normalisation and the
 start and end points on the path.  The latter two are equivalent to
 considering the location of the caustic with respect to the starting
 point and the velocity component of the source transverse to the
-caustic (that is, $v_{\!\perp}$).  The orientation of the source track
-is another nuisance parameter, which we do not include it, because for
-a pure fold, changing the orientation of the source track is
-equivalent to changing $v_{\!\perp}$ and the orientation of the source
-(see Figure~\ref{fig:infinite_fold}), all parameters that are
-included.  Since the caustic is not a perfect fold, disregarding the
-orientation of the source track can be expected to introduce some
-systematic error.
+caustic (that is, $v_p$).  The orientation of the source track is
+another nuisance parameter, but we do not include it, because for a
+pure fold, changing the orientation of the source track is equivalent
+to changing $v_p$ and the orientation of the source (see
+Figure~\ref{fig:infinite_fold}), all parameters that are included.
+Since the caustic is not a perfect fold, disregarding the orientation
+of the source track can be expected to introduce some systematic
+error.
 
 Figures \ref{fig:cc_forward}--\ref{fig:gc_forward} show the numerical
 results.  Each of these figures shows the mock data (the same in all
@@ -876,12 +874,12 @@ three cases) along with best fits and the fitted values and
 uncertainties on $r_{1/2}$ and (if applicable) $R_n/R_p$.
 
 Figure \ref{fig:cc_forward} shows a test of the fitting procedure.
-The computer compares the mock data to different templates
-lightcurves.  All the templates come from taking a crescent source
-along the path CB in Figure~\ref{fig:magnification_map}, but with
-varied crescent parameters and varied start and finish points.  As the
-figure shows, the lightcurve can be fitted to within the noise, and
-the parameters $r_{1/2}$ and $R_n/R_p$ can be recovered.
+The computer compares the mock data to different template
+lightcurves. The templates come from taking a crescent source along
+the path CB in Figure~\ref{fig:magnification_map}, but with varied
+crescent parameters and varied start and finish points.  As the figure
+shows, the lightcurve can be fitted to within the noise, and the
+parameters $r_{1/2}$ and $R_n/R_p$ can be recovered.
 
 Figure \ref{fig:cc_backward} attempts a somewhat more realistic
 situation.  The mock lightcurve is the same as before, but the

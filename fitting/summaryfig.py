@@ -72,7 +72,7 @@ def plotcurves(p):
     p.errorbar(t,b,yerr=db,linestyle='none',color='gray')
     p.plot(t,m,color='black')
     p.set_yticks(np.arange(0,7,2))
-    p.set_xlabel('$t [r_{1/2}/v{\!_\perp}]$',labelpad=10, fontsize=16)
+    p.set_xlabel('$t [r_{1/2}/v_p]$',labelpad=10, fontsize=16)
     p.set_ylabel('magnification', fontsize=16)
 
 def plothist(p):

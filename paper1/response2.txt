@@ -74,7 +74,7 @@ to previous microlensing papers.
 | - General picture: grammar of the text may still need some more
 |   polishing.
 
-
+We have fixed some miscellaneous problems in the text.
 
 | - General picture: "the outflow tend to be collimated to jet": this is
 |   an inaccurate statement as there is likely outflowing material that
