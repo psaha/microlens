@@ -114,7 +114,9 @@ We have added "the shape of the lightcurve is smoother".
 |   models" which looks like mixing apples and pears; "fitting of
 |   lightcurves to recover source parameters" is another possible
 |   locution).
-| 
+
+Text clarified here.
+
 | - p9, l8, column 2: "... the brightness distribution of the source is
 |   convolved with the magnification map to give the **brightness**" :
 |   replace the second brightness in the sentence.
@@ -124,6 +126,9 @@ Clarified as "observable total brightness".
 | - Sect. 5.1: Noise of 4% of the observed flux was added. Why 4% ? The
 |   authors should link this to observational signal to noise ratio for
 |   photometry.
+
+The now note (at the end of Section 5.1) that the mock data are just
+an example, and do not attempt to justify the 4% noise level.
  
 | - Figure 10 and 11 would benefit from having, as vertical lines, the
 |   "true"/input source parameters. The caption should also indicate,
