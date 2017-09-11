@@ -55,7 +55,7 @@ def gencurves(fname):
     lcurv.writecurves(q)
 
 
-def plotcurves(p):
+def plotcurves(p,lbl):
     fil = open('curves.txt')
     all = fil.readlines()
     t = []
@@ -70,43 +70,18 @@ def plotcurves(p):
         db.append(float(s[3]))
     p.axis([0,6,0,7])
     p.errorbar(t,b,yerr=db,linestyle='none',color='gray')
-    p.plot(t,m,color='black')
+    p.plot(t,m,label=lbl) #,color='black')
     p.set_yticks(np.arange(0,7,2))
     p.set_xlabel('$t [r_{1/2}/v_p]$',labelpad=10, fontsize=16)
     p.set_ylabel('magnification', fontsize=16)
 
-def plothist(p):
-    rmin,rmax,nr = 0,1.2,61
-    p.hist(rh,np.linspace(rmin,rmax,nr),weights=wt,
-           histtype='step',lw=2,color='black')
-    p.plot([1,1],[.43,.48],lw=2,color='black')
-    fl = max(rns)
-    if fl > 0:
-        p.hist(rns,np.linspace(rmin,rmax,nr),weights=wt,
-               histtype='step',lw=2,color='black',linestyle='dashed')
-        p.plot([.4,.4],[.43,.48],lw=2,color='black',linestyle='dashed')
-        p.set_xlabel('inferred $R_n/R_p$ and $r_{1/2}/v_p$',labelpad=10)
-    else:
-        p.set_xlabel('inferred $r_{1/2}/v_p$',labelpad=10, fontsize=16)
-    p.axis([rmin,rmax,0,0.5])
-
-
-
 mockdata()
 
-for fname in ['gc_forward','cc_forward','cc_backward']:
+fig = pl.figure()
+p = fig.add_subplot(111)
+for fname in ['cc_forward','cc_backward','gc_forward']:
     gencurves(fname)
+    plotcurves(p,fname[:7])
+pl.legend()
 
-    fig = pl.figure(figsize=(5,10))
-    fig.subplots_adjust(hspace=0.2)
-
-    p = fig.add_subplot(211)
-    plotcurves(p)
-
-    p = fig.add_subplot(212)
-    plothist(p)
-    p.get_yaxis().set_visible(False)
-
-    fig.savefig('../paper1/figures/%s.eps'%fname)
-
-    pl.show()
+pl.show()

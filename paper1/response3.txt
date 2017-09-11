@@ -1,0 +1,81 @@
+> Assistant Editor's Comments:
+> Editor
+> Comments to the Author:
+> 
+> Figure 5: Please can you correct ‘disk’ to ‘disc’. Please refer to our
+> Instructions to Authors for full details on MNRAS spelling and
+> grammar.
+
+Changed disk -> disc in this figure and throughout the text/
+
+> Please ensure that all references to arxiv papers also include the
+> preprint number, e.g. arXiv:1506.08817.
+
+Done.
+
+> Reviewer's Comments:
+> Reviewer: 1
+> 
+> Comments to the Author
+> 
+> I have reviewed the new version of the paper and I am satisified with
+> most of it. In particular, the presentation of Section 5 is much
+> better now. I have however still a few concerns regarding that
+> section:
+ 
+> 1. The authors state that the fit carried out in Fig 11. " mimics the
+> unavoidable systematic error of not knowing the caustic exactly". I do
+> not see in which respect the caustic used in Fig. 11 is different from
+> the one in Fig. 10 except with regard to the orientation of the
+> track. I think that this demonstrates that assuming the fold to be
+> perfect is an oversimplification that poorly works for realistic
+> cases. I would again encourage the authors to modify the orientation
+> of the track in their MCMC, or otherwise explain that the
+> generalisation of the conclusion from that section is limited because
+> that effect has not been fully accounted for.
+
+Curve of the caustic.
+ 
+> 2. Fig. 11: upper panel: I am surprised that such a different $\chi^2$
+> (i.e. $\chi^2 = 284$ instead of $\chi^2 = 243$ in Fig. 10) is derived
+> in that case. The fit is very similar to Fig. 10 but $\chi^2$ worst by
+> about 40. I believe that either the figure is wrong or the chi2
+> calculation is not correct (especially since in Fig. 12, the $\chi^2$
+> is only worst by 100).
+
+Visiting figure.
+
+> 3. There should be a degeneracy between the velocity and the source
+> size (hence position of start/end points of the track and source
+> size). Fig. 10-12 suggest that this degeneracy is somehow broken. Is
+> it because of the finite extension of the map ? Is it because the
+> authors used a prior on the start/end points ? The authors should
+> clarify this point.
+
+Indeed, only the ratio r_p/v_p can be inferred, not r_p.  We have
+corrected the figure labels and ...
+ 
+> Minor comments:
+> 
+> - Sect. 5.1: p11, l20, col2: "The example values above ... not
+>   important": What does this mean ? This sentence lacks specificity
+>   and needs to be expanded. I guess that the authors wanted to comment
+>   on the fact that the source size mimicked this way is too small
+>   compared to real cases, but the comment is not insightful.
+
+This paragraph has been clarified.
+ 
+> - p2, l28, col2: "In Section 5 we carry out source fitting to
+>   lightcurves, with both noise and systematic errors are present" ->
+>   *where* both noise and systematic errors are present.
+
+Done.
+ 
+> - p5, l45: "in the paper (Kamruddin & Dexter 2013)" -> in Kamruddin &
+>   Dexter (2013).
+
+Done.
+
+> - Caption of FIg. 9: "ordonata" -> ordinate
+
+Corrected.

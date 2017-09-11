@@ -32,7 +32,7 @@ variations (microlensing). These brightness changes are associated with the inne
 through a complicated pattern of caustics produced by the stars in the lensing galaxy. In this paper, we study 
 whether the universal properties of optical caustics could enable extraction of shape information about the central 
 engine of quasars. We present a toy model with a crescent-shaped source crossing a fold caustic. The silhouette 
-of a black hole over an accretion disc tends to produce roughly crescent sources. When a crescent-shaped source 
+of a black hole over an accretion disk tends to produce roughly crescent sources. When a crescent-shaped source 
 crosses a fold caustic, the resulting light curve is noticeably different from the case of a circular luminosity 
 profile or Gaussian source. With good enough monitoring data, the crescent parameters, apart from one degeneracy, 
 can be recovered.
@@ -167,7 +167,7 @@ crescent is replaced by a source based on an accretion-disc simulation
 of a black-hole environment (Figure~\ref{fig:M87_plots}).
 
 In Section~\ref{sec:numerics} we carry out source fitting to
-lightcurves, where both noise and systematic errors are present.  We
+lightcurves, with both noise and systematic errors are present.  We
 generate a mock lightcurve by taking a crescent source across the path
 CB in Figure~\ref{fig:magnification_map}, and then adding noise.  The
 path simulates crossing a clean but not ideal fold.  We then fit this
@@ -302,7 +302,7 @@ A source of arbitrary shape can be described by a two-dimensional brightness fun
 
 \begin{figure}
 \includegraphics[width = .49\textwidth]{figures/infinite_fold_ar.eps}
-\caption{\label{fig:infinite_fold} Source profiles for Gaussian, disc,
+\caption{\label{fig:infinite_fold} Source profiles for Gaussian, disk,
   crescents (right) and magnification map for an infinite fold
   (left). Objects have the same $S_{0}$ and $r_{1/2}$. The black arrow marks the direction of motion of the
 sources relative to the caustic.}
@@ -345,7 +345,7 @@ In the present study we analyse three types of sources with different surface br
 \begin{enumerate}
  \renewcommand{\theenumi}{(\arabic{enumi})}
   \item a rotationally symmetric source with a bivariate gaussian surface brightness distribution,
-  \item a disc source with constant surface brightness distribution,
+  \item a disk source with constant surface brightness distribution,
   \item a crescent shaped source with constant surface brightness distribution.
 \end{enumerate}
 The first two sources are the typical choices used in the literature to describe the luminous parts of a quasar. 
@@ -370,15 +370,15 @@ The corresponding 1D brightness is:
 \\
 Other parameters of the model are the total flux $S_0^G$ and $\sigma$. 
 
-Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disc centered at $p_s, q_s$ 
+Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disk centered at $p_s, q_s$ 
 would be insignificant. For a gaussian distributed surface brightness source the half-light radius is directly proportional to the parameter $\sigma$ according to the equation:
 \begin{equation}
 r_{1/2} = \sqrt{\ln4}\,\sigma.
 \end{equation}
 
-\subsection{Disc source with constant surface brightness distribution}
+\subsection{Disk source with constant surface brightness distribution}
 
-One can construct mathematically a disc source with constant surface-brightness and radius $R$ using a stepfunction:
+One can construct mathematically a disk source with constant surface-brightness and radius $R$ using a stepfunction:
 \begin{equation}
  S_{2D}^D(p-p_s, q-q_s) = \frac{S_0^D}{\pi R^2} \Theta \left( R^2 - \left( p-p_s \right)^2 - \left( q-q_s \right)^2 \right).
 \end{equation}
@@ -388,13 +388,13 @@ By integrating over $q$ coordinate the linear brightness function is obtained:
 \begin{equation}
  S_{1D}^D(p-p_s) = \frac{2 S_0^D}{\pi R}  \sqrt{1 - \frac{(p-p_s)^2}{R^2} }    \Theta \left( R^2 - \left( p-p_s \right)^2 \right).
 \end{equation}
-The half-light radius of a uniform disc source is $R/\sqrt{2}$.
+The half-light radius of a uniform disk source is $R/\sqrt{2}$.
 
 \subsection{Crescent source with constant surface brightness distribution}\label{subsec:crescent}
 
 The surface brightness distribution of a geometric crescent can be built 
-by considering two disc sources of constant brightness. One larger disc 
-will contribute positively to the total flux while one smaller disc 
+by considering two disk sources of constant brightness. One larger disk 
+will contribute positively to the total flux while one smaller disk 
 that is interior to the large one will contribute negatively. This superposition can be written for 2D as:\\
 
 \begin{equation}
@@ -412,9 +412,9 @@ and
  S_{2D}^{Dn}(p-p_{sn}, q-q_{sn}) = \frac{S_0^{Dn}}{\pi R_n^2} \Theta \left( R_n^2 - \left( p-p_{sn} \right)^2 - \left( q-q_{sn} \right)^2 \right).
 \end{equation}
 The following notations were used: $R_p$ and $(p_{sp}, q_{sp})$ are
-the radii and coordinate of the center for the larger positive disc, 
-while $R_n$ $(p_{sn},q_{sn})$ correspond to the smaller negative disc. 
-$S_0^{Dp},S_0^{Dn}$ represent the total flux of radiation received from the large and small disc. 
+the radii and coordinate of the center for the larger positive disk, 
+while $R_n$ $(p_{sn},q_{sn})$ correspond to the smaller negative disk. 
+$S_0^{Dp},S_0^{Dn}$ represent the total flux of radiation received from the large and small disk. 
 From this point forward we will not use the total flux from each source. Instead we will 
 use the difference which in this case is the total flux from the crescent-shaped source $S_0^C$. \\
 Equation \ref{eqn:s2d} can be written as:\\
@@ -435,21 +435,21 @@ Analogously for the linear brightness function:
 
 There are some constraints on the parameters used to define a crescent
 in the previously presented manner that need to be stated. First, we
-must impose the obvious $R_p \geq R_n$ relation. Secondly, the small disc
-must always be interior to the large disc:
+must impose the obvious $R_p \geq R_n$ relation. Secondly, the small disk
+must always be interior to the large disk:
 \begin{equation}
  R_p \ge R_n + \sqrt{\left(p_{sp} - p_{sn} \right)^2 + \left(q_{sp} - q_{sn} \right)^2}
 \end{equation}
-For the distances between the centers of the two discs we will use the same 
-notations as the one found in \cite{2013MNRAS.434..765K}, $a \equiv p_{sn} - p_{sp}$ and $b \equiv q_{sn} - q_{sp}$.
+For the distances between the centers of the two disks we will use the same 
+notations as the one found in the paper \citep{2013MNRAS.434..765K}, $a \equiv p_{sn} - p_{sp}$ and $b \equiv q_{sn} - q_{sp}$.
 
 The half-light radius of any source is invariant under any rotational
 transformation.  In the present case of a crescent source the
 effective radius is dependent on the parameters $R_p$, $R_n$ and
 $\sqrt{a^2+b^2}\equiv c $ exclusively. From symmetry considerations
 the centroid of the source is collinear with the centers of the two
-discs and it is situated at a distance $d_c$ from the center of the
-bright disc. $d_c$ can be computed numerically with the use of a
+disks and it is situated at a distance $d_c$ from the center of the
+bright disk. $d_c$ can be computed numerically with the use of a
 variation of equation \ref{eqn:s1_d}:
 
 \begin{equation}
@@ -477,9 +477,9 @@ S_0^C &=  \frac{4S_0^C}{\pi \left(R_p^2-R_n^2 \right)} \int_{0}^{r_{1/2}} \left[
 \begin{figure}
 \includegraphics[width = .49\textwidth]{figures/figure_rhalf2.eps}
 \caption{\label{fig:geom_crescent} Geometry of crescent sources: the source can be seen as a superposition
- of a smaller dark disc over and inside a larger brighter disc. $R_p$ and $R_n$ mark the radii of the 
-bright and dark disc. $d_c$ and $c$ mark the distance from the center of the bright disc to the 
-centroid and from the dark disc to the centroid.  }
+ of a smaller dark disk over and inside a larger brighter disk. $R_p$ and $R_n$ mark the radii of the 
+bright and dark disk. $d_c$ and $c$ mark the distance from the center of the bright disk to the 
+centroid and from the dark disk to the centroid.  }
 \end{figure}
 
 
@@ -510,12 +510,12 @@ which can be simplified to:
 \caption{\label{fig:char_points} The characteristic points and instances
 of a crescent source's one dimensional profile and microlensing lightcurve.
 In the top panel a typical 1D profile  of a crescent source is presented.
-There are two light gray regions that mark the regions of the bright disc
-that are not overlapped by the dark disc. The dark gray band marks the
-region where the two discs overlap. $p_1$ and $p_4$ mark the start and
-end of the bright disc in the
+There are two light gray regions that mark the regions of the bright disk
+that are not overlapped by the dark disk. The dark gray band marks the
+region where the two disks overlap. $p_1$ and $p_4$ mark the start and
+end of the bright disk in the
 1D representation. Analogous, $p_2$ and $p_3$ mark the start and
-end of the dark disc.
+end of the dark disk.
 The bottom panel represents the associated lightcurve with the points
 $t_i$ marking the moment when point $p_i$ overlaps with the caustic.
 The gray shades are analogous to the ones in the top panel.
@@ -530,13 +530,13 @@ The gray shades are analogous to the ones in the top panel.
 \centering
     \includegraphics[width = 0.48\textwidth]{figures/S1D_all.eps}
     \includegraphics[width = 0.48\textwidth]{figures/4source_magnification.eps}
-\caption{\label{fig:lightcurve_gauss} 1D profiles (top panel) and simulated lightcurves (bottom) of crescent, Gaussian and disc sources with identical total flux ($S_0$) and half-light radius($r_{1/2}$). Crescent source has $r_{1/2}$ = 0.72754 $R_p$, $R_n$ = 0.4 $R_p$, a = 0.3/-0.3 $R_p$. }
+\caption{\label{fig:lightcurve_gauss} 1D profiles (top panel) and simulated lightcurves (bottom) of crescent, Gaussian and disk sources with identical total flux ($S_0$) and half-light radius($r_{1/2}$). Crescent source has $r_{1/2}$ = 0.72754 $R_p$, $R_n$ = 0.4 $R_p$, a = 0.3/-0.3 $R_p$. }
 \end{figure}
 
 
-\subsection{Lightcurve of the disc shaped source}
+\subsection{Lightcurve of the disk shaped source}
 
-Analogous to the gaussian shaped source, the disc source with uniform brightness, radius $R$ and 
+Analogous to the gaussian shaped source, the disk source with uniform brightness, radius $R$ and 
 unmagnified flux $S_0^D$ has a lightcurve described by the equation:
 
 \begin{equation}
@@ -555,7 +555,7 @@ which is equivalent to:
     \includegraphics[width = 0.48\textwidth]{figures/S1D_var_a.eps}
     \includegraphics[width = 0.48\textwidth]{figures/4avar_magnification.eps}
 \caption{\label{fig:a_var} 1D profiles (top panel) and simulated lightcurves 
-(bottom) of crescent sources with identical $R_p$ and $R_n$ ($R_n$ = 0.4 $R_p$) and different disc centers displacement (a).}
+(bottom) of crescent sources with identical $R_p$ and $R_n$ ($R_n$ = 0.4 $R_p$) and different disk centers displacement (a).}
 \end{figure}
 
 
@@ -577,7 +577,7 @@ The lightcurve of a crescent shaped source with unamplified flux $S_0^C$, radii 
 \centering
     \includegraphics[width = 0.48\textwidth]{figures/S1D_var_rn_a_poz.eps}
     \includegraphics[width = 0.48\textwidth]{figures/5Rn_back_var_magnification.eps}
-\caption{\label{fig:lightcurve_crescent_back} 1D profiles (top panel) and simulated lightcurves (bottom) of backwards crescent sources with identical $R_p$ and $a$ ($a$ = 0.3 $R_p$) and different dark disc radii ($R_n$).}
+\caption{\label{fig:lightcurve_crescent_back} 1D profiles (top panel) and simulated lightcurves (bottom) of backwards crescent sources with identical $R_p$ and $a$ ($a$ = 0.3 $R_p$) and different dark disk radii ($R_n$).}
 \end{figure}
 
 The function $p_s(t)$ can be chosen to be equal to $v_p(t-t_0) + p_{s0}$ where $p_{s0}$ is the coordinate $p$ 
@@ -591,7 +591,7 @@ choosing the function $a$ to be constant in time.
     \includegraphics[width = 0.48\textwidth]{figures/S1D_var_rn_a_neg.eps}
     \includegraphics[width = 0.48\textwidth]{figures/5Rn_forw_var_magnification.eps}
 \caption{\label{fig:lightcurve_crescent} 1D profiles (top panel) and simulated lightcurves (bottom) 
-of forwards crescent sources with identical $R_p$ and $a$ ($a$ = - 0.3 $R_p$) and different dark disc radii ($R_n$). }
+of forwards crescent sources with identical $R_p$ and $a$ ($a$ = - 0.3 $R_p$) and different dark disk radii ($R_n$). }
 \end{figure}
 
 In Figure \ref{fig:char_points} there are four characteristic points visible on the resulting one-dimensional 
@@ -645,8 +645,8 @@ visible features than the other two light-curves corresponding to the
 disc and gaussian shape. There are three regions where $S_{1D}$ and by
 inheritance, the lightcurve has distinguishable behaviour. The first
 region that would be recorded on a lightcurve plot represents the
-period of time when the bright disc begins to be overlapped by the
-caustic and stops when just before the dark disc reaches the
+period of time when the bright disk begins to be overlapped by the
+caustic and stops when just before the dark disk reaches the
 caustic. During this period of time, the flux of light from the source
 is increasingly magnified. The second period starts and ends with the
 overlapping of the dark disc. As a boundary of the two regions, there
@@ -673,7 +673,7 @@ The impact of parameter $a$ on the shape of the lightcurve can be
 observed in Figure~\ref{fig:a_var}. Sources where the center of the
 dark disc reaches the caustic before the center of the bright disc are
 characterized by a smoother broad peak in contrast to the cases where
-the center of the dark disc reaches the caustic after the bright disc.
+the center of the dark disc reaches the caustic after the bright disk.
 In the case of the latter the instance when the dark disc reaches the
 caustic corresponds to larger and larger magnifications until it
 becomes a local and even global peak. The effect of the $R_n$
@@ -696,7 +696,7 @@ reaches the caustic and the shape of the lightcurve is smoother.
     \includegraphics[width = 0.48\textwidth]{figures/M87_shape.eps}
         \includegraphics[width = 0.48\textwidth]{figures/M87_lc.eps}
 \caption{\label{fig:M87_plots} The one dimensional profile obtained
-  from the numerical integration along the ordinate axis of a simulated source
+  from the numerical integration along the ordonata axis of a simulated source
   image is presented in the upper panel. The source image was presented in 
  Dexter et al 2012 in the top right-most panel of figure 5 
 (of the respective paper) as a result of the simulations 
@@ -704,7 +704,7 @@ presented in McKinney \& Blandford 2009. The corresponding
   lightcurve associated to the 1D profile is presented in the lower
   panel. The points $\rm p_2$ and $\rm p_3$ mark the start and 
   end of the equivalent
-  dark disc and are associated with the moments of their overlap with
+  dark disk and are associated with the moments of their overlap with
   the caustic: $\rm t_2$ and $\rm t_3$. $\rm h_{w}$ denotes the maximum width of the crescent.}
 \end{figure}
 
@@ -773,12 +773,6 @@ the details are different.
   sub-peak near $t=5$.}
 \end{figure}
 
-\begin{figure}
-\centering
-  \includegraphics[width=0.5\textwidth]{compare-mag.eps}
-\caption{``Visiting Figure''.  Only in red/blue version, not for the paper.}
-\end{figure}
-
 \subsection{Numerical microlensing lightcurves}
 
 The microlensing code uses a ray-shooting technique to compute the
@@ -845,11 +839,11 @@ $r_{1/2}$ is one to two order of magnitude larger \citep[see, e.g.,
   Figure~8 of][]{0004-637X-769-1-53}.  
 
 The mock data appear in Figures
-\ref{fig:cc_forward}--\ref{fig:gc_forward}.  Illustrative values have
-been adopted for the frequency of observations and for the noise
-level.  It is, of course, important is that the observations have
-enough sampling and signal-to-noise that the characteristic features
-of a crescent source (see e.g., Figure~\ref{fig:char_points}) are not
+\ref{fig:cc_forward}--\ref{fig:gc_forward}.  The example values
+above for $r_{1/2}$, $v_p$ and the observing frequency are not
+important.  What is important is that the observations have enough
+sampling and signal-to-noise that the characteristic features of a
+crescent source (see e.g., Figure~\ref{fig:char_points}) are not
 washed out.
 
 
@@ -925,14 +919,14 @@ Namely, the shape of the caustic boundary in the proximity of the source in the 
 %The data points corresponding to the source position before and during the overlapping of the caustic will be affected by
 % smaller errors than the data points corresponding to later times. \\
 
-The first two source profiles that we consider are the uniform disc and the symmetric Gaussian source. 
+The first two source profiles that we consider are the uniform disk and the symmetric Gaussian source. 
 Both of them can be described by a half-light radius ($r_{1/2}$) and a total unlensed light flux ($S_0$). 
 With the two parameters constrained the one-dimensional profiles, as well as the lightcurves of the 
 two source, are completely determined, since no free parameter remains. 
 
 The previous statement does not hold for a crescent source.
 In the case of the crescent source there are in total five parameters: the integrated flux of the source $S_0$,
- the radii of the bright and dark discs and the displacement of the centers of the two discs on the axes perpendicular and parallel to the caustic. 
+ the radii of the bright and dark disks and the displacement of the centers of the two disks on the axes perpendicular and parallel to the caustic. 
 
 %Two of the parameters can be reduced by expressing the results in 
 %terms of $S_0$ and $r_{1/2}$. 
@@ -945,7 +939,7 @@ In the case of the crescent source there are in total five parameters: the integ
 Since the one-dimensional source profile that corresponds to an 
 axis perpendicular to the caustic contains exhaustively all the 
 information regarding the source that can be revealed by the lightcurve, 
-the value of the crescent's discs centers displacement parallel to the caustic 
+the value of the crescent's disks centers displacement parallel to the caustic 
 does not have an effect on the shape of the lightcurve. 
 
 Nevertheless, the respective displacement is relevant for the calculation of
@@ -954,7 +948,7 @@ decrease the value of the
 half-light radius when the absolute value of the parameter is
 increased.  In contrast to the simpler source shapes discussed before the
 crescent has two additional relevant parameters: the radius of the dark 
-disc ($R_n$) and the center displacement in the direction
+disk ($R_n$) and the center displacement in the direction
  perpendicular to the caustic $a$.
 
 Figure \ref{fig:lightcurve_gauss} reveals that the lightcurve of a crescent source has more
@@ -968,10 +962,10 @@ caustic reveal four characteristic points. The overlap of each of
 these points with the caustic leaves visible features on the
 lightcurve at the corresponding instances of time. In timely order,
 the instances correspond to the start of the overlap between the
-caustic and the bright disc, the start of the overlap between the
-caustic and the dark disc, the end of the overlap between the caustic
-and dark disc and finally the end of the overlap between the caustic
-and the bright disc.
+caustic and the bright disk, the start of the overlap between the
+caustic and the dark disk, the end of the overlap between the caustic
+and dark disk and finally the end of the overlap between the caustic
+and the bright disk.
 
 With the different source profiles and their corresponding lightcurves 
 studied we can change our point of view of the system to that of an observer. 
@@ -1007,8 +1001,8 @@ physical quantities specific to the central region of a quasar.  As
 such the luminous region would correspond to the bright accretion disc
 that surrounds the black hole. The later's gravity would cause a
 shadow in the bright region limited by the extent of the event horizon
-of the black hole. Therefore, the radius of the bright disc would
-provide an estimate of the size of the accretion disc and the radius
+of the black hole. Therefore, the radius of the bright disk would
+provide an estimate of the size of the accretion disk and the radius
 of the dark disc would provide and estimate of the gravitationally
 magnified Schwarzschild radius of the black hole $R_{S}^{magnified} =
 \Delta t_{dark} \cdot v_p$.  By $R_{S}^{magnified}$ we refer to the
