@@ -344,8 +344,8 @@ In other words, if two sources with different $S_{2D}$ have the same $S_{1D}$ th
 In the present study we analyse three types of sources with different surface brightness: 
 \begin{enumerate}
  \renewcommand{\theenumi}{(\arabic{enumi})}
-  \item a rotationally symmetric source with a bivariate gaussian surface brightness distribution,
-  \item a disc source with constant surface brightness distribution,
+  \item a rotationally symmetric source with a bivariate Gaussian surface brightness distribution,
+  \item a disk source with constant surface brightness distribution,
   \item a crescent shaped source with constant surface brightness distribution.
 \end{enumerate}
 The first two sources are the typical choices used in the literature to describe the luminous parts of a quasar. 
@@ -354,9 +354,9 @@ The third one is a recently proposed variant \citep{2013MNRAS.434..765K}.
 
 
 
-\subsection{Rotationally symmetric source with a bivariate gaussian surface brightness distribution}\label{subsec:gaussian}
+\subsection{Rotationally symmetric source with a bivariate Gaussian surface brightness distribution}\label{subsec:gaussian}
 
-A symmetric 2D gaussian can be described mathematically as:
+A symmetric 2D Gaussian can be described mathematically as:
 
 \begin{equation}
  S_{2D}^G(p-p_s, q-q_s) = \frac{S_0^G}{2 \pi \sigma^2} e^{-\frac{(p-p_s)^2}{2 \sigma^2}} e^{-\frac{(q-q_s)^2}{2 \sigma^2}}.
@@ -370,15 +370,15 @@ The corresponding 1D brightness is:
 \\
 Other parameters of the model are the total flux $S_0^G$ and $\sigma$. 
 
-Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disc centered at $p_s, q_s$ 
-would be insignificant. For a gaussian distributed surface brightness source the half-light radius is directly proportional to the parameter $\sigma$ according to the equation:
+Although such a definition for a source would have non-zero surface/linear brightness for any coordinate $p,q$, the amount of light received by a detector from outside a $3 \sigma$ disk centered at $p_s, q_s$ 
+would be insignificant. For a Gaussian distributed surface brightness source the half-light radius is directly proportional to the parameter $\sigma$ according to the equation:
 \begin{equation}
 r_{1/2} = \sqrt{\ln4}\,\sigma.
 \end{equation}
 
 \subsection{Disc source with constant surface brightness distribution}
 
-One can construct mathematically a disc source with constant surface-brightness and radius $R$ using a stepfunction:
+One can construct mathematically a disk source with constant surface brightness and radius $R$ using a stepfunction:
 \begin{equation}
  S_{2D}^D(p-p_s, q-q_s) = \frac{S_0^D}{\pi R^2} \Theta \left( R^2 - \left( p-p_s \right)^2 - \left( q-q_s \right)^2 \right).
 \end{equation}
@@ -490,10 +490,10 @@ presented in the previous section one can numerically compute the
 lightcurves of the three extended sources for the simplified
 infinite-wall-caustics model.
 
-\subsection{Lightcurve of the gaussian source}
+\subsection{Lightcurve of the Gaussian source}
 
 The amount of light received by an observer from a source 
-with a gaussian distributed brightness with $\sigma$ and total flux $S_0^G$ in the absence of any gravitational lensing is:
+with a Gaussian distributed brightness with $\sigma$ and total flux $S_0^G$ in the absence of any gravitational lensing is:
 \begin{equation}
  F^G(t) = \int_{-\infty}^\infty  \left( \mu_0 + \frac{C_0}{\sqrt{p}} \Theta \left( p \right) \right) \left( \frac{S_0^G}{\sqrt{2 \pi} \sigma} e^{-\frac{(p-p_s(t))^2}{2 \sigma^2}} \right) \mathrm{d}p.
 \end{equation}
@@ -507,19 +507,18 @@ which can be simplified to:
 \centering
         \includegraphics[width = 0.48\textwidth]{figures/ch_points.eps}
         \includegraphics[width = 0.48\textwidth]{figures/ch_instances.eps}
-\caption{\label{fig:char_points} The characteristic points and instances
-of a crescent source's one dimensional profile and microlensing lightcurve.
-In the top panel a typical 1D profile  of a crescent source is presented.
-There are two light gray regions that mark the regions of the bright disc
-that are not overlapped by the dark disc. The dark gray band marks the
-region where the two discs overlap. $p_1$ and $p_4$ mark the start and
-end of the bright disc in the
-1D representation. Analogous, $p_2$ and $p_3$ mark the start and
-end of the dark disc.
-The bottom panel represents the associated lightcurve with the points
-$t_i$ marking the moment when point $p_i$ overlaps with the caustic.
-The gray shades are analogous to the ones in the top panel.
- }
+\caption{\label{fig:char_points} The characteristic points and
+  instances of a crescent source's one dimensional profile and
+  microlensing lightcurve.  In the top panel a typical 1D profile of a
+  crescent source is presented.  There are two light gray regions that
+  mark the regions of the bright disk that are not overlapped by the
+  dark disk. The dark gray band marks the region where the two disks
+  overlap. The points $p_1$ and $p_4$ mark the start and end of the
+  bright disk in the 1D representation. Analogously, $p_2$ and $p_3$
+  mark the start and end of the dark disk.  The bottom panel
+  represents the associated lightcurve with the points $t_i$ marking
+  the moment when point $p_i$ overlaps with the caustic.  The gray
+  shades are analogous to the ones in the top panel.  }
 \end{figure}
 
 
@@ -536,7 +535,7 @@ The gray shades are analogous to the ones in the top panel.
 
 \subsection{Lightcurve of the disc shaped source}
 
-Analogous to the gaussian shaped source, the disc source with uniform brightness, radius $R$ and 
+Analogous to the Gaussian shaped source, the disk source with uniform brightness, radius $R$ and 
 unmagnified flux $S_0^D$ has a lightcurve described by the equation:
 
 \begin{equation}
@@ -642,7 +641,7 @@ With the use of the previous four equations the following identities can be writ
 Figure \ref{fig:lightcurve_gauss} reveals that the 
 lightcurve of a crescent source has more
 visible features than the other two light-curves corresponding to the
-disc and gaussian shape. There are three regions where $S_{1D}$ and by
+disc and Gaussian shape. There are three regions where $S_{1D}$ and by
 inheritance, the lightcurve has distinguishable behaviour. The first
 region that would be recorded on a lightcurve plot represents the
 period of time when the bright disc begins to be overlapped by the
@@ -696,16 +695,16 @@ reaches the caustic and the shape of the lightcurve is smoother.
     \includegraphics[width = 0.48\textwidth]{figures/M87_shape.eps}
         \includegraphics[width = 0.48\textwidth]{figures/M87_lc.eps}
 \caption{\label{fig:M87_plots} The one dimensional profile obtained
-  from the numerical integration along the ordinate axis of a simulated source
-  image is presented in the upper panel. The source image was presented in 
- Dexter et al 2012 in the top right-most panel of figure 5 
-(of the respective paper) as a result of the simulations 
-presented in McKinney \& Blandford 2009. The corresponding
-  lightcurve associated to the 1D profile is presented in the lower
-  panel. The points $\rm p_2$ and $\rm p_3$ mark the start and 
-  end of the equivalent
-  dark disc and are associated with the moments of their overlap with
-  the caustic: $\rm t_2$ and $\rm t_3$. $\rm h_{w}$ denotes the maximum width of the crescent.}
+  from the numerical integration along the ordonata axis of a
+  simulated source image is presented in the upper panel. The source
+  image was presented in Dexter et al (2012) in the top right-most
+  panel of Figure~5 (of the respective paper) as a result of the
+  simulations presented in McKinney \& Blandford (2009). The
+  corresponding lightcurve associated to the 1D profile is presented
+  in the lower panel. The points $\rm p_2$ and $\rm p_3$ mark the
+  start and end of the equivalent dark disk and are associated with
+  the moments of their overlap with the caustic: $t_2$ and $t_3$;
+  $h_{w}$ denotes the maximum width of the crescent.}
 \end{figure}
 
 
@@ -724,14 +723,14 @@ surrounding the luminous parts of the image have non-zero flux and thus are more
 Having used the simple model of an ideal fold to gain insight, we now
 consider the question of whether the characteristics of a crescent
 source could be discerned in real data having noise and systematic
-error as well.  Our method is to generate microlensing lightcurves
+error as well.  Do do so, we first generate a microlensing lightcurve
 using a widely-used microlensing code
 \citep{1990PhDT.......180W,1999A&A...346L...5W,1999JCoAM.109..353W} to
 which we have added a small extension to provide the option of
-crescent sources, and then fit these mock lightcurves to source models
-using Markov-chain Monte Carlo (MCMC).  The basic technique is the same
-as in previous studies \citep[e.g.,][]{2010ApJ...712..658P} though
-the details are different.
+crescent sources.  We then fit model or template lightcurves ---which
+are generated with varied source and other parameters--- to the mock
+lightcurve.  The basic technique is the same as in previous studies
+\citep[e.g.,][]{2010ApJ...712..658P} though the details are different.
 
 \begin{figure}
 \centering
@@ -754,23 +753,24 @@ the details are different.
 \begin{figure}
 \centering
   \includegraphics[width=0.5\textwidth]{figures/cc_backward.eps}
-\caption{\label{fig:cc_backward} Like Figure~\ref{fig:cc_backward},
-  except that the fit uses path~II whereas the mock data still come
-  from path~I. The curve has $\chi^2_{(244)}=284, P=0.01$ indicating a
-  marginally acceptable fit.}
+\caption{\label{fig:cc_backward} Like Figure~\ref{fig:cc_forward},
+  except that the fit is derived from a slightly different caustic
+  than the one used to generate the mock data.  The curve has
+  $\chi^2_{(244)}=284, P=0.01$ indicating a marginally acceptable
+  fit.}
 \end{figure}
 
 \begin{figure}
 \centering
   \includegraphics[width=0.5\textwidth]{figures/gc_forward.eps}
-\caption{\label{fig:gc_forward} Like Figure~\ref{fig:cc_backward}, but
-  showing the best fit to a Gaussian source.  The histogram shows the
-  posterior distribution of $r_{1/2}$ (there is no $R_n$).  It appears
-  to show $r_{1/2}$ as accurately recovered, but is not to be trusted,
-  because the fit has $\chi^2_{(247)}=344, P=3\times10^{-6}$ indicating
-  rejection of the Gaussian source.  Looking closely, the curve is a
-  little too shallow near $t=3$, and it is unable to fit the second
-  sub-peak near $t=5$.}
+\caption{\label{fig:gc_forward} Like Figures~\ref{fig:cc_forward} and
+  \ref{fig:cc_backward}, but showing the best fit to a Gaussian
+  source.  The histogram shows the posterior distribution of $r_{1/2}$
+  (there is no $R_n$).  It appears to show $r_{1/2}$ as accurately
+  recovered, but is not to be trusted, because the fit has
+  $\chi^2_{(247)}=344, P=3\times10^{-6}$ indicating rejection of the
+  Gaussian source.  Looking closely, the curve is a little too shallow
+  near $t=3$, and it is unable to fit the second sub-peak near $t=5$.}
 \end{figure}
 
 \begin{figure}
@@ -949,7 +949,7 @@ the value of the crescent's discs centers displacement parallel to the caustic
 does not have an effect on the shape of the lightcurve. 
 
 Nevertheless, the respective displacement is relevant for the calculation of
-of the half-light radius.  It's qualitative effect is to 
+of the half-light radius.  Its qualitative effect is to 
 decrease the value of the
 half-light radius when the absolute value of the parameter is
 increased.  In contrast to the simpler source shapes discussed before the
@@ -961,12 +961,12 @@ Figure \ref{fig:lightcurve_gauss} reveals that the lightcurve of a crescent sour
 visible features than the other two light-curves corresponding to the
 disc and Gaussian shape. The parameters $R_n$ and $a$ have strong
 influences on the shape of the microlensed lightcurve as can be seen
-in Figures~\ref{fig:a_var}, \ref{fig:lightcurve_crescent} and
-\ref{fig:lightcurve_crescent_back}.  Moreover, the one-dimensional
+in Figures~\ref{fig:a_var}, \ref{fig:lightcurve_crescent_back} and
+\ref{fig:lightcurve_crescent}.  Moreover, the one-dimensional
 source profile corresponding to the direction perpendicular to the
 caustic reveal four characteristic points. The overlap of each of
 these points with the caustic leaves visible features on the
-lightcurve at the corresponding instances of time. In timely order,
+lightcurve at the corresponding instances of time. In time order,
 the instances correspond to the start of the overlap between the
 caustic and the bright disc, the start of the overlap between the
 caustic and the dark disc, the end of the overlap between the caustic
@@ -985,10 +985,10 @@ of the source in a direction perpendicular to the caustic.
 
 
 Furthermore, a simulated image of M87 presented in
- \citep{2012MNRAS.421.1517D} has been microlensed (figure \ref{fig:M87_plots}). 
-On the resulting lightcurve the instances 
-corresponding to the start and end of the black hole 
-shadow and caustic overlap were distinguishable.
+\cite{2012MNRAS.421.1517D} has been microlensed
+(Figure~\ref{fig:M87_plots}).  On the resulting lightcurve the
+instances corresponding to the start and end of the black hole shadow
+and caustic overlap were distinguishable.
     
 In the case of a high-quality lightcurve, the parameters of a crescent
 source can be estimated by simply identifying signatures on the
@@ -1018,16 +1018,16 @@ gravitationally magnified value of the Schwarzschild radius is a
 monotonic function of the black hole's mass. Therefore, it can be used
 to estimate the mass of the black hole if it was not rotating. In the
 previous expression, the $\Delta t_{dark}$ denotes the period of
-overlap between the black hole shadow and fold caustic.  $v_p$ denotes
-the component of the relative velocity of the source and fold which is
-perpendicular to the caustic.  The respective velocity is an unknown,
-though it can be constrained on a case by case basis to an order of
-magnitude or even better. This would require the study of the dynamics
-of the stellar structure which contains the gravitational lens and the bulk
-transverse velocity of the galaxy with respect to the observer.  A
-better estimate of the relative velocity would facilitate a better
-estimate of the effective non-rotating black hole mass associated with
-the black hole shadow.
+overlap between the black hole shadow and fold caustic, while $v_p$
+denotes the component of the relative velocity of the source and fold
+which is perpendicular to the caustic.  The respective velocity is an
+unknown, though it can be constrained on a case by case basis to an
+order of magnitude or even better. This would require the study of the
+dynamics of the stellar structure which contains the gravitational
+lens and the bulk transverse velocity of the galaxy with respect to
+the observer.  A better estimate of the relative velocity would
+facilitate a better estimate of the effective non-rotating black hole
+mass associated with the black hole shadow.
 
     
 The parameters whose values cannot be determined due to the 
