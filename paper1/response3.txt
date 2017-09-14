@@ -43,7 +43,15 @@ Curve of the caustic.
 > calculation is not correct (especially since in Fig. 12, the $\chi^2$
 > is only worst by 100).
 
-Visiting figure.
+As a check, we have tried overlaying the curves: shown in the
+TEMPORARY Figure 13.  Relative to the Figure 10, Figures 11 and 12
+increase the chi^2 by 17% vs 40% respectively.  Visually, these amount
+to small differences (smaller in size than the +/-1 sigma error bars).
+The figures appear to be correct.
+
+Incidentally, we considered combining Figs 10-12 in a single
+three-colour overlay.  But on balance, we feel three separate figures
+is preferable, because a combined figure would get very busy.
 
 > 3. There should be a degeneracy between the velocity and the source
 > size (hence position of start/end points of the track and source
