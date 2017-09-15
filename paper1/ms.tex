@@ -746,7 +746,7 @@ lightcurve.  The basic technique is the same as in previous studies
   has $\chi^2_{(244)}=243, P=0.32$ indicating a good fit.  (The
   subscript 244 refers to degrees of freedom: 251~points less
   7~parameters.)  The lower panel shows the posterior distributions
-  for $r_{1/2}$ (solid histogram) and $R_n/R_p$ (dashed histogram).
+  for $r_{1/2}/v_p$ (solid histogram) and $R_n/R_p$ (dashed histogram).
   Vertical dashes mark the correct values.}
 \end{figure}
 
@@ -765,8 +765,8 @@ lightcurve.  The basic technique is the same as in previous studies
   \includegraphics[width=0.5\textwidth]{figures/gc_forward.eps}
 \caption{\label{fig:gc_forward} Like Figures~\ref{fig:cc_forward} and
   \ref{fig:cc_backward}, but showing the best fit to a Gaussian
-  source.  The histogram shows the posterior distribution of $r_{1/2}$
-  (there is no $R_n$).  It appears to show $r_{1/2}$ as accurately
+  source.  The histogram shows the posterior distribution of $r_{1/2}/v_p$
+  (there is no $R_n$).  It appears to show $r_{1/2}/v_p$ as accurately
   recovered, but is not to be trusted, because the fit has
   $\chi^2_{(247)}=344, P=3\times10^{-6}$ indicating rejection of the
   Gaussian source.  Looking closely, the curve is a little too shallow
@@ -868,18 +868,18 @@ start and end points on the path.  The latter two are equivalent to
 considering the location of the caustic with respect to the starting
 point and the velocity component of the source transverse to the
 caustic (that is, $v_p$).  The orientation of the source track is
-another nuisance parameter.  For a pure fold, changing the orientation
-of the source track is equivalent to changing $v_p$ and the
-orientation of the source (see Figure~\ref{fig:infinite_fold}).  Since
-the latter two parameters are already accounted for, we do not include
-the orientation as a separate parameter.  Since the caustic is not a
-perfect fold, disregarding the orientation of the source track will
-introduce some systematic error.
+another nuisance parameter.  For an ideal fold, changing the
+orientation of the source track is equivalent to changing $v_p$ and
+the orientation of the source (see Figure~\ref{fig:infinite_fold}).
+Since the latter two parameters are accounted for, we do not include
+the orientation of the track as a separate parameter.  Since the
+caustic is not an ideal fold, disregarding the orientation of the
+source track can be expected to introduce some systematic error.
 
 Figures \ref{fig:cc_forward}--\ref{fig:gc_forward} show the numerical
 results.  Each of these figures shows the mock data (the same in all
 three cases) along with best fits and the fitted values and
-uncertainties on $r_{1/2}$ and (if applicable) $R_n/R_p$.
+uncertainties on $r_{1/2}/v_p$ and (if applicable) $R_n/R_p$.
 
 Figure \ref{fig:cc_forward} shows a test of the fitting procedure.
 The computer compares the mock data to different template
@@ -887,18 +887,24 @@ lightcurves. The templates come from taking a crescent source along
 the path CB in Figure~\ref{fig:magnification_map}, but with varied
 crescent parameters and varied start and finish points.  As the figure
 shows, the lightcurve can be fitted to within the noise, and the
-parameters $r_{1/2}$ and $R_n/R_p$ can be recovered.
+parameters $r_{1/2}/v_p$ and $R_n/R_p$ can be recovered.
 
 Figure \ref{fig:cc_backward} attempts a somewhat more realistic
 situation.  The mock lightcurve is the same as before, but the
 templates come from taking a crescent source along the path AB in
 Figure~\ref{fig:magnification_map}.  That is, the mock data and the
-templates come from crossings of different caustics.  This mimics the
-unavoidable systematic error of not knowing the caustic exactly.  The
-fit is slightly degraded, but still acceptable.  The parameters
-$r_{1/2}$ and $R_n/R_p$ are still recovered.  The parameters $a/R_p$
-and $b/R_p$ were not correctly recovered, which is understandable from
-the track change.
+templates come from crossings of different caustics.  This is intended
+to mimic the systematic errors arising from not knowing the caustic
+exactly.  As Figure~\ref{fig:cc_backward} shows, the fit is slightly
+degraded, but still acceptable.  The parameters $r_{1/2}/v_p$ and
+$R_n/R_p$ are still recovered.  The parameters $a/R_p$ and $b/R_p$
+(not shown in the Figure) giving the orientation of the crescent were
+not correctly recovered; but this is understandable, because the AB
+and CB tracks have different orientations with respect to the caustics
+crossed.  The slight degradation of the fit can be understood as
+follows.  Although the caustics are clean folds, they have some
+curvature, and moreover the curvature is not identical in the two
+caustics used for the mock data and the template.  
 
 Figure \ref{fig:gc_forward} shows the result of attempting to fit
 templates from a Gaussian source to the same mock data.  There is a

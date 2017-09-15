@@ -34,7 +34,10 @@ Done.
 > generalisation of the conclusion from that section is limited because
 > that effect has not been fully accounted for.
 
-Curve of the caustic.
+The systematic error must involve the curvature in the caustics.
+(If the caustics were completely straight, the motion of the source
+along the caustic would have no effect, and hence the orientation of
+the track would not affect the quality of the fit.)
  
 > 2. Fig. 11: upper panel: I am surprised that such a different $\chi^2$
 > (i.e. $\chi^2 = 284$ instead of $\chi^2 = 243$ in Fig. 10) is derived
