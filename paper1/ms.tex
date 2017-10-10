@@ -899,12 +899,18 @@ exactly.  As Figure~\ref{fig:cc_backward} shows, the fit is slightly
 degraded, but still acceptable.  The parameters $r_{1/2}/v_p$ and
 $R_n/R_p$ are still recovered.  The parameters $a/R_p$ and $b/R_p$
 (not shown in the Figure) giving the orientation of the crescent were
-not correctly recovered; but this is understandable, because the AB
-and CB tracks have different orientations with respect to the caustics
+not correctly recovered; but this expected, because the AB and CB
+tracks have different orientations with respect to the caustics
 crossed.  The slight degradation of the fit can be understood as
-follows.  Although the caustics are clean folds, they have some
-curvature, and moreover the curvature is not identical in the two
-caustics used for the mock data and the template.  
+follows.  The source track will not, in general, be normal to the
+caustic, but will instead have a non-normal velocity component.  If
+the caustic is perfectly straight, the velocity component along the
+caustic makes no difference.  (Hence our model only considers only the
+normal velocity component $v_p$).  But in fact the caustics, although
+clean folds do have some curvature.  The combination of a curving
+caustic and non-normal velocity of the source makes the orientation of
+the source twist with respect to the caustic.  This twist would be
+different for crossings along the AB and CB tracks.
 
 Figure \ref{fig:gc_forward} shows the result of attempting to fit
 templates from a Gaussian source to the same mock data.  There is a

@@ -52,9 +52,9 @@ increase the chi^2 by 17% vs 40% respectively.  Visually, these amount
 to small differences (smaller in size than the +/-1 sigma error bars).
 The figures appear to be correct.
 
-Incidentally, we considered combining Figs 10-12 in a single
-three-colour overlay.  But on balance, we feel three separate figures
-is preferable, because a combined figure would get very busy.
+We did consider combining Figs 10-12 in a single three-colour overlay.
+But on balance, we feel three separate figures is preferable, because
+a combined figure would become more difficult to read.
 
 > 3. There should be a degeneracy between the velocity and the source
 > size (hence position of start/end points of the track and source
@@ -64,7 +64,7 @@ is preferable, because a combined figure would get very busy.
 > clarify this point.
 
 Indeed, only the ratio r_p/v_p can be inferred, not r_p.  We have
-corrected the figure labels and ...
+corrected the figure labels and text.
  
 > Minor comments:
 > 
