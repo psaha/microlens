@@ -77,20 +77,31 @@ def plotcurves(p):
 
 def plothist(p):
     rmin,rmax,nr = 0,1.2,61
-    p.hist(rh,np.linspace(rmin,rmax,nr),weights=wt,
+    print estim(rh)
+    p.hist(rh,np.linspace(rmin,rmax,nr),weights=wt,normed=True,
            histtype='step',lw=2,color='black')
-    p.plot([1,1],[.43,.48],lw=2,color='black')
+    p.plot([1,1],[20,23],lw=2,color='black')
     fl = max(rns)
     if fl > 0:
-        p.hist(rns,np.linspace(rmin,rmax,nr),weights=wt,
+        print estim(rns)
+        p.hist(rns,np.linspace(rmin,rmax,nr),weights=wt,normed=True,
                histtype='step',lw=2,color='black',linestyle='dashed')
-        p.plot([.4,.4],[.43,.48],lw=2,color='black',linestyle='dashed')
+        p.plot([.4,.4],[20,23],lw=2,color='black',linestyle='dashed')
         p.set_xlabel('inferred $R_n/R_p$ and $r_{1/2}/v_p$',labelpad=10)
     else:
         p.set_xlabel('inferred $r_{1/2}/v_p$',labelpad=10, fontsize=16)
-    p.axis([rmin,rmax,0,0.5])
+    p.set_ylabel('posterior distribution',labelpad=10, fontsize=16)
+    p.axis([rmin,rmax,0,24])
 
-
+def estim(x):
+    N = len(x)
+    lo = int(.05*N)
+    mid = int(0.5*N)
+    hi = int(.95*N)  # 90% confidence
+    y = sorted(x)
+    res = y[mid],y[hi]-y[mid],y[lo]-y[mid],y[0],y[-1]
+    res = [int(100*x+0.5)*0.01 for x in res]
+    return res
 
 mockdata()
 
@@ -105,7 +116,7 @@ for fname in ['gc_forward','cc_forward','cc_backward']:
 
     p = fig.add_subplot(212)
     plothist(p)
-    p.get_yaxis().set_visible(False)
+#    p.get_yaxis().set_visible(False)
 
     fig.savefig('../paper1/figures/%s.eps'%fname)
 

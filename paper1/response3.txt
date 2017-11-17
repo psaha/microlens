@@ -53,8 +53,9 @@ to small differences (smaller in size than the +/-1 sigma error bars).
 The figures appear to be correct.
 
 We did consider combining Figs 10-12 in a single three-colour overlay.
-But on balance, we feel three separate figures is preferable, because
-a combined figure would become more difficult to read.
+But on balance, we feel three separate figures is preferable -- a
+combined figure with many curves and histograms would become difficult
+to read.
 
 > 3. There should be a degeneracy between the velocity and the source
 > size (hence position of start/end points of the track and source

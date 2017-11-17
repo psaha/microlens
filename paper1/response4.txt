@@ -1,0 +1,63 @@
+| I have reviewed the new version of the paper. I have still a few
+| comments that need to be addressed before acceptance.
+
+| 1. p11, l52, col2: the authors state that the parameter $r_{1/2} /
+| v_p $ is still recovered in Fig. 11. Looking to the distribution it
+| seems to be marginal. The authors should state at "how many standard
+| deviations" this is true as visually, the true value seems to be
+| overlaping with the very edge of the distribution. In addition,
+| Fig. 10-12 (bottom panel) would benefit of having y-labeling.
+
+We have added 90% percent confidence intervals to the figure captions.
+On one case, the correct value is not within the 90% interval but is
+within the 99% interval, and this is noted in the text.
+
+We have added y-labelling to the lower panels of Figs 10-12.
+
+| 2. p12, l32, col2: "In case of ... of the particular source features
+| across the caustic": This is a misleading statement as the source
+| size has been assumed here to be very small. This hypothesis on the
+| source size needs to be explicit in this part of the discussion! It
+| is not only the high quality of the light-curve that is
+| important. The small source size (be quantitative !!) is also
+| critical, otherwise, the typical features of the crescent disc will
+| be washed out.
+
+We have mentioned explicitly that the source is assumed much smaller
+than the radius of curvature of the caustic.
+
+| 3. p13, l6, col1: "The respective velocity is an unknown, though it
+| can be constrained on a case by case basis to an order of magnitude
+| of even better. This would ... with respect to the observer": I
+| disagree with this statement. This is overly optimistic as we speak
+| of NET transverse velocity which means that the velocity of the
+| source w.r.t. the lens also plays a role. Hence, even detailed
+| knowledge of the lens dynamics won't allow one to pin down the
+| transverse velocity below the stellar velocity dispersion. The
+| authors should remove this statement or be more accurate and
+| quantitatively motivate it
+
+The statement has been removed.
+
+| YET a number typos left (not exhaustive list):
+
+| - p8, l46, col2: "Do do so, ..." -> To do so, ...
+
+Corrected
+
+| - p11, l8, col2: "It is of course, important **is** that the
+| observations ..." -> It is of course important that the observations
+| ...
+
+Corrected
+
+| - p12, l55, col1: "Nevertheless, the respective displacement is
+| relevant for the calculation **of** of the ... " -> Nevertheless,
+| the respective displacement is relevant for the calculation of the
+| ...
+
+Corrected
+
+| - Caption of FIg. 9: "ordonata" -> ordinate [not corrected YET]
+
+Corrected

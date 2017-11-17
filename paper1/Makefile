@@ -1,5 +1,5 @@
 all:
-	latexdiff msold3.tex ms.tex > msdiff.tex
+	latexdiff msold4.tex ms.tex > msdiff.tex
 	latex msdiff
 	bibtex msdiff
 	latex msdiff
