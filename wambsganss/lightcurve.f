@@ -30,11 +30,11 @@
 *
 * name of magnification pattern to be read:
 *
-      fileread  = 'IRIS401'
+      fileread  = 'IRIS406'
 *
 * name of magnification pattern to be written on:
 *
-      filewrite = 'IRIS401-track'
+      filewrite = 'IRIS406-track'
 *
 *
 * position of start point and end point of lightcurve:
